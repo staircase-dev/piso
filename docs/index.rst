@@ -1,9 +1,8 @@
-.. image:: img/piso_white.svg
+.. image:: img/piso_social_white.svg
    :width: 80%
    :alt: piso logo
    :align: center
 
-|
 
 .. rst-class:: center
 
