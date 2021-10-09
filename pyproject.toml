@@ -14,7 +14,7 @@ maintainers = ["Riley Clement <venaturum@gmail.com>"]
 license = "MIT"
 repository = "https://github.com/staircase-dev/piso"
 homepage = "https://github.com/staircase-dev/piso"
-documentation = "https://github.com/staircase-dev/piso"
+documentation = "https://piso.readthedocs.io"
 
 keywords=[
     'piso',
