@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/staircase-dev/piso"><img src="https://github.com/staircase-dev/piso/blob/master/docs/img/piso_social_white.svg" title="piso logo" alt="piso logo"></a></p>
+<p align="center"><a href="https://github.com/staircase-dev/piso"><img src="https://github.com/staircase-dev/piso/blob/master/docs/img/piso_transparent.svg" title="piso logo" alt="piso logo"></a></p>
 
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 
 
-## Overview
+# piso - pandas interval set operations
 
 **piso** exists to bring set operations (union, intersection, difference + more) to [pandas'](https://pandas.pydata.org/) interval classes, specifically
 
