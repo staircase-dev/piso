@@ -121,7 +121,7 @@ latex_elements = {
 html_theme = "pydata_sphinx_theme"
 
 html_theme_options = {
-    #    "google_analytics_id": "UA-27880019-2",
+    "google_analytics_id": "UA-65430466-3",
     "github_url": "https://github.com/staircase-dev/piso",
 }
 

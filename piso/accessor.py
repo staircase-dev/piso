@@ -65,6 +65,14 @@ def _register_accessor(name, cls):
 
 
 class ArrayAccessor:
+    """
+    The piso accessor for :class:`pandas.arrays.IntervalArray` and :class:`pandas.IntervalIndex`
+
+    Parameters
+    ----------
+    _interval_array : :class:`pandas.arrays.IntervalArray` or :class:`pandas.IntervalIndex`
+    """
+
     def __init__(self, _interval_array):
         self._interval_array = _interval_array
 
