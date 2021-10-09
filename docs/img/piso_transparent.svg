@@ -26,9 +26,9 @@
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:zoom="0.25575085"
-     inkscape:cx="1597.2576"
-     inkscape:cy="1476.0459"
+     inkscape:zoom="0.09042158"
+     inkscape:cx="3334.381"
+     inkscape:cy="2781.4157"
      inkscape:window-width="1920"
      inkscape:window-height="1001"
      inkscape:window-x="631"
@@ -223,9 +223,9 @@
          y="0"><tspan
            x="1730.7812"
            y="-497.71973"
-           id="tspan2813"><tspan
+           id="tspan1605"><tspan
              style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-             id="tspan2811">PISO</tspan></tspan></text>
+             id="tspan1603">PISO</tspan></tspan></text>
     </clipPath>
     <clipPath
        clipPathUnits="userSpaceOnUse"
@@ -239,9 +239,9 @@
          y="0"><tspan
            x="1730.7812"
            y="-497.71973"
-           id="tspan2817"><tspan
+           id="tspan1609"><tspan
              style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-             id="tspan2815">PISO</tspan></tspan></text>
+             id="tspan1607">PISO</tspan></tspan></text>
     </clipPath>
     <rect
        x="1730.7816"
@@ -275,9 +275,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2821"><tspan
+             id="tspan1613"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2819">P</tspan></tspan></text>
+               id="tspan1611">P</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.32870429,0,0,0.32870429,733.51334,-535.6555)"
@@ -287,9 +287,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2825"><tspan
+             id="tspan1617"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2823">I</tspan></tspan></text>
+               id="tspan1615">I</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.31179803,0,0,0.31179803,834.80391,-544.96559)"
@@ -299,9 +299,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2829"><tspan
+             id="tspan1621"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2827">S</tspan></tspan></text>
+               id="tspan1619">S</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.31519357,0,0,0.31519357,997.33086,-548.90622)"
@@ -311,9 +311,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2833"><tspan
+             id="tspan1625"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2831">O</tspan></tspan></text>
+               id="tspan1623">O</tspan></tspan></text>
       </g>
     </clipPath>
     <clipPath
@@ -330,9 +330,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2837"><tspan
+             id="tspan1629"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2835">P</tspan></tspan></text>
+               id="tspan1627">P</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.32870429,0,0,0.32870429,733.51334,-535.6555)"
@@ -342,9 +342,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2841"><tspan
+             id="tspan1633"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2839">I</tspan></tspan></text>
+               id="tspan1631">I</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.31179803,0,0,0.31179803,834.80391,-544.96559)"
@@ -354,9 +354,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2845"><tspan
+             id="tspan1637"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2843">S</tspan></tspan></text>
+               id="tspan1635">S</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.31519357,0,0,0.31519357,997.33086,-548.90622)"
@@ -366,9 +366,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2849"><tspan
+             id="tspan1641"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2847">O</tspan></tspan></text>
+               id="tspan1639">O</tspan></tspan></text>
       </g>
     </clipPath>
     <clipPath
@@ -385,9 +385,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2853"><tspan
+             id="tspan1645"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2851">P</tspan></tspan></text>
+               id="tspan1643">P</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.32870429,0,0,0.32870429,733.51334,-535.6555)"
@@ -397,9 +397,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2857"><tspan
+             id="tspan1649"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2855">I</tspan></tspan></text>
+               id="tspan1647">I</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.31179803,0,0,0.31179803,834.80391,-544.96559)"
@@ -409,9 +409,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2861"><tspan
+             id="tspan1653"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2859">S</tspan></tspan></text>
+               id="tspan1651">S</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.31519357,0,0,0.31519357,997.33086,-548.90622)"
@@ -421,9 +421,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2865"><tspan
+             id="tspan1657"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2863">O</tspan></tspan></text>
+               id="tspan1655">O</tspan></tspan></text>
       </g>
     </clipPath>
     <clipPath
@@ -440,9 +440,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2869"><tspan
+             id="tspan1661"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2867">P</tspan></tspan></text>
+               id="tspan1659">P</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.32870429,0,0,0.32870429,733.51334,-535.6555)"
@@ -452,9 +452,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2873"><tspan
+             id="tspan1665"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2871">I</tspan></tspan></text>
+               id="tspan1663">I</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.31179803,0,0,0.31179803,834.80391,-544.96559)"
@@ -464,9 +464,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2877"><tspan
+             id="tspan1669"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2875">S</tspan></tspan></text>
+               id="tspan1667">S</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.31519357,0,0,0.31519357,997.33086,-548.90622)"
@@ -476,9 +476,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2881"><tspan
+             id="tspan1673"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2879">O</tspan></tspan></text>
+               id="tspan1671">O</tspan></tspan></text>
       </g>
     </clipPath>
     <rect
@@ -544,9 +544,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2885"><tspan
+             id="tspan1677"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2883">P</tspan></tspan></text>
+               id="tspan1675">P</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.40000429,0,0,0.40000429,870.75829,-151.03581)"
@@ -556,9 +556,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2889"><tspan
+             id="tspan1681"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2887">I</tspan></tspan></text>
+               id="tspan1679">I</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.37943086,0,0,0.37943086,994.02003,-162.36537)"
@@ -568,9 +568,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2893"><tspan
+             id="tspan1685"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2891">S</tspan></tspan></text>
+               id="tspan1683">S</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.38356293,0,0,0.38356293,1196.5643,-167.16077)"
@@ -580,9 +580,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2897"><tspan
+             id="tspan1689"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2895">O</tspan></tspan></text>
+               id="tspan1687">O</tspan></tspan></text>
       </g>
     </clipPath>
     <rect
@@ -648,9 +648,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2901"><tspan
+             id="tspan1693"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2899">P</tspan></tspan></text>
+               id="tspan1691">P</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.40000429,0,0,0.40000429,1483.8288,-1124.8793)"
@@ -660,9 +660,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2905"><tspan
+             id="tspan1697"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2903">I</tspan></tspan></text>
+               id="tspan1695">I</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.37943086,0,0,0.37943086,1607.0906,-1136.2089)"
@@ -672,9 +672,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2909"><tspan
+             id="tspan1701"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2907">S</tspan></tspan></text>
+               id="tspan1699">S</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.38356293,0,0,0.38356293,1796.4049,-1141.0043)"
@@ -684,9 +684,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2913"><tspan
+             id="tspan1705"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2911">O</tspan></tspan></text>
+               id="tspan1703">O</tspan></tspan></text>
       </g>
     </clipPath>
     <clipPath
@@ -704,9 +704,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2917"><tspan
+             id="tspan1709"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2915">P</tspan></tspan></text>
+               id="tspan1707">P</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.40000429,0,0,0.40000429,1483.8288,-1124.8793)"
@@ -716,9 +716,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2921"><tspan
+             id="tspan1713"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2919">I</tspan></tspan></text>
+               id="tspan1711">I</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.37943086,0,0,0.37943086,1607.0906,-1136.2089)"
@@ -728,9 +728,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2925"><tspan
+             id="tspan1717"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2923">S</tspan></tspan></text>
+               id="tspan1715">S</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.38356293,0,0,0.38356293,1796.4049,-1141.0043)"
@@ -740,9 +740,9 @@
            y="0"><tspan
              x="1730.7812"
              y="-497.71973"
-             id="tspan2929"><tspan
+             id="tspan1721"><tspan
                style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-               id="tspan2927">O</tspan></tspan></text>
+               id="tspan1719">O</tspan></tspan></text>
       </g>
     </clipPath>
     <pattern
@@ -844,9 +844,9 @@
          y="0"><tspan
            x="1730.7812"
            y="-497.71973"
-           id="tspan2933"><tspan
+           id="tspan1725"><tspan
              style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-             id="tspan2931">P</tspan></tspan></text>
+             id="tspan1723">P</tspan></tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.40000429,0,0,0.40000429,1483.8288,-1124.8793)"
@@ -856,9 +856,9 @@
          y="0"><tspan
            x="1730.7812"
            y="-497.71973"
-           id="tspan2937"><tspan
+           id="tspan1729"><tspan
              style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-             id="tspan2935">I</tspan></tspan></text>
+             id="tspan1727">I</tspan></tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.37943086,0,0,0.37943086,1607.0906,-1136.2089)"
@@ -868,9 +868,9 @@
          y="0"><tspan
            x="1730.7812"
            y="-497.71973"
-           id="tspan2941"><tspan
+           id="tspan1733"><tspan
              style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-             id="tspan2939">S</tspan></tspan></text>
+             id="tspan1731">S</tspan></tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.38356293,0,0,0.38356293,1796.4049,-1141.0043)"
@@ -880,9 +880,9 @@
          y="0"><tspan
            x="1730.7812"
            y="-497.71973"
-           id="tspan2945"><tspan
+           id="tspan1737"><tspan
              style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-             id="tspan2943">O</tspan></tspan></text>
+             id="tspan1735">O</tspan></tspan></text>
     </g>
     <g
        id="g8378-3"
@@ -897,9 +897,9 @@
          y="0"><tspan
            x="1730.7812"
            y="-497.71973"
-           id="tspan2949"><tspan
+           id="tspan1741"><tspan
              style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-             id="tspan2947">P</tspan></tspan></text>
+             id="tspan1739">P</tspan></tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.40000429,0,0,0.40000429,1483.8288,-1124.8793)"
@@ -909,9 +909,9 @@
          y="0"><tspan
            x="1730.7812"
            y="-497.71973"
-           id="tspan2953"><tspan
+           id="tspan1745"><tspan
              style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-             id="tspan2951">I</tspan></tspan></text>
+             id="tspan1743">I</tspan></tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.37943086,0,0,0.37943086,1607.0906,-1136.2089)"
@@ -921,9 +921,9 @@
          y="0"><tspan
            x="1730.7812"
            y="-497.71973"
-           id="tspan2957"><tspan
+           id="tspan1749"><tspan
              style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-             id="tspan2955">S</tspan></tspan></text>
+             id="tspan1747">S</tspan></tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.38356293,0,0,0.38356293,1796.4049,-1141.0043)"
@@ -933,17 +933,10 @@
          y="0"><tspan
            x="1730.7812"
            y="-497.71973"
-           id="tspan2961"><tspan
+           id="tspan1753"><tspan
              style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
-             id="tspan2959">O</tspan></tspan></text>
+             id="tspan1751">O</tspan></tspan></text>
     </g>
-    <rect
-       style="fill:#ffffff;stroke:none;stroke-width:13.8404;stroke-linecap:round;paint-order:markers stroke fill"
-       id="rect49404"
-       width="1"
-       height="406.72906"
-       x="-108.266"
-       y="-582.29553" />
     <path
        id="path33-2-7-4-1-3"
        style="fill:#ffca00;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.28177;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
