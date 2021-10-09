@@ -1,0 +1,89 @@
+# Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry]
+name = "piso"
+version = "0.1.0"
+description = "Pandas Interval Set Operations: methods for set operations for pandas' Interval, IntervalArray and IntervalIndex"
+readme = "README.md"
+authors = ["Riley Clement <venaturum@gmail.com>"]
+maintainers = ["Riley Clement <venaturum@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/staircase-dev/piso"
+homepage = "https://github.com/staircase-dev/piso"
+documentation = "https://github.com/staircase-dev/piso"
+
+keywords=[
+    'piso',
+	'pandas',
+	'set',
+	'set operations',
+	'interval',
+	'IntervalArray',
+	'IntervalIndex',
+	'Data Analysis',
+	'Analysis',
+	'Data Structures',
+]
+
+classifiers=[
+	'Operating System :: OS Independent',
+	'Intended Audience :: Science/Research',
+	'Programming Language :: Python :: 3.6',
+	'Programming Language :: Python :: 3.7',
+	'Programming Language :: Python :: 3.8',
+	'Programming Language :: Python :: 3.9',
+	'Topic :: Scientific/Engineering',
+]
+
+[tool.poetry.dependencies]
+python = "^3.6.1"
+staircase = "^2.0.3"
+pandas = "^1"
+
+
+
+[tool.poetry.dev-dependencies]
+ipykernel = "^5"
+pytest = "^6"
+pytest-cov = "*"
+sphinx = "*"
+nbsphinx = ">=0.8.5"
+sphinx-autobuild = "*"
+numpydoc = "*"
+notebook = ">= 6.0"
+isort = ">=5.8"
+black = {version = "*", python = "^3.6.2"}
+flake8 = ">=3.9"
+pre-commit = {version = ">=2.13", python = "^3.6.1"}
+tox=">=3.15"
+
+
+[tool.poetry.extras]
+codecov = ["codecov"]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/staircase-dev/piso/issues"
+
+[tool.isort]
+# make it compatible with black
+profile = "black"
+multi_line_output = 3
+src_paths = ["piso", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+addopts = """
+    --junitxml=junit.xml
+    --ignore setup.py
+    --ignore run_test.py
+    --cov-report term-missing
+    --tb native
+    --strict-markers
+    --durations=20
+	"""
+markers = "serial: execute test serially (to avoid race conditions)"
+junit_family = "xunit1"

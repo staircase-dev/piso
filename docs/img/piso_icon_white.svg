@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   sodipodi:docname="piso_icon_white.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   id="svg5"
+   version="1.1"
+   viewBox="0 0 383.00001 382.99999"
+   height="383mm"
+   width="383mm"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="0.09042158"
+     inkscape:cx="3854.1684"
+     inkscape:cy="768.62183"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="631"
+     inkscape:window-y="1351"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
+    <sodipodi:guide
+       position="65.961907,-808.73547"
+       orientation="0,-1"
+       id="guide966" />
+    <sodipodi:guide
+       position="1692.8781,546.05265"
+       orientation="1,0"
+       id="guide16323" />
+    <sodipodi:guide
+       position="1775.5166,-187.75142"
+       orientation="1,0"
+       id="guide24096" />
+    <sodipodi:guide
+       position="1303.7684,-400.86573"
+       orientation="0,-1"
+       id="guide24178" />
+    <sodipodi:guide
+       position="1142.3808,584.01205"
+       orientation="0,-1"
+       id="guide34093" />
+    <sodipodi:guide
+       position="1338.9426,-187.75142"
+       orientation="0,-1"
+       id="guide34095" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <rect
+       x="6858.2373"
+       y="86.021217"
+       width="946.2334"
+       height="625.60889"
+       id="rect36592" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1921">
+      <circle
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5.86499;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="circle1923"
+         cx="773.35907"
+         cy="-344.47531"
+         r="79.73645"
+         transform="rotate(120.52974)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5483">
+      <circle
+         style="fill:#ffca00;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:5.86499;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="circle5485"
+         cx="299.62729"
+         cy="-825.18622"
+         r="79.73645"
+         transform="rotate(120.52974)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath6139">
+      <circle
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:5.86499;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="circle6141"
+         cx="582.49792"
+         cy="460.98337"
+         r="79.73645" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath6505">
+      <circle
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5.86499;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="circle6507"
+         cx="-137.13132"
+         cy="-923.51141"
+         r="79.73645"
+         transform="rotate(120.52974)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath7356">
+      <circle
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5.86499;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="circle7358"
+         cx="-45.181492"
+         cy="-893.49426"
+         r="79.73645"
+         transform="rotate(120.52974)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath7360">
+      <circle
+         style="fill:#2ee704;fill-opacity:1;fill-rule:evenodd;stroke:#2ee704;stroke-width:5.86499;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="circle7362"
+         cx="835.51367"
+         cy="491.28729"
+         r="79.73645" />
+    </clipPath>
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#Strips1_1-7"
+       id="pattern4355-4"
+       patternTransform="matrix(4.9382714,4.9134266,-39.505847,39.705611,627.21349,-490.11748)" />
+    <pattern
+       inkscape:collect="always"
+       patternUnits="userSpaceOnUse"
+       width="2"
+       height="1"
+       patternTransform="translate(0,0) scale(10,10)"
+       id="Strips1_1-7"
+       inkscape:stockid="Stripes 1:1">
+      <rect
+         style="fill:#5c5c5c;stroke:none"
+         x="0"
+         y="-0.5"
+         width="1"
+         height="2"
+         id="rect2939-0" />
+    </pattern>
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-6" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-6-6" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath11576">
+      <text
+         xml:space="preserve"
+         transform="matrix(0.32870428,0,0,0.32870428,467.93333,0.53536604)"
+         id="text11582"
+         style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-6-6);fill:#000000;fill-opacity:1;stroke:none"
+         x="-93.652344"
+         y="0"><tspan
+           x="1730.7812"
+           y="-497.71973"
+           id="tspan51500"><tspan
+             style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+             id="tspan51498">PISO</tspan></tspan></text>
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath11576-4">
+      <text
+         xml:space="preserve"
+         transform="matrix(0.32870428,0,0,0.32870428,467.93333,0.53536604)"
+         id="text11582-8"
+         style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-6-6);fill:#000000;fill-opacity:1;stroke:none"
+         x="-93.652344"
+         y="0"><tspan
+           x="1730.7812"
+           y="-497.71973"
+           id="tspan51504"><tspan
+             style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+             id="tspan51502">PISO</tspan></tspan></text>
+    </clipPath>
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-8" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-2" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-86" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath34193">
+      <g
+         id="g34217">
+        <text
+           xml:space="preserve"
+           transform="matrix(0.32870429,0,0,0.32870429,556.92064,-534.8976)"
+           id="text34197"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51508"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51506">P</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.32870429,0,0,0.32870429,733.51334,-535.6555)"
+           id="text34203"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-8);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51512"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51510">I</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.31179803,0,0,0.31179803,834.80391,-544.96559)"
+           id="text34209"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-2);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51516"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51514">S</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.31519357,0,0,0.31519357,997.33086,-548.90622)"
+           id="text34215"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-86);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51520"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51518">O</tspan></tspan></text>
+      </g>
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath34193-9">
+      <g
+         id="g34217-0">
+        <text
+           xml:space="preserve"
+           transform="matrix(0.32870429,0,0,0.32870429,556.92064,-534.8976)"
+           id="text34197-3"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51524"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51522">P</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.32870429,0,0,0.32870429,733.51334,-535.6555)"
+           id="text34203-0"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-8);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51528"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51526">I</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.31179803,0,0,0.31179803,834.80391,-544.96559)"
+           id="text34209-2"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-2);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51532"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51530">S</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.31519357,0,0,0.31519357,997.33086,-548.90622)"
+           id="text34215-4"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-86);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51536"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51534">O</tspan></tspan></text>
+      </g>
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath34193-8">
+      <g
+         id="g34217-3">
+        <text
+           xml:space="preserve"
+           transform="matrix(0.32870429,0,0,0.32870429,556.92064,-534.8976)"
+           id="text34197-9"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51540"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51538">P</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.32870429,0,0,0.32870429,733.51334,-535.6555)"
+           id="text34203-7"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-8);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51544"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51542">I</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.31179803,0,0,0.31179803,834.80391,-544.96559)"
+           id="text34209-5"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-2);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51548"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51546">S</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.31519357,0,0,0.31519357,997.33086,-548.90622)"
+           id="text34215-7"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-86);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51552"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51550">O</tspan></tspan></text>
+      </g>
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath34193-0">
+      <g
+         id="g34217-9">
+        <text
+           xml:space="preserve"
+           transform="matrix(0.32870429,0,0,0.32870429,556.92064,-534.8976)"
+           id="text34197-1"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51556"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51554">P</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.32870429,0,0,0.32870429,733.51334,-535.6555)"
+           id="text34203-4"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-8);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51560"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51558">I</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.31179803,0,0,0.31179803,834.80391,-544.96559)"
+           id="text34209-26"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-2);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51564"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51562">S</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.31519357,0,0,0.31519357,997.33086,-548.90622)"
+           id="text34215-46"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-86);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51568"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51566">O</tspan></tspan></text>
+      </g>
+    </clipPath>
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-88" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-8-6" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-2-8" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-86-3" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-88-6" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-8-6-8" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-2-8-8" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-86-3-8" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath47335">
+      <g
+         id="g47361"
+         transform="translate(2.9261083,-411.11821)">
+        <text
+           xml:space="preserve"
+           transform="matrix(0.40000429,0,0,0.40000429,648.45208,-150.11351)"
+           id="text47341"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-88);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51572"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51570">P</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.40000429,0,0,0.40000429,870.75829,-151.03581)"
+           id="text47347"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-8-6);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51576"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51574">I</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.37943086,0,0,0.37943086,994.02003,-162.36537)"
+           id="text47353"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-2-8);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51580"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51578">S</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.38356293,0,0,0.38356293,1196.5643,-167.16077)"
+           id="text47359"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-86-3);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51584"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51582">O</tspan></tspan></text>
+      </g>
+    </clipPath>
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-88-6-3" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-8-6-8-8" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-2-8-8-3" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-86-3-8-3" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-88-65" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-8-6-3" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-2-8-85" />
+    <rect
+       x="1730.7816"
+       y="-1227.5831"
+       width="1874.5525"
+       height="1011.9266"
+       id="rect5943-86-3-5" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath48372">
+      <g
+         id="g48398"
+         transform="translate(-592.60564,575.70702)">
+        <text
+           xml:space="preserve"
+           transform="matrix(0.40000429,0,0,0.40000429,1261.5226,-1123.957)"
+           id="text48378"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-88);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51588"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51586">P</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.40000429,0,0,0.40000429,1483.8288,-1124.8793)"
+           id="text48384"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-8-6);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51592"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51590">I</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.37943086,0,0,0.37943086,1607.0906,-1136.2089)"
+           id="text48390"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-2-8);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51596"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51594">S</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.38356293,0,0,0.38356293,1796.4049,-1141.0043)"
+           id="text48396"
+           style="font-style:normal;font-weight:normal;font-size:800px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect5943-86-3);fill:#000000;fill-opacity:1;stroke:none"
+           x="-93.652344"
+           y="0"><tspan
+             x="1730.7812"
+             y="-497.71973"
+             id="tspan51600"><tspan
+               style="font-family:Etna;-inkscape-font-specification:'Etna, Normal'"
+               id="tspan51598">O</tspan></tspan></text>
+      </g>
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(74.740234,547.99164)">
+    <rect
+       style="fill:#ffffff;stroke-width:9.19061;stroke-linecap:round;paint-order:markers stroke fill"
+       id="rect51149"
+       width="383"
+       height="383"
+       x="-74.740234"
+       y="-547.99164" />
+    <path
+       id="path33-2-7-4-1-3"
+       style="fill:#ffca00;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.28177;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 120.86775,-505.30785 a 98.998063,98.998063 0 0 0 -86.188983,48.70362 98.998063,98.998063 0 0 0 34.983718,135.56368 98.998063,98.998063 0 0 0 4.855628,2.67738 98.998063,98.998063 0 0 1 98.743077,-92.18914 98.998063,98.998063 0 0 1 45.4103,11.03803 98.998063,98.998063 0 0 0 -48.42965,-92.07367 98.998063,98.998063 0 0 0 -49.37409,-13.7199 z" />
+    <circle
+       style="fill:#e70488;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.28179;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path33-8-6-0-9"
+       cx="172.32686"
+       cy="-313.83109"
+       r="98.99807" />
+    <path
+       id="path33-2-5-39"
+       style="fill:#150458;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.28177;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 20.188793,-403.66192 a 98.998063,98.998063 0 0 0 -56.350821,89.32761 98.998063,98.998063 0 0 0 98.997769,98.9978 98.998063,98.998063 0 0 0 98.997819,-98.9978 98.998063,98.998063 0 0 0 -0.12447,-4.93709 98.998063,98.998063 0 0 1 -92.980922,-4.04652 98.998063,98.998063 0 0 1 -48.539375,-80.344 z" />
+    <path
+       id="path33-8-6-0-7"
+       style="fill:#e70488;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.28177;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 175.16173,-414.58285 a 98.998063,98.998063 0 0 0 -54.32339,16.29464 98.998063,98.998063 0 0 1 43.83006,82.20014 98.998063,98.998063 0 0 1 -44.65321,82.68966 98.998063,98.998063 0 0 0 55.14654,16.81176 98.998063,98.998063 0 0 0 98.99777,-98.99777 98.998063,98.998063 0 0 0 -98.99777,-98.99843 z" />
+    <path
+       id="path33-2-5-5-2"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.28177;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 120.83834,-398.28821 a 98.998063,98.998063 0 0 0 -44.419712,75.89453 98.998063,98.998063 0 0 0 88.125302,1.36852 98.998063,98.998063 0 0 0 -43.70559,-77.26305 z" />
+    <path
+       id="path33-2-5-5-1"
+       style="fill:url(#pattern4355-4);fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.28177;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 120.83834,-398.28821 a 98.998063,98.998063 0 0 0 -44.419712,75.89453 98.998063,98.998063 0 0 0 88.125302,1.36852 98.998063,98.998063 0 0 0 -43.70559,-77.26305 z" />
+  </g>
+</svg>

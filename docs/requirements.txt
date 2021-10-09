@@ -1,0 +1,11 @@
+ipykernel
+sphinx == 4.0.2
+nbsphinx == 0.8.6
+sphinx-panels
+staircase
+pandas
+numpy
+Pygments
+pydata-sphinx-theme
+toml
+numpydoc

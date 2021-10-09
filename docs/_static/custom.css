@@ -1,0 +1,56 @@
+
+:root {
+  /* Use softer blue from bootstrap's default info color */
+  --pst-color-primary: 92,92,92;
+  --pst-color-active-navigation: 231, 4, 136;
+  --pst-color-navbar-link: 231, 4, 136;
+  --pst-color-navbar-link-hover: 240, 40, 180;
+  --pst-color-navbar-link-active: 231, 4, 136;
+}
+
+.navbar-light .navbar-nav>.active>.nav-link {
+    font-weight: 800;
+    color: rgba(var(--pst-color-navbar-link-active),1);
+}
+
+dt:target, span.highlighted {
+    background-color: rgba(255,255,255,1);
+}
+
+.sig {
+	color: rgba(var(--pst-color-primary),1);
+	padding-left: 10px;
+	background-color: rgba(255,255,255,1);
+}
+
+
+nav.bg-light {
+	background-color: rgba(255,255,255,1) !important;
+}
+
+
+.container-xl{max-width: 1400px }
+
+.btn-block {
+	text-align: left;
+	font-weight: 600;
+    color: rgba(var(--pst-color-primary),1);
+    border-color: rgba(var(--pst-color-primary),1);
+}
+
+.btn-block:hover {
+	color:#ffffff;
+	background-color:rgba(var(--pst-color-primary),1);
+	border-color: rgba(var(--pst-color-primary),1);
+}
+
+code {
+	font-size: 95% !important;
+}
+
+
+.prev-next-area a p.prev-next-title {
+    color: rgba(231, 4, 136,1);
+    font-weight: 600;
+    font-size: 1.1em;
+}
