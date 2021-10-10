@@ -30,7 +30,7 @@ os.environ["PYTHONPATH"] = os.path.abspath(parentdir)
 
 # -- Project information -----------------------------------------------------
 
-project = "staircase"
+project = "piso"
 copyright = "2021, Riley Clement"
 author = "Riley Clement"
 version = piso.__version__
