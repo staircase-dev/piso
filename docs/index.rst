@@ -1,5 +1,5 @@
 .. image:: img/piso_social_white.svg
-   :width: 80%
+   :width: 100%
    :alt: piso logo
    :align: center
 
@@ -19,6 +19,7 @@
 Pandas Interval Set Operations: methods for set operations for pandas' Interval, IntervalArray and IntervalIndex
 
 .. image:: img/powered_by_staircase.svg
+   :target: https://www.staircase.dev
    :width: 200
    :alt: powered_by_staircase
    :align: center
