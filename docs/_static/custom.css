@@ -1,7 +1,5 @@
-
 :root {
-  /* Use softer blue from bootstrap's default info color */
-  --pst-color-primary: 92,92,92;
+  --pst-color-primary: 92, 92, 92;
   --pst-color-active-navigation: 231, 4, 136;
   --pst-color-navbar-link: 231, 4, 136;
   --pst-color-navbar-link-hover: 240, 40, 180;

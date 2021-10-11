@@ -1,6 +1,5 @@
 <p align="center"><a href="https://github.com/staircase-dev/piso"><img src="https://github.com/staircase-dev/piso/blob/master/docs/img/piso_social_transparent.svg" title="piso logo" alt="piso logo"></a></p>
 
-
 <p align="center">
     <a href="https://www.python.org/" alt="Python version">
         <img src="https://img.shields.io/pypi/pyversions/piso" /></a>
@@ -58,13 +57,12 @@ python -m pip install piso
 To install the latest version through conda-forge::
 
 ```sh
-conda install -c conda-forge piso`
+conda install -c conda-forge piso
 ```
 
 ## Versioning
 
 [SemVer](http://semver.org/) is used by piso for versioning releases.  For versions available, see the [tags on this repository](https://github.com/staircase-dev/piso/tags).
-
 
 ## License
 
