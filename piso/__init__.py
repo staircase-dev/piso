@@ -2,6 +2,8 @@ from piso.intervalarray import (
     difference,
     intersection,
     isdisjoint,
+    issubset,
+    issuperset,
     symmetric_difference,
     union,
 )

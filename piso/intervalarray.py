@@ -119,3 +119,48 @@ def isdisjoint(interval_array, *interval_arrays):
         arr = arr[arr[:, 0].argsort()]
         result = np.all(arr[0, 1:] >= arr[1, :-1])
     return result
+
+
+def _create_is_super_or_sub(which):
+
+    comparator_func = {"superset": sc.Stairs.ge, "subset": sc.Stairs.le}[which]
+    left_bound_comparator = {"superset": np.less_equal, "subset": np.greater_equal}[
+        which
+    ]
+    right_bound_comparator = {"superset": np.greater_equal, "subset": np.less_equal}[
+        which
+    ]
+
+    def func(interval_array, *interval_arrays, squeeze=False):
+        _validate_array_of_intervals_arrays(interval_array, *interval_arrays)
+
+        if interval_arrays:
+            stepfunction = _interval_x_to_stairs(interval_array).make_boolean()
+
+            def _comp(ia):
+                return bool(
+                    comparator_func(
+                        stepfunction,
+                        _interval_x_to_stairs(ia).make_boolean(),
+                    )
+                )
+
+            result = np.array([_comp(ia) for ia in interval_arrays])
+        else:
+            assert len(interval_array) >= 2
+            result = np.logical_and(
+                left_bound_comparator(interval_array[0].left, interval_array[1:].left),
+                right_bound_comparator(
+                    interval_array[0].right, interval_array[1:].right
+                ),
+            )
+
+        if squeeze and len(result) == 1:
+            result = result[0]
+        return result
+
+    return func
+
+
+issuperset = _create_is_super_or_sub("superset")
+issubset = _create_is_super_or_sub("subset")
