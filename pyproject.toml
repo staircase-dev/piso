@@ -41,7 +41,7 @@ classifiers=[
 
 [tool.poetry.dependencies]
 python = "^3.6.1"
-staircase = "^2.0.3"
+staircase = "^2.0.4"
 pandas = "^1"
 
 
