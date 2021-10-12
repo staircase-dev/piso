@@ -13,6 +13,7 @@ def get_accessor_method(self, function):
         piso_intervalarray.union: self.piso.union,
         piso_intervalarray.intersection: self.piso.intersection,
         piso_intervalarray.symmetric_difference: self.piso.symmetric_difference,
+        piso_intervalarray.isdisjoint: self.piso.isdisjoint,
     }[function]
 
 
@@ -21,6 +22,7 @@ def get_package_method(function):
         piso_intervalarray.union: piso.union,
         piso_intervalarray.intersection: piso.intersection,
         piso_intervalarray.symmetric_difference: piso.symmetric_difference,
+        piso_intervalarray.isdisjoint: piso_intervalarray.isdisjoint,
     }[function]
 
 
@@ -63,6 +65,11 @@ def make_ia3(interval_index, closed):
     if interval_index:
         ia3 = pd.IntervalIndex(ia3)
     return ia3
+
+
+def make_ia_from_tuples(interval_index, tuples, closed):
+    klass = pd.IntervalIndex if interval_index else pd.arrays.IntervalArray
+    return klass.from_tuples(tuples, closed=closed)
 
 
 def assert_interval_array_equal(interval_array, expected, interval_index):
@@ -418,3 +425,58 @@ def test_symmetric_difference_min_overlaps_all_2(
         expected,
         interval_index,
     )
+
+
+def map_to_dates(interval_array, date_type):
+    def make_date(x):
+        ts = pd.Timestamp(f"2021-10-{x}")
+        if date_type == "numpy":
+            return ts.to_numpy()
+        if date_type == "datetime":
+            return ts.to_pydatetime()
+        if date_type == "timedelta":
+            return ts - pd.Timestamp("2021-10-1")
+        return ts
+
+    return interval_array.from_arrays(
+        interval_array.left.map(make_date),
+        interval_array.right.map(make_date),
+    )
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "tuples, expected",
+    [
+        ([], True),
+        ([(1, 2), (2, 3)], True),
+        ([(1, 2), (3, 4)], True),
+        ([(1, 3), (2, 4)], False),
+        ([(1, 4), (2, 3)], False),
+        ([(1, 2), (2, 3), (3, 4)], True),
+        ([(1, 2), (3, 4), (5, 6)], True),
+        ([(1, 3), (2, 4), (5, 6)], False),
+        ([(1, 4), (2, 3), (5, 6)], False),
+    ],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "date_type",
+    ["timestamp", "numpy", "datetime", "timedelta", None],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_isdisjoint(interval_index, tuples, expected, closed, date_type, how):
+
+    interval_array = make_ia_from_tuples(interval_index, tuples, closed)
+    interval_array = map_to_dates(interval_array, date_type)
+    result = perform_op(interval_array, how=how, function=piso_intervalarray.isdisjoint)
+    assert result == expected

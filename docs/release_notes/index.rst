@@ -4,9 +4,13 @@
 Release notes
 ========================
 
+- added :meth:`piso.isdisjoint` method, and corresponding accessor method
+
+ADD UNRELEASED CHANGED ABOVE THIS LINE
+
 **v0.1.0 2021-10-10**
 
-The following methods are included in the initial release of `piso`
+The following methods (and corresponding accessor methods) are included in the initial release of `piso`
 
 - :meth:`piso.register_accessors`
 - :meth:`piso.union`
@@ -17,3 +21,4 @@ The following methods are included in the initial release of `piso`
 - :meth:`piso.interval.intersection`
 - :meth:`piso.interval.difference`
 - :meth:`piso.interval.symmetric_difference`
+
