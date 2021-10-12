@@ -1,4 +1,3 @@
-import pandas as pd
 import staircase as sc
 
 from piso._exceptions import ClosedValueError, DegenerateIntervalError
