@@ -13,3 +13,4 @@ Accessors
    ArrayAccessor.intersection
    ArrayAccessor.difference
    ArrayAccessor.symmetric_difference
+   ArrayAccessor.isdisjoint

@@ -118,6 +118,13 @@ class ArrayAccessor:
             return_type=return_type,
         )
 
+    @Appender(docstrings.isdisjoint_docstring, join="\n", indents=1)
+    def isdisjoint(self, *interval_arrays):
+        return intervalarray.isdisjoint(
+            self._interval_array,
+            *interval_arrays,
+        )
+
 
 def _register_accessors():
     _register_accessor("piso", pd.IntervalIndex)(ArrayAccessor)

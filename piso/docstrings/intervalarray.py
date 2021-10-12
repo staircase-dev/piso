@@ -241,6 +241,37 @@ Length: 1, closed: right, dtype: interval[float64]
 """
 
 
+isdisjoint_examples = """
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+
+>>> arr1 = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 3), (2, 4)],
+... )
+>>> arr2 = pd.arrays.IntervalArray.from_tuples(
+...     [(4, 7), (8, 11)],
+... )
+>>> arr3 = pd.arrays.IntervalArray.from_tuples(
+...     [(2, 4), (7, 8)],
+... )
+
+>>> piso.isdisjoint(arr1)
+False
+
+>>> piso.isdisjoint(arr2)
+True
+
+>>> piso.isdisjoint(arr1, arr2)
+True
+
+>>> piso.isdisjoint(arr1, arr3)
+False
+"""
+
+
 def join_params(list_of_param_strings):
     return "".join(list_of_param_strings).replace("\n\n", "\n")
 
@@ -282,8 +313,6 @@ return_type : {"infer", :class:`pandas.IntervalIndex`, :class:`pandas.arrays.Int
 
 
 template_doc = """
-Performs a set {operation} operation.
-
 What is considered a set is determined by the number of positional arguments used, that is, determined by the
 size of *interval_arrays*.
 
@@ -300,10 +329,19 @@ Parameters
 
 Returns
 ----------
-:class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+{return_type}
 
 {examples}
 """
+
+
+operation_template_doc = (
+    """
+Performs a set {operation} operation.
+"""
+    + template_doc
+)
+
 
 doc_difference_template = """
 Performs a set difference operation.
@@ -332,6 +370,9 @@ Returns
 {examples}
 """
 
+array_return_type = (
+    ":class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`"
+)
 
 union_params = join_params(
     [
@@ -341,10 +382,11 @@ union_params = join_params(
         param_return_type,
     ]
 )
-union_docstring = template_doc.format(
+union_docstring = operation_template_doc.format(
     operation="union",
     extra_desc="",
     params=union_params,
+    return_type=array_return_type,
     examples=union_examples,
 )
 
@@ -357,10 +399,11 @@ intersection_params = join_params(
         param_return_type,
     ]
 )
-intersection_docstring = template_doc.format(
+intersection_docstring = operation_template_doc.format(
     operation="intersection",
     extra_desc="",
     params=intersection_params,
+    return_type=array_return_type,
     examples=intersection_examples,
 )
 
@@ -376,6 +419,7 @@ difference_docstring = doc_difference_template.format(
     operation="difference",
     extra_desc="",
     params=difference_params,
+    return_type=array_return_type,
     examples=difference_examples,
 )
 
@@ -394,9 +438,31 @@ The symmetric difference can be defined as the set difference, of the union and 
 The parameter *min_overlaps* in :meth:`piso.intersection`, which defines the minimum number of intervals
 in an overlap required to constitute an intersection, follows through to symmetric difference under this definition.
 """
-symmetric_difference_docstring = template_doc.format(
+symmetric_difference_docstring = operation_template_doc.format(
     operation="symmetric difference",
     extra_desc=symmetric_difference_extra_desc,
     params=symmetric_difference_params,
+    return_type=array_return_type,
     examples=symmetric_difference_examples,
+)
+
+
+isdisjoint_doc = (
+    """
+Indicates whether one, or more, sets are disjoint or not.
+"""
+    + template_doc
+)
+
+isdisjoint_params = join_params(
+    [
+        param_interval_array.format(operation="isdisjoint"),
+        param_optional_args,
+    ]
+)
+isdisjoint_docstring = isdisjoint_doc.format(
+    extra_desc="",
+    params=isdisjoint_params,
+    return_type="boolean",
+    examples=isdisjoint_examples,
 )
