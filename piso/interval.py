@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 import piso.docstrings.interval as docstrings
@@ -109,3 +110,31 @@ def symmetric_difference(interval1, interval2, squeeze=True):
             closed=interval1.closed,
         )
     return result
+
+
+def _make_is_sub_or_superset(which, docstring):
+
+    left_bound_comparator = {"super": np.less_equal, "sub": np.greater_equal}[which]
+    right_bound_comparator = {"super": np.greater_equal, "sub": np.less_equal}[which]
+
+    @Appender(docstring, join="\n", indents=1)
+    def func(interval, *intervals, squeeze=True):
+        assert intervals
+        lefts = np.array([i.left for i in intervals])
+        rights = np.array([i.right for i in intervals])
+
+        result = np.logical_and(
+            left_bound_comparator(interval.left, lefts),
+            right_bound_comparator(interval.right, rights),
+        )
+
+        if len(result) == 1 and squeeze:
+            result = result[0]
+
+        return result
+
+    return func
+
+
+issuperset = _make_is_sub_or_superset("super", docstrings.issuperset_docstring)
+issubset = _make_is_sub_or_superset("sub", docstrings.issubset_docstring)

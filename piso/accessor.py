@@ -125,6 +125,7 @@ class ArrayAccessor:
             *interval_arrays,
         )
 
+    @Appender(docstrings.issuperset_docstring, join="\n", indents=1)
     def issuperset(self, *interval_arrays, squeeze=False):
         return intervalarray.issuperset(
             self._interval_array,
@@ -132,6 +133,7 @@ class ArrayAccessor:
             squeeze=squeeze,
         )
 
+    @Appender(docstrings.issubset_docstring, join="\n", indents=1)
     def issubset(self, *interval_arrays, squeeze=False):
         return intervalarray.issubset(
             self._interval_array,
