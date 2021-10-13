@@ -14,6 +14,8 @@ def get_accessor_method(self, function):
         piso_intervalarray.intersection: self.piso.intersection,
         piso_intervalarray.symmetric_difference: self.piso.symmetric_difference,
         piso_intervalarray.isdisjoint: self.piso.isdisjoint,
+        piso_intervalarray.issuperset: self.piso.issuperset,
+        piso_intervalarray.issubset: self.piso.issubset,
     }[function]
 
 
@@ -23,6 +25,8 @@ def get_package_method(function):
         piso_intervalarray.intersection: piso.intersection,
         piso_intervalarray.symmetric_difference: piso.symmetric_difference,
         piso_intervalarray.isdisjoint: piso_intervalarray.isdisjoint,
+        piso_intervalarray.issuperset: piso.issuperset,
+        piso_intervalarray.issubset: piso.issubset,
     }[function]
 
 

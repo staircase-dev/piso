@@ -288,6 +288,69 @@ True
 False
 """
 
+issuperset_examples = """
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+>>> piso.register_accessors()
+
+>>> arr1 = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (3, 6), (7, 8), (10, 12)],
+... )
+>>> arr2 = pd.arrays.IntervalArray.from_tuples(
+...     [(2, 5), (7, 8)],
+... )
+>>> arr3 = pd.arrays.IntervalArray.from_tuples(
+...     [(3, 4), (10, 11)],
+... )
+
+>>> arr1.piso.issuperset(arr2)
+True
+
+>>> arr1.piso.issuperset(arr2, squeeze=False)
+array([ True])
+
+>>> arr1.piso.issuperset(arr2, arr3)
+array([ True, True])
+
+>>> arr2.piso.issuperset(arr3)
+False
+"""
+
+
+issubset_examples = """
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+>>> piso.register_accessors()
+
+>>> arr1 = pd.arrays.IntervalArray.from_tuples(
+...     [(2, 5), (7, 8)],
+... )
+>>> arr2 = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (3, 6), (7, 8), (10, 12)],
+... )
+>>> arr3 = pd.arrays.IntervalArray.from_tuples(
+...     [(3, 4), (10, 11)],
+... )
+
+>>> arr1.piso.issubset(arr2)
+True
+
+>>> arr1.piso.issubset(arr2, squeeze=False)
+array([ True])
+
+>>> arr1.piso.issubset(arr2, arr3)
+array([ True, False])
+
+>>> arr1.piso.issubset(arr3)
+False
+"""
+
 
 def join_params(list_of_param_strings):
     return "".join(list_of_param_strings).replace("\n\n", "\n")
@@ -298,7 +361,7 @@ param_optional_args = """
     May contain zero or more arguments.
 """
 
-param_optional_args_difference = """
+param_optional_args_min_one = """
 *interval_arrays : argument list of :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
     Must contain at least one argument.
 """
@@ -312,8 +375,8 @@ min_overlaps : int or "all", default "all"
 """
 
 param_squeeze = """
-squeeze : boolean, default True
-    If True, will try to coerce the return value to a pandas.Interval.
+squeeze : boolean, default {default}
+    If True, will try to coerce the return value to a single pandas.Interval.
     If supplied, must be done so as a keyword argument.
 """
 
@@ -368,10 +431,31 @@ If *interval_arrays* contains multiple elements then the result is the set diffe
 and the union of the sets in *interval_arrays*.  This is equivalent to iteratively applying a set difference operation with each array
 in *interval_arrays* as the second operand.
 
-Each of these array operands is assumed to contain disjoint intervals (and satisfy the definition of a set).  Any array containing
-overlaps between intervals will be mapped to one with disjoint intervals via a union operation.
-
 {extra_desc}
+Parameters
+----------
+{params}
+
+Returns
+----------
+:class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+
+{examples}
+"""
+
+is_super_sub_set_template = """
+Indicates whether a set is a {operation} of one, or more, other sets.
+
+The array elements of *interval_arrays*, and the interval array object the accessor belongs to
+(an instance of :class:`pandas.IntervalIndex`, :class:`pandas.arrays.IntervalArray`) are considered to be the sets over which
+the operation is performed.  Each of these arrays is assumed to contain disjoint intervals (and satisfy the definition of a set).
+Any array containing overlaps between intervals will be mapped to one with disjoint intervals via a union operation.
+
+The list *interval_arrays* must contain at least one element.  The {operation} comparison is iteratively applied between
+the interval array the accessor belongs to, and each array in *interval_arrays*.  When *interval_arrays* contains multiple
+interval arrays, the return type will be a numpy array.  If it contains one interval array then the result can be coerced to
+a single boolean using the *squeeze* parameter.
+
 Parameters
 ----------
 {params}
@@ -390,7 +474,7 @@ array_return_type = (
 union_params = join_params(
     [
         param_optional_args,
-        param_squeeze,
+        param_squeeze.format(default="False"),
         param_return_type,
     ]
 )
@@ -406,7 +490,7 @@ intersection_params = join_params(
     [
         param_optional_args,
         param_min_overlaps,
-        param_squeeze,
+        param_squeeze.format(default="False"),
         param_return_type,
     ]
 )
@@ -420,8 +504,8 @@ intersection_docstring = operation_template_doc.format(
 
 difference_params = join_params(
     [
-        param_optional_args_difference,
-        param_squeeze,
+        param_optional_args_min_one,
+        param_squeeze.format(default="False"),
         param_return_type,
     ]
 )
@@ -438,7 +522,7 @@ symmetric_difference_params = join_params(
     [
         param_optional_args,
         param_min_overlaps,
-        param_squeeze,
+        param_squeeze.format(default="False"),
         param_return_type,
     ]
 )
@@ -473,4 +557,29 @@ isdisjoint_docstring = isdisjoint_doc.format(
     params=isdisjoint_params,
     return_type="boolean",
     examples=isdisjoint_examples,
+)
+
+
+issuperset_params = join_params(
+    [
+        param_optional_args_min_one,
+        param_squeeze.format(default="True"),
+    ]
+)
+issuperset_docstring = is_super_sub_set_template.format(
+    operation="superset",
+    params=issuperset_params,
+    examples=issuperset_examples,
+)
+
+issubset_params = join_params(
+    [
+        param_optional_args_min_one,
+        param_squeeze.format(default="True"),
+    ]
+)
+issubset_docstring = is_super_sub_set_template.format(
+    operation="subset",
+    params=issubset_params,
+    examples=issubset_examples,
 )

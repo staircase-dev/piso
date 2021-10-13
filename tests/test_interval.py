@@ -1,3 +1,6 @@
+import operator
+
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -624,3 +627,47 @@ def test_symmetric_difference_closed_value_error(closed_values):
     )
     with pytest.raises(ClosedValueError):
         piso_interval.symmetric_difference(*intervals)
+
+
+@pytest.mark.parametrize(
+    "tuples, squeeze, expected",
+    [
+        ([(1, 2), (1, 2)], True, True),
+        ([(1, 3), (0, 2)], True, False),
+        ([(1, 3), (1, 2), (0, 1)], True, np.array([True, False])),
+        ([(1, 2), (1, 2)], False, np.array([True])),
+        ([(1, 3), (0, 2)], False, np.array([False])),
+        ([(1, 3), (1, 2), (0, 1)], False, np.array([True, False])),
+    ],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+def test_issuperset(tuples, squeeze, expected, closed):
+    intervals = [pd.Interval(*i, closed=closed) for i in tuples]
+    result = piso_interval.issuperset(*intervals, squeeze=squeeze)
+    equal_op = np.array_equal if isinstance(expected, np.ndarray) else operator.eq
+    assert equal_op(result, expected)
+
+
+@pytest.mark.parametrize(
+    "tuples, squeeze, expected",
+    [
+        ([(1, 2), (1, 2)], True, True),
+        ([(1, 3), (0, 2)], True, False),
+        ([(1, 3), (1, 4), (0, 1)], True, np.array([True, False])),
+        ([(1, 2), (1, 2)], False, np.array([True])),
+        ([(1, 3), (0, 2)], False, np.array([False])),
+        ([(1, 3), (1, 4), (0, 1)], False, np.array([True, False])),
+    ],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+def test_issubset(tuples, squeeze, expected, closed):
+    intervals = [pd.Interval(*i, closed=closed) for i in tuples]
+    result = piso_interval.issubset(*intervals, squeeze=squeeze)
+    equal_op = np.array_equal if isinstance(expected, np.ndarray) else operator.eq
+    assert equal_op(result, expected)

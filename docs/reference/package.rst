@@ -16,3 +16,5 @@ Top level functions
    difference
    symmetric_difference
    isdisjoint
+   issuperset
+   issubset

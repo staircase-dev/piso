@@ -125,6 +125,22 @@ class ArrayAccessor:
             *interval_arrays,
         )
 
+    @Appender(docstrings.issuperset_docstring, join="\n", indents=1)
+    def issuperset(self, *interval_arrays, squeeze=False):
+        return intervalarray.issuperset(
+            self._interval_array,
+            *interval_arrays,
+            squeeze=squeeze,
+        )
+
+    @Appender(docstrings.issubset_docstring, join="\n", indents=1)
+    def issubset(self, *interval_arrays, squeeze=False):
+        return intervalarray.issubset(
+            self._interval_array,
+            *interval_arrays,
+            squeeze=squeeze,
+        )
+
 
 def _register_accessors():
     _register_accessor("piso", pd.IntervalIndex)(ArrayAccessor)

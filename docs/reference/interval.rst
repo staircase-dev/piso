@@ -13,3 +13,5 @@ Interval
    intersection
    difference
    symmetric_difference
+   issuperset
+   issubset
