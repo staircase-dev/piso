@@ -629,8 +629,6 @@ def test_symmetric_difference_closed_value_error(closed_values):
         piso_interval.symmetric_difference(*intervals)
 
 
-
-
 @pytest.mark.parametrize(
     "tuples, squeeze, expected",
     [
