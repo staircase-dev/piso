@@ -4,6 +4,12 @@
 Release notes
 ========================
 
+
+ADD UNRELEASED CHANGES ABOVE THIS LINE
+
+
+**v0.2.0 2021-10-15**
+
 Added the following methods
 
 - :meth:`piso.isdisjoint`
@@ -15,7 +21,6 @@ Added the following methods
 - :meth:`piso.interval.issuperset`
 - :meth:`piso.interval.issubset`
 
-ADD UNRELEASED CHANGES ABOVE THIS LINE
 
 **v0.1.0 2021-10-10**
 
