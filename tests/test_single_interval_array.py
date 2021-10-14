@@ -16,6 +16,7 @@ def get_accessor_method(self, function):
         piso_intervalarray.isdisjoint: self.piso.isdisjoint,
         piso_intervalarray.issuperset: self.piso.issuperset,
         piso_intervalarray.issubset: self.piso.issubset,
+        piso_intervalarray.coverage: self.piso.coverage,
     }[function]
 
 
@@ -27,6 +28,7 @@ def get_package_method(function):
         piso_intervalarray.isdisjoint: piso_intervalarray.isdisjoint,
         piso_intervalarray.issuperset: piso.issuperset,
         piso_intervalarray.issubset: piso.issubset,
+        piso_intervalarray.coverage: piso.coverage,
     }[function]
 
 
@@ -484,3 +486,77 @@ def test_isdisjoint(interval_index, tuples, expected, closed, date_type, how):
     interval_array = map_to_dates(interval_array, date_type)
     result = perform_op(interval_array, how=how, function=piso_intervalarray.isdisjoint)
     assert result == expected
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "domain, expected",
+    [(None, 10 / 12), ((0, 10), 0.8), (pd.Interval(0, 10), 0.8), ((15, 20), 0)],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_coverage(interval_index, domain, expected, closed, how):
+    ia = make_ia1(interval_index, closed)
+    result = perform_op(
+        ia,
+        how=how,
+        function=piso_intervalarray.coverage,
+        domain=domain,
+    )
+    assert result == expected
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_coverage_edge_case(interval_index, closed, how):
+    ia = make_ia_from_tuples(interval_index, [], closed)
+    result = perform_op(
+        ia,
+        how=how,
+        function=piso_intervalarray.coverage,
+        domain=None,
+    )
+    assert result == 0.0
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_coverage_exception(interval_index, closed, how):
+    domain = (1, 2, 3)
+    with pytest.raises(ValueError):
+        ia = make_ia1(interval_index, closed)
+        perform_op(
+            ia,
+            how=how,
+            function=piso_intervalarray.coverage,
+            domain=domain,
+        )

@@ -583,3 +583,43 @@ issubset_docstring = is_super_sub_set_template.format(
     params=issubset_params,
     examples=issubset_examples,
 )
+
+
+coverage_docstring = """
+Calculates the fraction of a domain covered by a collection of intervals.
+
+The intervals are contained in the array object the accessor belongs to.
+The (possibly overlapping) intervals may not, or partially, or wholly cover the domain.
+
+Parameters
+----------
+domain : :class:`pandas.Interval`, or tuple equivalent, optional
+    Specifies the domain (lower and upper bounds) over which to assess the "coverage".
+    If *domain* is `None`, then the domain is considered to be the extremities of the intervals
+    contained in *interval_array*
+
+Returns
+----------
+float
+    a number between 0 and 1, representing the fraction of the domain covered.
+
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+>>> piso.register_accessors()
+
+>>> arr1 = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (3, 5), (7, 8)],
+... )
+
+>>> arr1.piso.coverage()
+0.75
+
+>>> arr1.piso.coverage((0, 10))
+0.6
+
+>>> arr1.piso.coverage(pd.Interval(-10, 10))
+0.3
+"""
