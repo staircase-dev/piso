@@ -4,6 +4,14 @@
 Release notes
 ========================
 
+
+
+Added the following methods
+
+- :meth:`piso.coverage`
+- :meth:`ArrayAccessor.coverage() <piso.accessor.ArrayAccessor.coverage>`
+
+
 Added the following methods
 
 - :meth:`piso.isdisjoint`
