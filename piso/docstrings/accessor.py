@@ -257,6 +257,101 @@ Length: 1, closed: right, dtype: interval[float64]
 """
 
 
+isdisjoint_examples = """
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+>>> piso.register_accessors()
+
+>>> arr1 = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 3), (2, 4)],
+... )
+>>> arr2 = pd.arrays.IntervalArray.from_tuples(
+...     [(4, 7), (8, 11)],
+... )
+>>> arr3 = pd.arrays.IntervalArray.from_tuples(
+...     [(2, 4), (7, 8)],
+... )
+
+>>> arr1.piso.isdisjoint()
+False
+
+>>> arr2.piso.isdisjoint()
+True
+
+>>> arr1.piso.isdisjoint(arr2)
+True
+
+>>> arr1.piso.isdisjoint(arr3)
+False
+"""
+
+issuperset_examples = """
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+>>> piso.register_accessors()
+
+>>> arr1 = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (3, 6), (7, 8), (10, 12)],
+... )
+>>> arr2 = pd.arrays.IntervalArray.from_tuples(
+...     [(2, 5), (7, 8)],
+... )
+>>> arr3 = pd.arrays.IntervalArray.from_tuples(
+...     [(3, 4), (10, 11)],
+... )
+
+>>> arr1.piso.issuperset(arr2)
+True
+
+>>> arr1.piso.issuperset(arr2, squeeze=False)
+array([ True])
+
+>>> arr1.piso.issuperset(arr2, arr3)
+array([ True, True])
+
+>>> arr2.piso.issuperset(arr3)
+False
+"""
+
+
+issubset_examples = """
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+>>> piso.register_accessors()
+
+>>> arr1 = pd.arrays.IntervalArray.from_tuples(
+...     [(2, 5), (7, 8)],
+... )
+>>> arr2 = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (3, 6), (7, 8), (10, 12)],
+... )
+>>> arr3 = pd.arrays.IntervalArray.from_tuples(
+...     [(3, 4), (10, 11)],
+... )
+
+>>> arr1.piso.issubset(arr2)
+True
+
+>>> arr1.piso.issubset(arr2, squeeze=False)
+array([ True])
+
+>>> arr1.piso.issubset(arr2, arr3)
+array([ True, False])
+
+>>> arr1.piso.issubset(arr3)
+False
+"""
+
+
 def join_params(list_of_param_strings):
     return "".join(list_of_param_strings).replace("\n\n", "\n")
 
@@ -266,7 +361,7 @@ param_optional_args = """
     May contain zero or more arguments.
 """
 
-param_optional_args_difference = """
+param_optional_args_min_one = """
 *interval_arrays : argument list of :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
     Must contain at least one argument.
 """
@@ -280,8 +375,8 @@ min_overlaps : int or "all", default "all"
 """
 
 param_squeeze = """
-squeeze : boolean, default True
-    If True, will try to coerce the return value to a pandas.Interval.
+squeeze : boolean, default {default}
+    If True, will try to coerce the return value to a single pandas.Interval.
     If supplied, must be done so as a keyword argument.
 """
 
@@ -291,17 +386,15 @@ return_type : {"infer", :class:`pandas.IntervalIndex`, :class:`pandas.arrays.Int
     If supplied, must be done so as a keyword argument.
 """
 
-
 template_doc = """
-Performs a set {operation} operation.
-
 What is considered a set is determined by the number of positional arguments used, that is, determined by the
 size of *interval_arrays*.
 
-If *interval_arrays* is empty then the sets are considered to be the intervals contained in *interval_array*.
+If *interval_arrays* is empty then the sets are considered to be the intervals contained in the array object the
+accessor belongs to (an instance of :class:`pandas.IntervalIndex`, :class:`pandas.arrays.IntervalArray`).
 
 If *interval_arrays* is not empty then the sets are considered to be the elements in *interval_arrays*, in addition to the
-interval array object the accessor belongs to (an instance of :class:`pandas.IntervalIndex`, :class:`pandas.arrays.IntervalArray`).
+intervals in the array object the accessor belongs to.
 Each of these arrays is assumed to contain disjoint intervals (and satisfy the definition of a set).  Any array containing
 overlaps between intervals will be mapped to one with disjoint intervals via a union operation.
 
@@ -312,10 +405,17 @@ Parameters
 
 Returns
 ----------
-:class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+{return_type}
 
 {examples}
 """
+
+operation_template_doc = (
+    """
+Performs a set {operation} operation.
+"""
+    + template_doc
+)
 
 doc_difference_template = """
 Performs a set difference operation.
@@ -331,9 +431,6 @@ If *interval_arrays* contains multiple elements then the result is the set diffe
 and the union of the sets in *interval_arrays*.  This is equivalent to iteratively applying a set difference operation with each array
 in *interval_arrays* as the second operand.
 
-Each of these array operands is assumed to contain disjoint intervals (and satisfy the definition of a set).  Any array containing
-overlaps between intervals will be mapped to one with disjoint intervals via a union operation.
-
 {extra_desc}
 Parameters
 ----------
@@ -346,18 +443,46 @@ Returns
 {examples}
 """
 
+is_super_sub_set_template = """
+Indicates whether a set is a {operation} of one, or more, other sets.
+
+The array elements of *interval_arrays*, and the interval array object the accessor belongs to
+(an instance of :class:`pandas.IntervalIndex`, :class:`pandas.arrays.IntervalArray`) are considered to be the sets over which
+the operation is performed.  Each of these arrays is assumed to contain disjoint intervals (and satisfy the definition of a set).
+Any array containing overlaps between intervals will be mapped to one with disjoint intervals via a union operation.
+
+The list *interval_arrays* must contain at least one element.  The {operation} comparison is iteratively applied between
+the interval array the accessor belongs to, and each array in *interval_arrays*.  When *interval_arrays* contains multiple
+interval arrays, the return type will be a numpy array.  If it contains one interval array then the result can be coerced to
+a single boolean using the *squeeze* parameter.
+
+Parameters
+----------
+{params}
+
+Returns
+----------
+:class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+
+{examples}
+"""
+
+array_return_type = (
+    ":class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`"
+)
 
 union_params = join_params(
     [
         param_optional_args,
-        param_squeeze,
+        param_squeeze.format(default="False"),
         param_return_type,
     ]
 )
-union_docstring = template_doc.format(
+union_docstring = operation_template_doc.format(
     operation="union",
     extra_desc="",
     params=union_params,
+    return_type=array_return_type,
     examples=union_examples,
 )
 
@@ -365,21 +490,22 @@ intersection_params = join_params(
     [
         param_optional_args,
         param_min_overlaps,
-        param_squeeze,
+        param_squeeze.format(default="False"),
         param_return_type,
     ]
 )
-intersection_docstring = template_doc.format(
+intersection_docstring = operation_template_doc.format(
     operation="intersection",
     extra_desc="",
     params=intersection_params,
+    return_type=array_return_type,
     examples=intersection_examples,
 )
 
 difference_params = join_params(
     [
-        param_optional_args_difference,
-        param_squeeze,
+        param_optional_args_min_one,
+        param_squeeze.format(default="False"),
         param_return_type,
     ]
 )
@@ -387,6 +513,7 @@ difference_docstring = doc_difference_template.format(
     operation="difference",
     extra_desc="",
     params=difference_params,
+    return_type=array_return_type,
     examples=difference_examples,
 )
 
@@ -395,7 +522,7 @@ symmetric_difference_params = join_params(
     [
         param_optional_args,
         param_min_overlaps,
-        param_squeeze,
+        param_squeeze.format(default="False"),
         param_return_type,
     ]
 )
@@ -404,9 +531,55 @@ The symmetric difference can be defined as the set difference, of the union and 
 The parameter *min_overlaps* in :meth:`piso.intersection`, which defines the minimum number of intervals
 in an overlap required to constitute an intersection, follows through to symmetric difference under this definition.
 """
-symmetric_difference_docstring = template_doc.format(
+symmetric_difference_docstring = operation_template_doc.format(
     operation="symmetric difference",
     extra_desc=symmetric_difference_extra_desc,
     params=symmetric_difference_params,
+    return_type=array_return_type,
     examples=symmetric_difference_examples,
+)
+
+
+isdisjoint_doc = (
+    """
+Indicates whether one, or more, sets are disjoint or not.
+"""
+    + template_doc
+)
+
+isdisjoint_params = join_params(
+    [
+        param_optional_args,
+    ]
+)
+isdisjoint_docstring = isdisjoint_doc.format(
+    extra_desc="",
+    params=isdisjoint_params,
+    return_type="boolean",
+    examples=isdisjoint_examples,
+)
+
+
+issuperset_params = join_params(
+    [
+        param_optional_args_min_one,
+        param_squeeze.format(default="True"),
+    ]
+)
+issuperset_docstring = is_super_sub_set_template.format(
+    operation="superset",
+    params=issuperset_params,
+    examples=issuperset_examples,
+)
+
+issubset_params = join_params(
+    [
+        param_optional_args_min_one,
+        param_squeeze.format(default="True"),
+    ]
+)
+issubset_docstring = is_super_sub_set_template.format(
+    operation="subset",
+    params=issubset_params,
+    examples=issubset_examples,
 )

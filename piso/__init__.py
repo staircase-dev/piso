@@ -1,4 +1,12 @@
-from piso.intervalarray import difference, intersection, symmetric_difference, union
+from piso.intervalarray import (
+    difference,
+    intersection,
+    isdisjoint,
+    issubset,
+    issuperset,
+    symmetric_difference,
+    union,
+)
 
 
 def register_accessors():

@@ -15,3 +15,6 @@ Top level functions
    intersection
    difference
    symmetric_difference
+   isdisjoint
+   issuperset
+   issubset

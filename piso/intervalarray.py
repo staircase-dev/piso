@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import staircase as sc
 
@@ -103,3 +104,49 @@ def symmetric_difference(
     if squeeze and len(result) == 1:
         result = result[0]
     return result
+
+
+@Appender(docstrings.isdisjoint_docstring, join="\n", indents=1)
+def isdisjoint(interval_array, *interval_arrays):
+    _validate_array_of_intervals_arrays(interval_array, *interval_arrays)
+    if interval_arrays:
+        stairs = _make_stairs(interval_array, *interval_arrays)
+        result = stairs.max() <= 1
+    elif len(interval_array) == 0:
+        result = True
+    else:
+        arr = np.stack([interval_array.left.values, interval_array.right.values])
+        arr = arr[arr[:, 0].argsort()]
+        result = np.all(arr[0, 1:] >= arr[1, :-1])
+    return result
+
+
+def _create_is_super_or_sub(which, docstring):
+
+    comparator_func = {"superset": sc.Stairs.ge, "subset": sc.Stairs.le}[which]
+
+    @Appender(docstring, join="\n", indents=1)
+    def func(interval_array, *interval_arrays, squeeze=True):
+        _validate_array_of_intervals_arrays(interval_array, *interval_arrays)
+        assert interval_arrays
+        stepfunction = _interval_x_to_stairs(interval_array).make_boolean()
+
+        def _comp(ia):
+            return bool(
+                comparator_func(
+                    stepfunction,
+                    _interval_x_to_stairs(ia).make_boolean(),
+                )
+            )
+
+        result = np.array([_comp(ia) for ia in interval_arrays])
+
+        if squeeze and len(result) == 1:
+            result = result[0]
+        return result
+
+    return func
+
+
+issuperset = _create_is_super_or_sub("superset", docstrings.issuperset_docstring)
+issubset = _create_is_super_or_sub("subset", docstrings.issubset_docstring)

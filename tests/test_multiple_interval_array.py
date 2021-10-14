@@ -1,3 +1,6 @@
+import operator
+
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -14,6 +17,9 @@ def get_accessor_method(self, function):
         piso_intervalarray.intersection: self.piso.intersection,
         piso_intervalarray.difference: self.piso.difference,
         piso_intervalarray.symmetric_difference: self.piso.symmetric_difference,
+        piso_intervalarray.isdisjoint: self.piso.isdisjoint,
+        piso_intervalarray.issuperset: self.piso.issuperset,
+        piso_intervalarray.issubset: self.piso.issubset,
     }[function]
 
 
@@ -23,6 +29,9 @@ def get_package_method(function):
         piso_intervalarray.intersection: piso.intersection,
         piso_intervalarray.symmetric_difference: piso.symmetric_difference,
         piso_intervalarray.difference: piso.difference,
+        piso_intervalarray.isdisjoint: piso.isdisjoint,
+        piso_intervalarray.issuperset: piso.issuperset,
+        piso_intervalarray.issubset: piso.issubset,
     }[function]
 
 
@@ -429,3 +438,136 @@ def test_difference_4(closed, interval_index, return_type, how):
         expected,
         interval_index,
     )
+
+
+def map_to_dates(interval_array, date_type):
+    def make_date(x):
+        ts = pd.Timestamp(f"2021-10-{x}")
+        if date_type == "numpy":
+            return ts.to_numpy()
+        if date_type == "datetime":
+            return ts.to_pydatetime()
+        if date_type == "timedelta":
+            return ts - pd.Timestamp("2021-10-1")
+        return ts
+
+    return interval_array.from_arrays(
+        interval_array.left.map(make_date),
+        interval_array.right.map(make_date),
+    )
+
+
+def make_ia_from_tuples(interval_index, tuples, closed):
+    klass = pd.IntervalIndex if interval_index else pd.arrays.IntervalArray
+    return klass.from_tuples(tuples, closed=closed)
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "tuples, expected",
+    [
+        ([], True),
+        ([(1, 3)], True),
+        ([(3, 11)], False),
+        ([(1, 2), (2, 3)], True),
+        ([(1, 2), (1, 3)], True),
+        ([(1, 3), (7, 9)], False),
+        ([(1, 5), (6, 7)], False),
+        ([(1, 2), (6, 7), (9, 10)], False),
+    ],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "date_type",
+    ["timestamp", "numpy", "datetime", "timedelta", None],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_isdisjoint(interval_index, tuples, expected, closed, date_type, how):
+    # all intervals are compared to ia3
+    ia3 = make_ia3(interval_index, closed)  # intervals = (3,4), (8,11)
+    ia3 = map_to_dates(ia3, date_type)
+    interval_array = make_ia_from_tuples(interval_index, tuples, closed)
+    interval_array = map_to_dates(interval_array, date_type)
+    result = perform_op(
+        ia3, interval_array, how=how, function=piso_intervalarray.isdisjoint
+    )
+    assert result == expected
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "ia_makers, squeeze, expected",
+    [
+        ([make_ia1, make_ia2], True, True),
+        ([make_ia1, make_ia3], True, False),
+        ([make_ia1, make_ia2, make_ia3], True, np.array([True, False])),
+        ([make_ia1, make_ia2], False, np.array([True])),
+        ([make_ia1, make_ia3], False, np.array([False])),
+        ([make_ia1, make_ia2, make_ia3], False, np.array([True, False])),
+    ],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_issuperset(interval_index, ia_makers, squeeze, expected, closed, how):
+    ias = [make_ia(interval_index, closed) for make_ia in ia_makers]
+    result = perform_op(
+        *ias,
+        how=how,
+        function=piso_intervalarray.issuperset,
+        squeeze=squeeze,
+    )
+    equal_op = np.array_equal if isinstance(expected, np.ndarray) else operator.eq
+    assert equal_op(result, expected)
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "ia_makers, squeeze, expected",
+    [
+        ([make_ia2, make_ia1], True, True),
+        ([make_ia3, make_ia1], True, False),
+        ([make_ia2, make_ia1, make_ia3], True, np.array([True, False])),
+        ([make_ia2, make_ia1], False, np.array([True])),
+        ([make_ia3, make_ia1], False, np.array([False])),
+        ([make_ia2, make_ia1, make_ia3], False, np.array([True, False])),
+    ],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_issubset(interval_index, ia_makers, squeeze, expected, closed, how):
+    ias = [make_ia(interval_index, closed) for make_ia in ia_makers]
+    result = perform_op(
+        *ias,
+        how=how,
+        function=piso_intervalarray.issubset,
+        squeeze=squeeze,
+    )
+    equal_op = np.array_equal if isinstance(expected, np.ndarray) else operator.eq
+    assert equal_op(result, expected)
