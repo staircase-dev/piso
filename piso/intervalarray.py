@@ -166,7 +166,7 @@ def _get_domain_tuple(interval_array, domain):
         domain = (domain.left, domain.right)
     else:
         raise ValueError(
-            f"The domain parameter must be either a 2-tuple, pandas.Interval, or None."
+            "The domain parameter must be either a 2-tuple, pandas.Interval, or None."
         )
     return domain
 
