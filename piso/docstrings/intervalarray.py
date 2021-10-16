@@ -599,10 +599,12 @@ Parameters
 ----------
 interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
     Contains the (possibly overlapping) intervals which partially, or wholly cover the domain.
-domain : :class:`pandas.Interval`, or tuple equivalent, optional
-    Specifies the domain (lower and upper bounds) over which to assess the "coverage".
-    If *domain* is `None`, then the domain is considered to be the extremities of the intervals
-    contained in *interval_array*
+domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`, optional
+    Specifies the domain over which to calculate the "coverage".  If *domain* is `None`,
+    then the domain is considered to be the extremities of the intervals contained in *interval_array*
+    If *domain* is a tuple then it should specify lower and upper bounds, and be equivalent to a
+    :class:`pandas.Interval`.  If *domain* is a :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    then the intervals it contains define a possibly disconnected domain.
 
 Returns
 ----------
@@ -627,6 +629,12 @@ Examples
 
 >>> piso.coverage(arr1, pd.Interval(-10, 10))
 0.3
+
+>>> domain = pd.arrays.IntervalArray.from_tuples(
+...     [(4,6), (7, 9)],
+... )
+>>> piso.coverage(arr1, domain)
+0.5
 """
 
 
