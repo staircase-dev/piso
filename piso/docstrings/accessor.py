@@ -593,10 +593,12 @@ The (possibly overlapping) intervals may not, or partially, or wholly cover the 
 
 Parameters
 ----------
-domain : :class:`pandas.Interval`, or tuple equivalent, optional
-    Specifies the domain (lower and upper bounds) over which to assess the "coverage".
-    If *domain* is `None`, then the domain is considered to be the extremities of the intervals
-    contained in *interval_array*
+domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`, optional
+    Specifies the domain over which to calculate the "coverage".  If *domain* is `None`,
+    then the domain is considered to be the extremities of the intervals contained in the interval array the accessor belongs to.
+    If *domain* is a tuple then it should specify lower and upper bounds, and be equivalent to a
+    :class:`pandas.Interval`.  If *domain* is a :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    then the intervals it contains define a possibly disconnected domain.
 
 Returns
 ----------
@@ -622,6 +624,12 @@ Examples
 
 >>> arr1.piso.coverage(pd.Interval(-10, 10))
 0.3
+
+>>> domain = pd.arrays.IntervalArray.from_tuples(
+...     [(4,6), (7, 9)],
+... )
+>>> arr1.piso.coverage(domain)
+0.5
 """
 
 complement_docstring = """

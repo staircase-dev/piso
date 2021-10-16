@@ -496,7 +496,14 @@ def test_isdisjoint(interval_index, tuples, expected, closed, date_type, how):
 )
 @pytest.mark.parametrize(
     "domain, expected",
-    [(None, 10 / 12), ((0, 10), 0.8), (pd.Interval(0, 10), 0.8), ((15, 20), 0)],
+    [
+        (None, 10 / 12),
+        ((0, 10), 0.8),
+        (pd.Interval(0, 10), 0.8),
+        ((15, 20), 0),
+        (pd.IntervalIndex.from_tuples([(0, 6), (10, 12)]), 1),
+        (pd.IntervalIndex.from_tuples([(6, 7), (9, 10)]), 0),
+    ],
 )
 @pytest.mark.parametrize(
     "closed",
@@ -507,6 +514,8 @@ def test_isdisjoint(interval_index, tuples, expected, closed, date_type, how):
     ["supplied", "accessor", "package"],
 )
 def test_coverage(interval_index, domain, expected, closed, how):
+    if hasattr(domain, "set_closed"):
+        domain = domain.set_closed(closed)
     ia = make_ia1(interval_index, closed)
     result = perform_op(
         ia,

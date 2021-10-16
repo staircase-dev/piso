@@ -173,8 +173,14 @@ def _get_domain_tuple(interval_array, domain):
 
 @Appender(docstrings.coverage_docstring, join="\n", indents=1)
 def coverage(interval_array, domain=None):
-    domain = _get_domain_tuple(interval_array, domain)
-    return _interval_x_to_stairs(interval_array).make_boolean().clip(*domain).mean()
+    stepfunction = _interval_x_to_stairs(interval_array).make_boolean()
+    if isinstance(domain, (pd.IntervalIndex, pd.arrays.IntervalArray)):
+        domain = _interval_x_to_stairs(domain)
+        result = stepfunction.where(domain).mean()
+    else:
+        domain = _get_domain_tuple(interval_array, domain)
+        result = stepfunction.clip(*domain).mean()
+    return result
 
 
 @Appender(docstrings.complement_docstring, join="\n", indents=1)
