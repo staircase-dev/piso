@@ -175,3 +175,15 @@ def _get_domain_tuple(interval_array, domain):
 def coverage(interval_array, domain=None):
     domain = _get_domain_tuple(interval_array, domain)
     return _interval_x_to_stairs(interval_array).make_boolean().clip(*domain).mean()
+
+
+@Appender(docstrings.complement_docstring, join="\n", indents=1)
+def complement(interval_array, domain=None):
+    stepfunction = _interval_x_to_stairs(interval_array).invert()
+    if isinstance(domain, (pd.IntervalIndex, pd.arrays.IntervalArray)):
+        domain = _interval_x_to_stairs(domain)
+        result = stepfunction.where(domain).fillna(0)
+    else:
+        domain = _get_domain_tuple(interval_array, domain)
+        result = stepfunction.clip(*domain).fillna(0)
+    return _boolean_stairs_to_interval_array(result, interval_array.__class__)

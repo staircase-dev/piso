@@ -19,3 +19,4 @@ Top level functions
    issuperset
    issubset
    coverage
+   complement
