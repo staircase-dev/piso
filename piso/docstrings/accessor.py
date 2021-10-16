@@ -623,3 +623,58 @@ Examples
 >>> arr1.piso.coverage(pd.Interval(-10, 10))
 0.3
 """
+
+complement_docstring = """
+Calculates the complement of a collection of intervals (in an array) over some domain.
+
+Equivalent to the set difference of the domain and the intervals in the array that the accessor
+belongs to.
+
+Parameters
+----------
+domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`, optional
+    Specifies the domain over which to calculate the "complement".  If *domain* is `None`,
+    then the domain is considered to be the extremities of the intervals contained in the interval array
+    that the accessor belongs to. If *domain* is a tuple then it should specify lower and upper bounds, and be equivalent to a
+    :class:`pandas.Interval`.  If *domain* is a :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    then the intervals it contains define a possibly disconnected domain.
+
+Returns
+----------
+:class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    The return type will be the same as the interval array object the accessor belongs to.
+
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+
+>>> arr1 = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (3, 5), (7, 8)],
+... )
+
+>>> arr1.piso.complement()
+<IntervalArray>
+[(5, 7]]
+Length: 1, closed: right, dtype: interval[int64]
+
+>>> arr1.piso.complement((-5, 10))
+<IntervalArray>
+[(-5, 0], (5, 7], (8, 10]]
+Length: 3, closed: right, dtype: interval[int64]
+
+>>> arr1.piso.complement(pd.Interval(-5, 6))
+<IntervalArray>
+[(-5, 0], (5, 6]]
+Length: 2, closed: right, dtype: interval[int64]
+
+>>> domain = pd.arrays.IntervalArray.from_tuples(
+...     [(-5,-2), (7,10)],
+... )
+
+>>> arr1.piso.complement(domain)
+<IntervalArray>
+[(-5, -2], (8, 10]]
+Length: 2, closed: right, dtype: interval[int64]
+"""

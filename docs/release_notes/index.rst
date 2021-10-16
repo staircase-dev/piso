@@ -7,7 +7,9 @@ Release notes
 Added the following methods
 
 - :meth:`piso.coverage`
+- :meth:`piso.complement`
 - :meth:`ArrayAccessor.coverage() <piso.accessor.ArrayAccessor.coverage>`
+- :meth:`ArrayAccessor.complement() <piso.accessor.ArrayAccessor.complement>`
 
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 

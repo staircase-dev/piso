@@ -17,6 +17,7 @@ def get_accessor_method(self, function):
         piso_intervalarray.issuperset: self.piso.issuperset,
         piso_intervalarray.issubset: self.piso.issubset,
         piso_intervalarray.coverage: self.piso.coverage,
+        piso_intervalarray.complement: self.piso.complement,
     }[function]
 
 
@@ -29,6 +30,7 @@ def get_package_method(function):
         piso_intervalarray.issuperset: piso.issuperset,
         piso_intervalarray.issubset: piso.issubset,
         piso_intervalarray.coverage: piso.coverage,
+        piso_intervalarray.complement: piso.complement,
     }[function]
 
 
@@ -560,3 +562,46 @@ def test_coverage_exception(interval_index, closed, how):
             function=piso_intervalarray.coverage,
             domain=domain,
         )
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "domain, expected_tuples",
+    [
+        (None, [(6, 7), (9, 10)]),
+        ((-5, 15), [(-5, 0), (6, 7), (9, 10), (12, 15)]),
+        (pd.Interval(-5, 15), [(-5, 0), (6, 7), (9, 10), (12, 15)]),
+        ((6.5, 9.5), [(6.5, 7), (9, 9.5)]),
+        ((12, 15), [(12, 15)]),
+        ((6, 7), [(6, 7)]),
+        ((3, 4), []),
+        (pd.IntervalIndex.from_tuples([(-5, 5), (9, 11)]), [(-5, 0), (9, 10)]),
+    ],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_complement(interval_index, domain, expected_tuples, closed, how):
+    if hasattr(domain, "set_closed"):
+        domain = domain.set_closed(closed)
+    ia = make_ia1(interval_index, closed)
+    expected = make_ia_from_tuples(False, expected_tuples, closed)
+    result = perform_op(
+        ia,
+        how=how,
+        function=piso_intervalarray.complement,
+        domain=domain,
+    )
+    assert_interval_array_equal(
+        result,
+        expected,
+        interval_index,
+    )

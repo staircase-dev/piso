@@ -148,6 +148,13 @@ class ArrayAccessor:
             domain,
         )
 
+    @Appender(docstrings.complement_docstring, join="\n", indents=1)
+    def complement(self, domain=None):
+        return intervalarray.complement(
+            self._interval_array,
+            domain,
+        )
+
 
 def _register_accessors():
     _register_accessor("piso", pd.IntervalIndex)(ArrayAccessor)

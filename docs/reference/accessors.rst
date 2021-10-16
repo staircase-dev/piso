@@ -17,3 +17,4 @@ Accessors
    ArrayAccessor.issuperset
    ArrayAccessor.issubset
    ArrayAccessor.coverage
+   ArrayAccessor.complement

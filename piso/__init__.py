@@ -1,4 +1,5 @@
 from piso.intervalarray import (
+    complement,
     coverage,
     difference,
     intersection,
