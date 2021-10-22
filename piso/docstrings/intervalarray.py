@@ -590,3 +590,106 @@ issubset_docstring = doc_is_sub_super_set_template.format(
     params=issubset_params,
     examples=issubset_examples,
 )
+
+
+coverage_docstring = """
+Calculates the fraction of a domain covered by a collection of intervals.
+
+Parameters
+----------
+interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    Contains the (possibly overlapping) intervals which partially, or wholly cover the domain.
+domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`, optional
+    Specifies the domain over which to calculate the "coverage".  If *domain* is `None`,
+    then the domain is considered to be the extremities of the intervals contained in *interval_array*
+    If *domain* is a tuple then it should specify lower and upper bounds, and be equivalent to a
+    :class:`pandas.Interval`.  If *domain* is a :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    then the intervals it contains define a possibly disconnected domain.
+
+Returns
+----------
+float
+    a number between 0 and 1, representing the fraction of the domain covered.
+
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+
+>>> arr1 = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (3, 5), (7, 8)],
+... )
+
+>>> piso.coverage(arr1)
+0.75
+
+>>> piso.coverage(arr1, (0, 10))
+0.6
+
+>>> piso.coverage(arr1, pd.Interval(-10, 10))
+0.3
+
+>>> domain = pd.arrays.IntervalArray.from_tuples(
+...     [(4,6), (7, 9)],
+... )
+>>> piso.coverage(arr1, domain)
+0.5
+"""
+
+
+complement_docstring = """
+Calculates the complement of a collection of intervals (in an array) over some domain.
+
+Equivalent to the set difference of the domain and the intervals in the array.
+
+Parameters
+----------
+interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    Contains the (possibly overlapping) intervals.
+domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`, optional
+    Specifies the domain over which to calculate the "complement".  If *domain* is `None`,
+    then the domain is considered to be the extremities of the intervals contained in *interval_array*
+    If *domain* is a tuple then it should specify lower and upper bounds, and be equivalent to a
+    :class:`pandas.Interval`.  If *domain* is a :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    then the intervals it contains define a possibly disconnected domain.
+
+Returns
+----------
+:class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    The return type will be the same as *interval_array*.
+
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+
+>>> arr1 = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (3, 5), (7, 8)],
+... )
+
+>>> piso.complement(arr1)
+<IntervalArray>
+[(5, 7]]
+Length: 1, closed: right, dtype: interval[int64]
+
+>>> piso.complement(arr1, (-5, 10))
+<IntervalArray>
+[(-5, 0], (5, 7], (8, 10]]
+Length: 3, closed: right, dtype: interval[int64]
+
+>>> piso.complement(arr1, pd.Interval(-5, 6))
+<IntervalArray>
+[(-5, 0], (5, 6]]
+Length: 2, closed: right, dtype: interval[int64]
+
+>>> domain = pd.arrays.IntervalArray.from_tuples(
+...     [(-5,-2), (7,10)],
+... )
+
+>>> piso.complement(arr1, domain)
+<IntervalArray>
+[(-5, -2], (8, 10]]
+Length: 2, closed: right, dtype: interval[int64]
+"""

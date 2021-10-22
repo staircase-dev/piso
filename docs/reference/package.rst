@@ -18,3 +18,5 @@ Top level functions
    isdisjoint
    issuperset
    issubset
+   coverage
+   complement

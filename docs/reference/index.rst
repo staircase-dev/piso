@@ -13,3 +13,6 @@ This page gives an overview of all public `piso` functionality.  Classes and fun
    package
    accessors
    interval
+
+.. automodule:: piso
+   :undoc-members:

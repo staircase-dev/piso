@@ -55,7 +55,7 @@ def intersection(
     *interval_arrays,
     min_overlaps="all",
     squeeze=False,
-    return_type="infer"
+    return_type="infer",
 ):
     _validate_array_of_intervals_arrays(interval_array, *interval_arrays)
     klass = _get_return_type(interval_array, return_type)
@@ -150,3 +150,46 @@ def _create_is_super_or_sub(which, docstring):
 
 issuperset = _create_is_super_or_sub("superset", docstrings.issuperset_docstring)
 issubset = _create_is_super_or_sub("subset", docstrings.issubset_docstring)
+
+
+def _get_domain_tuple(interval_array, domain):
+    if domain is None and len(interval_array) > 0:
+        domain = (interval_array.left.min(), interval_array.right.max())
+    elif domain is None and len(interval_array) == 0:
+        domain = (0, 1)  # dummy domain to ensure no failure
+    elif isinstance(domain, tuple):
+        if len(domain) != 2:
+            raise ValueError(
+                f"If domain parameter is tuple then it must have length 2.  Supplied argument has length {len(domain)}."
+            )
+    elif isinstance(domain, pd.Interval):
+        domain = (domain.left, domain.right)
+    else:
+        raise ValueError(
+            "The domain parameter must be either a 2-tuple, pandas.Interval, or None."
+        )
+    return domain
+
+
+@Appender(docstrings.coverage_docstring, join="\n", indents=1)
+def coverage(interval_array, domain=None):
+    stepfunction = _interval_x_to_stairs(interval_array).make_boolean()
+    if isinstance(domain, (pd.IntervalIndex, pd.arrays.IntervalArray)):
+        domain = _interval_x_to_stairs(domain)
+        result = stepfunction.where(domain).mean()
+    else:
+        domain = _get_domain_tuple(interval_array, domain)
+        result = stepfunction.clip(*domain).mean()
+    return result
+
+
+@Appender(docstrings.complement_docstring, join="\n", indents=1)
+def complement(interval_array, domain=None):
+    stepfunction = _interval_x_to_stairs(interval_array).invert()
+    if isinstance(domain, (pd.IntervalIndex, pd.arrays.IntervalArray)):
+        domain = _interval_x_to_stairs(domain)
+        result = stepfunction.where(domain).fillna(0)
+    else:
+        domain = _get_domain_tuple(interval_array, domain)
+        result = stepfunction.clip(*domain).fillna(0)
+    return _boolean_stairs_to_interval_array(result, interval_array.__class__)

@@ -16,3 +16,5 @@ Accessors
    ArrayAccessor.isdisjoint
    ArrayAccessor.issuperset
    ArrayAccessor.issubset
+   ArrayAccessor.coverage
+   ArrayAccessor.complement
