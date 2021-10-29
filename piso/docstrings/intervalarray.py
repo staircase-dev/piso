@@ -693,3 +693,44 @@ Length: 2, closed: right, dtype: interval[int64]
 [(-5, -2], (8, 10]]
 Length: 2, closed: right, dtype: interval[int64]
 """
+
+
+get_indexer_docstring = """
+Given a set of disjoint intervals and a value, or vector, *x* returns the
+index positions of the interval which contains each value in x.
+
+Parameters
+----------
+interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    Contains the disjoint intervals.
+x : scalar, or array-like of scalars
+    Values in *x* should belong to the same domain as the intervals in *interval_array*.
+
+Returns
+----------
+:class:`numpy.ndarray`
+    Values will be integer.  If a point is not contained in any interval then the corresponding
+    value is -1.
+
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+
+>>> arr = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (6, 8), (10, 12)],
+... )
+
+>>> piso.get_indexer(arr, 11)
+2
+
+>>> piso.get_indexer(arr, 8)
+1
+
+>>> piso.get_indexer(arr, 9)
+-1
+
+>>> piso.get_indexer(arr, [1,2,7,13])
+array([ 0,  0,  1, -1], dtype=int64)
+"""

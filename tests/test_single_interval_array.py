@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -18,6 +19,7 @@ def get_accessor_method(self, function):
         piso_intervalarray.issubset: self.piso.issubset,
         piso_intervalarray.coverage: self.piso.coverage,
         piso_intervalarray.complement: self.piso.complement,
+        piso_intervalarray.get_indexer: self.piso.get_indexer,
     }[function]
 
 
@@ -31,6 +33,7 @@ def get_package_method(function):
         piso_intervalarray.issubset: piso.issubset,
         piso_intervalarray.coverage: piso.coverage,
         piso_intervalarray.complement: piso.complement,
+        piso_intervalarray.get_indexer: piso.get_indexer,
     }[function]
 
 
@@ -614,3 +617,51 @@ def test_complement(interval_index, domain, expected_tuples, closed, how):
         expected,
         interval_index,
     )
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "x, closed, expected",
+    [
+        (3, "left", 0),
+        (4, "left", -1),
+        (3, "right", -1),
+        (4, "right", 0),
+        ([3, 9, 12], "left", np.array([0, 1, -1])),
+        ([3, 9, 12], "right", np.array([-1, 1, -1])),
+    ],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_get_indexer(interval_index, x, closed, expected, how):
+    ia = make_ia3(interval_index, closed)
+    result = perform_op(
+        ia,
+        x,
+        how=how,
+        function=piso_intervalarray.get_indexer,
+    )
+    if hasattr(expected, "__len__"):
+        assert all(result == expected)
+    else:
+        assert result == expected
+
+
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_get_indexer_exception(how):
+    ia = make_ia1(True, "left")
+    with pytest.raises(ValueError):
+        perform_op(
+            ia,
+            1,
+            how=how,
+            function=piso_intervalarray.get_indexer,
+        )
