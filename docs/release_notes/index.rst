@@ -4,6 +4,10 @@
 Release notes
 ========================
 
+Added the following methods
+
+- :meth:`piso.lookup`
+- :meth:`piso.get_indexer`
 
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 

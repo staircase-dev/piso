@@ -1221,7 +1221,7 @@ test = ["pytest"]
 
 [[package]]
 name = "staircase"
-version = "2.0.4"
+version = "2.1.0"
 description = "A data analysis package based on modelling and manipulation of mathematical step functions. Strongly aligned with pandas."
 category = "main"
 optional = false
@@ -1407,7 +1407,7 @@ codecov = []
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6.1"
-content-hash = "0a47702bf0b60eb123c87a8953108f3b390be1ada8017fe850f7af71b67e1836"
+content-hash = "7bec7689d30142b9220dc2f7af453b06863e7dd51d9259e57841340fee773b16"
 
 [metadata.files]
 alabaster = [
@@ -2218,8 +2218,8 @@ sphinxcontrib-serializinghtml = [
     {file = "sphinxcontrib_serializinghtml-1.1.5-py2.py3-none-any.whl", hash = "sha256:352a9a00ae864471d3a7ead8d7d79f5fc0b57e8b3f95e9867eb9eb28999b92fd"},
 ]
 staircase = [
-    {file = "staircase-2.0.4-py3-none-any.whl", hash = "sha256:c45291e8c91c3faf485790b483563580098c55f2c2f586ac7b41f05cbd27d8ac"},
-    {file = "staircase-2.0.4.tar.gz", hash = "sha256:25e019e3d3d930153bd2c5381029198e865db0b0732fdda6f85550930ffee14c"},
+    {file = "staircase-2.1.0-py3-none-any.whl", hash = "sha256:113deb4ebdaa20ae99e1effbf1858ea36e16cc404a5486fc34d16f8bcbb4bdf2"},
+    {file = "staircase-2.1.0.tar.gz", hash = "sha256:0c0133a97a9473bf7a1f5360727d720224d32f21bf285a9b76057411cb33c3f1"},
 ]
 terminado = [
     {file = "terminado-0.12.1-py3-none-any.whl", hash = "sha256:09fdde344324a1c9c6e610ee4ca165c4bb7f5bbf982fceeeb38998a988ef8452"},
