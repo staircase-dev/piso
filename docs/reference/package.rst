@@ -20,3 +20,4 @@ Top level functions
    issubset
    coverage
    complement
+   get_indexer
