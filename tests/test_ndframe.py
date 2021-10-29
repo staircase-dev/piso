@@ -87,3 +87,9 @@ def test_lookup_series(x, closed, date_type, a_col):
         points = [points]
     expected = pd.Series(a_col, index=points)
     pd.testing.assert_series_equal(result, expected, check_names=False)
+
+
+def test_lookup_exception():
+    df = pd.DataFrame([1, 2, 3])
+    with pytest.raises(ValueError):
+        piso.lookup(df, [1, 2])
