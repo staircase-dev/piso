@@ -21,3 +21,4 @@ Top level functions
    coverage
    complement
    get_indexer
+   lookup
