@@ -10,5 +10,5 @@ User Guide
 
     intervalsets
     accessors
-    calendar
+    case_studies/index
     faq

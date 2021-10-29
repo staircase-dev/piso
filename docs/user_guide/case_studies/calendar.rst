@@ -1,8 +1,8 @@
 .. _user_guide.calendar_example:
 
 
-An example with calendars
-==========================
+Finding common gaps in daily calendars
+=======================================
 
 In this example we are given the following scenario:
 
