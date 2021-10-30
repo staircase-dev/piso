@@ -4,12 +4,17 @@
 Release notes
 ========================
 
+
+ADD UNRELEASED CHANGES ABOVE THIS LINE
+
+
+**v0.4.0 2021-10-30**
+
 Added the following methods
 
 - :meth:`piso.lookup`
 - :meth:`piso.get_indexer`
-
-ADD UNRELEASED CHANGES ABOVE THIS LINE
+- :meth:`ArrayAccessor.get_indexer() <piso.accessor.ArrayAccessor.get_indexer>`
 
 
 **v0.3.0 2021-10-23**
