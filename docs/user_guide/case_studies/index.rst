@@ -10,3 +10,4 @@ Case studies
 
     calendar
     maintenance
+    tax

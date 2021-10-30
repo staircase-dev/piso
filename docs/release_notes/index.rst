@@ -5,6 +5,15 @@ Release notes
 ========================
 
 
+**v0.4.0 2021-10-30**
+
+Added the following methods
+
+- :meth:`piso.lookup`
+- :meth:`piso.get_indexer`
+- :meth:`ArrayAccessor.get_indexer() <piso.accessor.ArrayAccessor.get_indexer>`
+
+
 **v0.3.0 2021-10-23**
 
 Added the following methods

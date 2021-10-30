@@ -193,3 +193,16 @@ def complement(interval_array, domain=None):
         domain = _get_domain_tuple(interval_array, domain)
         result = stepfunction.clip(*domain).fillna(0)
     return _boolean_stairs_to_interval_array(result, interval_array.__class__)
+
+
+@Appender(docstrings.get_indexer_docstring, join="\n", indents=1)
+def get_indexer(interval_array, x):
+    if not isdisjoint(interval_array):
+        raise ValueError("get_indexer method is only valid for disjoint intervals.")
+    return sc.Stairs(
+        start=interval_array.left,
+        end=interval_array.right,
+        value=range(1, len(interval_array) + 1),
+        initial_value=-1,
+        closed=interval_array.closed,
+    )(x)

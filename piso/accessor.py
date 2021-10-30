@@ -155,6 +155,13 @@ class ArrayAccessor:
             domain,
         )
 
+    @Appender(docstrings.get_indexer_docstring, join="\n", indents=1)
+    def get_indexer(self, x):
+        return intervalarray.get_indexer(
+            self._interval_array,
+            x,
+        )
+
 
 def _register_accessors():
     _register_accessor("piso", pd.IntervalIndex)(ArrayAccessor)

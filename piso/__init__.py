@@ -2,6 +2,7 @@ from piso.intervalarray import (
     complement,
     coverage,
     difference,
+    get_indexer,
     intersection,
     isdisjoint,
     issubset,
@@ -9,6 +10,7 @@ from piso.intervalarray import (
     symmetric_difference,
     union,
 )
+from piso.ndframe import lookup
 
 
 def register_accessors():
