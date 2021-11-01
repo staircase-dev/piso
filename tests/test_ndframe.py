@@ -524,9 +524,22 @@ def test_lookup_exception_7():
 
 
 def test_lookup_exception_8():
-    df = pd.DataFrame({"col1": [1, 2]}, pd.IntervalIndex.from_tuples([(1, 2), (3, 4)]))
+    df = pd.DataFrame(
+        {"col1": [1, 2]}, pd.IntervalIndex.from_tuples([(1, 2), (3, 4)], closed="both")
+    )
     df2 = pd.DataFrame(
         {"col2": [1, 2]}, pd.IntervalIndex.from_tuples([(1, 2), (3, 4)], closed="both")
+    )
+    with pytest.raises(ValueError):
+        piso.join(df, df2)
+
+
+def test_lookup_exception_9():
+    df = pd.DataFrame(
+        {"col1": [1, 2]}, pd.IntervalIndex.from_tuples([(1, 2), (3, 4)], closed="left")
+    )
+    df2 = pd.DataFrame(
+        {"col2": [1, 2]}, pd.IntervalIndex.from_tuples([(1, 2), (3, 4)], closed="right")
     )
     with pytest.raises(ValueError):
         piso.join(df, df2)
