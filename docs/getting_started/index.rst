@@ -36,7 +36,7 @@ The domain of the intervals can be either numerical, :class:`pandas.Timestamp` o
     - have a finite, length
     - are left-closed right-open, or right-closed left-open
 
-A small :ref:`case study <user_guide.calendar_example>` using :mod:`piso` can be found in the :ref:`user guide <user_guide>`.  Further examples, and a detailed explanation of functionality, are provided in the :ref:`api`.
+Several :ref:`case studies <case_studies>` using :mod:`piso` can be found in the :ref:`user guide <user_guide>`.  Further examples, and a detailed explanation of functionality, are provided in the :ref:`api`.
 
 
 Versioning

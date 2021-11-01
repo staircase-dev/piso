@@ -22,3 +22,4 @@ Top level functions
    complement
    get_indexer
    lookup
+   join

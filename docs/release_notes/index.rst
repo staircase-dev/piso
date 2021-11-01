@@ -4,6 +4,9 @@
 Release notes
 ========================
 
+Added the following methods
+
+- :meth:`piso.join` for *join operations* on interval indexes
 
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 
