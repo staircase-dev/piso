@@ -8,11 +8,12 @@ In this example we will look at a football match from 2009:
 
     The Champions League quarter-final between Chelsea and Liverpool
     in 2009 is recognised as among the best games of all time.
-    Liverpool scored twice in the first half at 19'and 28'.  Chelsea then
-    opened their account in the second half with three unanswered goals
-    at 51', 57' and 76'.  Liverpool responded with two goals at 81' and 83'
-    to put themselves ahead, however Chelsea drew with a last minute goal
-    at 89' and advanced to the next stage on aggregate.
+    Liverpool scored twice in the first half in the 19th and 28th minute.
+    Chelsea then opened their account in the second half with three
+    unanswered goals in the 51st, 57th and 76th minute.  Liverpool
+    responded with two goals in the 81st and 83rd minute to put themselves
+    ahead, however Chelsea drew with a goal in the 89th minte and advanced
+    to the next stage on aggregate.
 
 
 We start by importing :mod:`pandas` and :mod:`piso`
