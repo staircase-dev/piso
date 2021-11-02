@@ -5,7 +5,9 @@ Release notes
 ========================
 
 
-- added :func:`piso.join` for *join operations* with interval indexes
+- added :meth:`piso.join` for *join operations* with interval indexes
+- added :meth:`piso.contains`
+- added :meth:`ArrayAccessor.contains() <piso.accessor.ArrayAccessor.contains>`
 - faster implementation for :func:`piso.get_indexer`
 
 ADD UNRELEASED CHANGES ABOVE THIS LINE

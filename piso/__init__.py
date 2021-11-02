@@ -1,5 +1,6 @@
 from piso.intervalarray import (
     complement,
+    contains,
     coverage,
     difference,
     get_indexer,

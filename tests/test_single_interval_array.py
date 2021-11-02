@@ -20,6 +20,7 @@ def get_accessor_method(self, function):
         piso_intervalarray.coverage: self.piso.coverage,
         piso_intervalarray.complement: self.piso.complement,
         piso_intervalarray.get_indexer: self.piso.get_indexer,
+        piso_intervalarray.contains: self.piso.contains,
     }[function]
 
 
@@ -34,6 +35,7 @@ def get_package_method(function):
         piso_intervalarray.coverage: piso.coverage,
         piso_intervalarray.complement: piso.complement,
         piso_intervalarray.get_indexer: piso.get_indexer,
+        piso_intervalarray.contains: piso.contains,
     }[function]
 
 
@@ -665,3 +667,54 @@ def test_get_indexer_exception(how):
             how=how,
             function=piso_intervalarray.get_indexer,
         )
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "x, closed, expected",
+    [
+        (0, "left", [[True], [False], [False]]),
+        (0, "right", [[False], [False], [False]]),
+        (6, "left", [[False], [False], [False]]),
+        (6, "right", [[False], [False], [True]]),
+        (
+            [2, 4, 5],
+            "left",
+            [[True, False, False], [True, True, False], [False, True, True]],
+        ),
+        (
+            [2, 4, 5],
+            "right",
+            [[True, True, False], [False, True, True], [False, True, True]],
+        ),
+    ],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+@pytest.mark.parametrize(
+    "include_index",
+    [True, False],
+)
+def test_contains(interval_index, x, closed, expected, how, include_index):
+    ia = make_ia2(interval_index, closed)
+    result = perform_op(
+        ia,
+        x,
+        include_index,
+        how=how,
+        function=piso_intervalarray.contains,
+    )
+    print(result)
+    print(ia)
+    print(x)
+    if include_index:
+        expected_result = pd.DataFrame(expected, index=ia, columns=np.array(x, ndmin=1))
+        pd.testing.assert_frame_equal(result, expected_result, check_dtype=False)
+    else:
+        expected_result = np.array(expected)
+        assert (result == expected_result).all()

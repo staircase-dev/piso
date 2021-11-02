@@ -18,4 +18,5 @@ Accessors
    ArrayAccessor.issubset
    ArrayAccessor.coverage
    ArrayAccessor.complement
+   ArrayAccessor.contains
    ArrayAccessor.get_indexer

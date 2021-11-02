@@ -726,3 +726,53 @@ Examples
 >>> arr.piso.get_indexer([1,2,7,13])
 array([ 0,  0,  1, -1], dtype=int64)
 """
+
+
+contains_docstring = """
+Check pair-wise if a set of intervals, belonging to the object the accessor belongs to, contains a set of values.
+
+Returns a 2-dimensional boolean mask *M* of shape *(m,n)* where *m* is the number of intervals, and
+*n* is the number of points.  The element in the i-th row and j-th column is True if
+the i-th interval contains the j-th point.
+
+Parameters
+----------
+x : scalar, or array-like of scalars
+    Values in *x* should belong to the same domain as the intervals in *interval_array*.
+include_index : boolean, default True
+    Indicates whether to return a :class:`numpy.ndarray` or :class:`pandas.DataFrame` indexed
+    by *interval_array* and column names equal to *x*
+
+Returns
+----------
+:class:`numpy.ndarray` or :class:`pandas.DataFrame`
+    Two dimensional and boolean valued.  Return type dependent on *include_index*.
+
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+>>> piso.register_accessors()
+
+>>> arr = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (2, 5)],
+... )
+
+>>> arr.piso.contains(1)
+            1
+(0, 4]   True
+(2, 5]  False
+
+>>> arr.piso.contains([0, 1, 3, 4])
+            0      1     3     4
+(0, 4]  False   True  True  True
+(2, 5]  False  False  True  True
+
+>>> arr.piso.contains([0, 1, 3, 4], include_index=False)
+array([[False,  True,  True,  True],
+       [False, False,  True,  True]])
+
+>>> pd.IntervalIndex.from_tuples([(0,2)]).piso.contains(1, include_index=False)
+array([[ True]])
+"""
