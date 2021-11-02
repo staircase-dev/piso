@@ -4,6 +4,11 @@
 Release notes
 ========================
 
+
+ADD UNRELEASED CHANGES ABOVE THIS LINE
+
+**v0.5.0 2021-11-02**
+
 Added the following methods
 
 - :func:`piso.join` for *join operations* with interval indexes
@@ -14,8 +19,6 @@ Performance improvements for
 
 - :func:`piso.lookup`
 - :func:`piso.get_indexer`
-
-ADD UNRELEASED CHANGES ABOVE THIS LINE
 
 
 **v0.4.0 2021-10-30**
