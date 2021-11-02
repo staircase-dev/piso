@@ -108,4 +108,4 @@ Using this dataframe we will now provide answers for miscellaneous questions.  I
     piso.lookup(CvsL, pd.Timedelta(80, unit="min"))
 
 
-This analysis is also straightforward using :mod:`staircase.Stairs`.  For more information on this please see the :ref:`corresponding example with staircase <user_guide.football_staircase_example>`
+This analysis is also straightforward using :mod:`staircase`.  For more information on this please see the :ref:`corresponding example with staircase <user_guide.football_staircase_example>`
