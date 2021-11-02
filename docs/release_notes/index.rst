@@ -5,8 +5,6 @@ Release notes
 ========================
 
 
-ADD UNRELEASED CHANGES ABOVE THIS LINE
-
 **v0.5.0 2021-11-02**
 
 Added the following methods
