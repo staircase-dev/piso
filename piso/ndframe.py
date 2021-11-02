@@ -15,14 +15,11 @@ def lookup(frame_or_series, x):
     if not hasattr(x, "__len__"):
         x = np.array(x, ndmin=1)
     indexer = intervalarray.get_indexer(frame_or_series.index, x)
-    return (
-        frame_or_series.__class__(
-            data=frame_or_series,
-            index=x,
-        )
-        .iloc[indexer >= 0]
-        .reindex(x)
-    )
+    result = frame_or_series.copy().iloc[indexer].set_axis(x)
+    set_nan = indexer == -1
+    if set_nan.any():
+        result.loc[set_nan] = np.nan
+    return result
 
 
 def _assert_has_disjoint_interval_index(frame_or_series):

@@ -102,7 +102,7 @@ We can then use a vectorised calculation for the tax payable:
 Alternative approaches
 -----------------------
 
-There are a couple of alternative solutions which do not require :mod:`piso` which we detail below.
+There are a couple of alternative, straightforward solutions which do not require :mod:`piso` which we detail below.
 
 **Alternative 1: pandas.cut**
 
@@ -113,7 +113,7 @@ The `tax_params` dataframe that was produced above by :func:`piso.lookup` can be
     tax_params = tax_rates.loc[pd.cut(income, tax_brackets)].set_index(income)
     tax_params
 
-This approach however runs approximately 3 times slower than :func:`piso.lookup`.
+This approach however runs approximately 20 times slower than :func:`piso.lookup`.
 
 
 **Alternative 2: applying function**
@@ -138,7 +138,7 @@ The function can then used with `pandas.Series.apply`
 
     income.apply(calc_tax)
 
-This approach is the fastest - approximately 3 times faster than :func:`piso.lookup` - but it does a function to be defined which is relatively cumbersome to implement.  This approach becomes increasingly unattractive, and error prone, as the number of tax brackets increases.
+This approach runs approximately 3 times slower than :func:`piso.lookup`.  It also requires a function to be defined which is relatively cumbersome to implement.  This approach becomes increasingly unattractive, and error prone, as the number of tax brackets increases.
 
 
 
