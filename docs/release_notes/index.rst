@@ -5,12 +5,28 @@ Release notes
 ========================
 
 
+ADD UNRELEASED CHANGES ABOVE THIS LINE
+
+**v0.5.0 2021-11-02**
+
+Added the following methods
+
+- :func:`piso.join` for *join operations* with interval indexes
+- :func:`piso.contains`
+- :meth:`ArrayAccessor.contains() <piso.accessor.ArrayAccessor.contains>`
+
+Performance improvements for
+
+- :func:`piso.lookup`
+- :func:`piso.get_indexer`
+
+
 **v0.4.0 2021-10-30**
 
 Added the following methods
 
-- :meth:`piso.lookup`
-- :meth:`piso.get_indexer`
+- :func:`piso.lookup`
+- :func:`piso.get_indexer`
 - :meth:`ArrayAccessor.get_indexer() <piso.accessor.ArrayAccessor.get_indexer>`
 
 
@@ -18,8 +34,8 @@ Added the following methods
 
 Added the following methods
 
-- :meth:`piso.coverage`
-- :meth:`piso.complement`
+- :func:`piso.coverage`
+- :func:`piso.complement`
 - :meth:`ArrayAccessor.coverage() <piso.accessor.ArrayAccessor.coverage>`
 - :meth:`ArrayAccessor.complement() <piso.accessor.ArrayAccessor.complement>`
 
@@ -28,9 +44,9 @@ Added the following methods
 
 Added the following methods
 
-- :meth:`piso.isdisjoint`
-- :meth:`piso.issuperset`
-- :meth:`piso.issubset`
+- :func:`piso.isdisjoint`
+- :func:`piso.issuperset`
+- :func:`piso.issubset`
 - :meth:`ArrayAccessor.isdisjoint() <piso.accessor.ArrayAccessor.isdisjoint>`
 - :meth:`ArrayAccessor.issuperset() <piso.accessor.ArrayAccessor.issuperset>`
 - :meth:`ArrayAccessor.issubset() <piso.accessor.ArrayAccessor.issubset>`
@@ -42,17 +58,17 @@ Added the following methods
 
 The following methods are included in the initial release of `piso`
 
-- :meth:`piso.register_accessors`
-- :meth:`piso.union`
-- :meth:`piso.intersection`
-- :meth:`piso.difference`
-- :meth:`piso.symmetric_difference`
+- :func:`piso.register_accessors`
+- :func:`piso.union`
+- :func:`piso.intersection`
+- :func:`piso.difference`
+- :func:`piso.symmetric_difference`
 - :meth:`ArrayAccessor.union() <piso.accessor.ArrayAccessor.union>`
 - :meth:`ArrayAccessor.intersection() <piso.accessor.ArrayAccessor.intersection>`
 - :meth:`ArrayAccessor.difference() <piso.accessor.ArrayAccessor.difference>`
 - :meth:`ArrayAccessor.symmetric_difference() <piso.accessor.ArrayAccessor.symmetric_difference>`
-- :meth:`piso.interval.union`
-- :meth:`piso.interval.intersection`
-- :meth:`piso.interval.difference`
-- :meth:`piso.interval.symmetric_difference`
+- :func:`piso.interval.union`
+- :func:`piso.interval.intersection`
+- :func:`piso.interval.difference`
+- :func:`piso.interval.symmetric_difference`
 

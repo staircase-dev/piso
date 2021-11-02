@@ -195,14 +195,25 @@ def complement(interval_array, domain=None):
     return _boolean_stairs_to_interval_array(result, interval_array.__class__)
 
 
+@Appender(docstrings.contains_docstring, join="\n", indents=1)
+def contains(interval_array, x, include_index=True):
+    starts = interval_array.left.values
+    ends = interval_array.right.values
+    x = pd.Series(x).values
+    if interval_array.closed == "right":
+        result = np.less_equal.outer(x, ends) & np.greater.outer(x, starts)
+    else:
+        result = np.less.outer(x, ends) & np.greater_equal.outer(x, starts)
+    result = result.transpose()
+    if include_index:
+        return pd.DataFrame(result, index=interval_array, columns=x)
+    return result
+
+
 @Appender(docstrings.get_indexer_docstring, join="\n", indents=1)
 def get_indexer(interval_array, x):
     if not isdisjoint(interval_array):
         raise ValueError("get_indexer method is only valid for disjoint intervals.")
-    return sc.Stairs(
-        start=interval_array.left,
-        end=interval_array.right,
-        value=range(1, len(interval_array) + 1),
-        initial_value=-1,
-        closed=interval_array.closed,
-    )(x)
+    ia_length = len(interval_array)
+    contain_matrix = contains(interval_array, x, include_index=False)
+    return (np.linspace(1, ia_length, ia_length).dot(contain_matrix) - 1).astype(int)

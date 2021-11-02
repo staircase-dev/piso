@@ -20,5 +20,7 @@ Top level functions
    issubset
    coverage
    complement
+   contains
    get_indexer
    lookup
+   join

@@ -162,6 +162,14 @@ class ArrayAccessor:
             x,
         )
 
+    @Appender(docstrings.contains_docstring, join="\n", indents=1)
+    def contains(self, x, include_index=True):
+        return intervalarray.contains(
+            self._interval_array,
+            x,
+            include_index,
+        )
+
 
 def _register_accessors():
     _register_accessor("piso", pd.IntervalIndex)(ArrayAccessor)
