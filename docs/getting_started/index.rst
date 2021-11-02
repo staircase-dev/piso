@@ -20,7 +20,7 @@ To install the latest version through conda-forge::
 Package overview
 ----------------
 
-`piso` exists to bring set operations to :mod:`pandas` interval classes, specifically
+`piso` exists to bring set operations (union, intersection, difference + more), analytical methods, and lookup and join functionality to :mod:`pandas` interval classes, specifically
 
     - :class:`pandas.Interval`
     - :class:`pandas.arrays.IntervalArray`
