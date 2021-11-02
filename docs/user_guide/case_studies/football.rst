@@ -12,7 +12,7 @@ In this example we will look at a football match from 2009:
     Chelsea then opened their account in the second half with three
     unanswered goals in the 51st, 57th and 76th minute.  Liverpool
     responded with two goals in the 81st and 83rd minute to put themselves
-    ahead, however Chelsea drew with a goal in the 89th minte and advanced
+    ahead, however Chelsea drew with a goal in the 89th minute and advanced
     to the next stage on aggregate.
 
 
