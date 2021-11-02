@@ -12,11 +12,9 @@ from piso._decorators import Appender
 def lookup(frame_or_series, x):
     if not isinstance(frame_or_series.index, pd.IntervalIndex):
         raise ValueError("DataFrame or Series must be indexed by an IntervalIndex")
-    indexer = intervalarray.get_indexer(frame_or_series.index, x)
-    if not hasattr(indexer, "__len__"):
-        indexer = np.array([indexer])
     if not hasattr(x, "__len__"):
-        x = [x]
+        x = np.array(x, ndmin=1)
+    indexer = intervalarray.get_indexer(frame_or_series.index, x)
     return (
         frame_or_series.__class__(
             data=frame_or_series,

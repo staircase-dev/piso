@@ -199,10 +199,12 @@ def complement(interval_array, domain=None):
 def get_indexer(interval_array, x):
     if not isdisjoint(interval_array):
         raise ValueError("get_indexer method is only valid for disjoint intervals.")
-    return sc.Stairs(
-        start=interval_array.left,
-        end=interval_array.right,
-        value=range(1, len(interval_array) + 1),
-        initial_value=-1,
-        closed=interval_array.closed,
-    )(x)
+    starts = interval_array.left.values
+    ends = interval_array.right.values
+    x = pd.Series(x).values
+    num_ints = len(starts)
+    if interval_array.closed == "right":
+        m1 = np.less_equal.outer(x, ends) & np.greater.outer(x, starts)
+    else:
+        m1 = np.less.outer(x, ends) & np.greater_equal.outer(x, starts)
+    return (m1.dot(np.linspace(1, num_ints, num_ints)) - 1).astype(int)
