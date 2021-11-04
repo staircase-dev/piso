@@ -543,6 +543,9 @@ symmetric_difference_docstring = operation_template_doc.format(
 isdisjoint_doc = (
     """
 Indicates whether one, or more, sets are disjoint or not.
+
+*interval_array* must be left-closed or right-closed if *interval_arrays is non-empty.
+If no arguments are provided then this restriction does not apply.
 """
     + template_doc
 )
@@ -691,6 +694,8 @@ get_indexer_docstring = """
 Given a set of disjoint intervals (contained in the interval array that the accessor belongs to)
 and a value, or vector, *x*, returns the index positions of the interval which contains each value in x.
 
+*interval_array* can be left-closed, right-closed, both or neither.
+
 Parameters
 ----------
 x : scalar, or array-like of scalars
@@ -739,6 +744,7 @@ Parameters
 ----------
 x : scalar, or array-like of scalars
     Values in *x* should belong to the same domain as the intervals in *interval_array*.
+    May be left-closed, right-closed, both, or neither.
 include_index : boolean, default True
     Indicates whether to return a :class:`numpy.ndarray` or :class:`pandas.DataFrame` indexed
     by *interval_array* and column names equal to *x*

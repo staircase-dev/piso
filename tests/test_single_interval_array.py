@@ -454,6 +454,7 @@ def map_to_dates(interval_array, date_type):
     return interval_array.from_arrays(
         interval_array.left.map(make_date),
         interval_array.right.map(make_date),
+        interval_array.closed,
     )
 
 
@@ -477,7 +478,7 @@ def map_to_dates(interval_array, date_type):
 )
 @pytest.mark.parametrize(
     "closed",
-    ["left", "right"],
+    ["left", "right", "neither"],
 )
 @pytest.mark.parametrize(
     "date_type",
@@ -487,10 +488,47 @@ def map_to_dates(interval_array, date_type):
     "how",
     ["supplied", "accessor", "package"],
 )
-def test_isdisjoint(interval_index, tuples, expected, closed, date_type, how):
+def test_isdisjoint_left_right_neither(
+    interval_index, tuples, expected, closed, date_type, how
+):
 
     interval_array = make_ia_from_tuples(interval_index, tuples, closed)
     interval_array = map_to_dates(interval_array, date_type)
+    result = perform_op(interval_array, how=how, function=piso_intervalarray.isdisjoint)
+    assert result == expected
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "tuples, expected",
+    [
+        ([], True),
+        ([(1, 2), (2, 3)], False),
+        ([(1, 2), (3, 4)], True),
+        ([(1, 3), (2, 4)], False),
+        ([(1, 4), (2, 3)], False),
+        ([(1, 2), (2, 3), (3, 4)], False),
+        ([(1, 2), (3, 4), (5, 6)], True),
+        ([(1, 3), (2, 4), (5, 6)], False),
+        ([(1, 4), (2, 3), (5, 6)], False),
+    ],
+)
+@pytest.mark.parametrize(
+    "date_type",
+    ["timestamp", "numpy", "datetime", "timedelta", None],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_isdisjoint_both(interval_index, tuples, expected, date_type, how):
+
+    interval_array = make_ia_from_tuples(interval_index, tuples, "both")
+    interval_array = map_to_dates(interval_array, date_type)
+    print(interval_array)
     result = perform_op(interval_array, how=how, function=piso_intervalarray.isdisjoint)
     assert result == expected
 
@@ -632,8 +670,14 @@ def test_complement(interval_index, domain, expected_tuples, closed, how):
         (4, "left", -1),
         (3, "right", -1),
         (4, "right", 0),
+        (3, "both", 0),
+        (4, "both", 0),
+        (3, "neither", -1),
+        (4, "neither", -1),
         ([3, 9, 12], "left", np.array([0, 1, -1])),
         ([3, 9, 12], "right", np.array([-1, 1, -1])),
+        ([3, 9, 12], "both", np.array([0, 1, -1])),
+        ([3, 9, 12], "neither", np.array([-1, 1, -1])),
     ],
 )
 @pytest.mark.parametrize(
@@ -678,8 +722,12 @@ def test_get_indexer_exception(how):
     [
         (0, "left", [[True], [False], [False]]),
         (0, "right", [[False], [False], [False]]),
+        (0, "both", [[True], [False], [False]]),
+        (0, "neither", [[False], [False], [False]]),
         (6, "left", [[False], [False], [False]]),
         (6, "right", [[False], [False], [True]]),
+        (6, "neither", [[False], [False], [False]]),
+        (6, "both", [[False], [False], [True]]),
         (
             [2, 4, 5],
             "left",
@@ -689,6 +737,16 @@ def test_get_indexer_exception(how):
             [2, 4, 5],
             "right",
             [[True, True, False], [False, True, True], [False, True, True]],
+        ),
+        (
+            [2, 4, 5],
+            "both",
+            [[True, True, False], [True, True, True], [False, True, True]],
+        ),
+        (
+            [2, 4, 5],
+            "neither",
+            [[True, False, False], [False, True, False], [False, True, True]],
         ),
     ],
 )
@@ -709,9 +767,6 @@ def test_contains(interval_index, x, closed, expected, how, include_index):
         how=how,
         function=piso_intervalarray.contains,
     )
-    print(result)
-    print(ia)
-    print(x)
     if include_index:
         expected_result = pd.DataFrame(expected, index=ia, columns=np.array(x, ndmin=1))
         pd.testing.assert_frame_equal(result, expected_result, check_dtype=False)
