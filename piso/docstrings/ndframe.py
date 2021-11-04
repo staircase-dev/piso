@@ -67,7 +67,7 @@ Parameters
 ----------
 *frames_or_series : argument list of :class:`pandas.DataFrame` or :class:`pandas.Series`
     May contain two or more arguments, all of which must be indexed by a
-    :class:`pandas.IntervalIndex` containing disjoint intervals.
+    :class:`pandas.IntervalIndex` containing disjoint intervals.  The index can have any *closed* value.
     Every :class:`pandas.Series` must have a name.
 how : {"left", "right", "inner", "outer"}, default "left"
     What sort of join to perform.

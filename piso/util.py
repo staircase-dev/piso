@@ -7,7 +7,7 @@ def _validate_intervals(interval_array):
     if not all(interval_array.length):  # test for degenerate intervals
         raise DegenerateIntervalError(interval_array)
     if interval_array.closed not in ("left", "right"):
-        raise ClosedValueError
+        raise ClosedValueError(interval_array.closed)
 
 
 def _interval_x_to_stairs(interval_array):

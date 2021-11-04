@@ -30,11 +30,13 @@ Currently, there is a lack of such functionality in `pandas`, although it has be
 
 An array of intervals can be interpreted in two different ways.  It can be seen as a container for intervals, which are sets, or if the intervals are disjoint it may be seen as a set itself.  Both interpretations are supported by the methods introduced by :mod:`piso`.
 
-The domain of the intervals can be either numerical, :class:`pandas.Timestamp` or :class:`pandas.Timedelta`.  Currently, :mod:`piso` is limited to intervals which:
+The domain of the intervals can be either numerical, :class:`pandas.Timestamp` or :class:`pandas.Timedelta`.  Currently, most of the set operaitons in :mod:`piso` are limited to intervals which:
 
     - have a non-zero length
     - have a finite, length
     - are left-closed right-open, or right-closed left-open
+
+To check if these restrictions apply to a particular method, please consult the :ref:`api`.
 
 Several :ref:`case studies <case_studies>` using :mod:`piso` can be found in the :ref:`user guide <user_guide>`.  Further examples, and a detailed explanation of functionality, are provided in the :ref:`api`.
 

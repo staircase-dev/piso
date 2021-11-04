@@ -544,6 +544,9 @@ symmetric_difference_docstring = operation_template_doc.format(
 isdisjoint_doc = (
     """
 Indicates whether one, or more, sets are disjoint or not.
+
+*interval_array* must be left-closed or right-closed if *interval_arrays is non-empty.
+If *interval_array* is the only argument then this restriction does not apply.
 """
     + template_doc
 )
@@ -599,6 +602,7 @@ Parameters
 ----------
 interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
     Contains the (possibly overlapping) intervals which partially, or wholly cover the domain.
+    May be left-closed, right-closed, both, or neither.
 domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`, optional
     Specifies the domain over which to calculate the "coverage".  If *domain* is `None`,
     then the domain is considered to be the extremities of the intervals contained in *interval_array*
@@ -646,7 +650,7 @@ Equivalent to the set difference of the domain and the intervals in the array.
 Parameters
 ----------
 interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
-    Contains the (possibly overlapping) intervals.
+    Contains the (possibly overlapping) intervals.  Must be left-closed or right-closed.
 domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`, optional
     Specifies the domain over which to calculate the "complement".  If *domain* is `None`,
     then the domain is considered to be the extremities of the intervals contained in *interval_array*
@@ -699,6 +703,8 @@ get_indexer_docstring = """
 Given a set of disjoint intervals and a value, or vector, *x* returns the
 index positions of the interval which contains each value in x.
 
+*interval_array* can be left-closed, right-closed, both or neither.
+
 Parameters
 ----------
 interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
@@ -746,7 +752,7 @@ the i-th interval contains the j-th point.
 Parameters
 ----------
 interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
-    Contains the intervals.  Must be left-closed or right-closed.
+    Contains the intervals.  May be left-closed, right-closed, both, or neither.
 x : scalar, or array-like of scalars
     Values in *x* should belong to the same domain as the intervals in *interval_array*.
 include_index : boolean, default True

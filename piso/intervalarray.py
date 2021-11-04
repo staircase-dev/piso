@@ -16,11 +16,12 @@ def _check_matched_closed(interval_arrays):
     assert closed_values.count(closed_values[0]) == len(closed_values)
 
 
-def _validate_array_of_intervals_arrays(*interval_arrays):
+def _validate_array_of_intervals_arrays(*interval_arrays, validate_intervals=True):
     assert len(interval_arrays) > 0
     _check_matched_closed(interval_arrays)
-    for arr in interval_arrays:
-        _validate_intervals(arr)
+    if validate_intervals:
+        for arr in interval_arrays:
+            _validate_intervals(arr)
 
 
 def _get_return_type(interval_array, return_type):
@@ -108,7 +109,9 @@ def symmetric_difference(
 
 @Appender(docstrings.isdisjoint_docstring, join="\n", indents=1)
 def isdisjoint(interval_array, *interval_arrays):
-    _validate_array_of_intervals_arrays(interval_array, *interval_arrays)
+    _validate_array_of_intervals_arrays(
+        interval_array, *interval_arrays, validate_intervals=bool(interval_arrays)
+    )
     if interval_arrays:
         stairs = _make_stairs(interval_array, *interval_arrays)
         result = stairs.max() <= 1
@@ -117,7 +120,10 @@ def isdisjoint(interval_array, *interval_arrays):
     else:
         arr = np.stack([interval_array.left.values, interval_array.right.values])
         arr = arr[arr[:, 0].argsort()]
-        result = np.all(arr[0, 1:] >= arr[1, :-1])
+        if interval_array.closed == "both":
+            result = np.all(arr[0, 1:] > arr[1, :-1])
+        else:
+            result = np.all(arr[0, 1:] >= arr[1, :-1])
     return result
 
 
@@ -185,6 +191,7 @@ def coverage(interval_array, domain=None):
 
 @Appender(docstrings.complement_docstring, join="\n", indents=1)
 def complement(interval_array, domain=None):
+    _validate_intervals(interval_array)
     stepfunction = _interval_x_to_stairs(interval_array).invert()
     if isinstance(domain, (pd.IntervalIndex, pd.arrays.IntervalArray)):
         domain = _interval_x_to_stairs(domain)
@@ -200,11 +207,13 @@ def contains(interval_array, x, include_index=True):
     starts = interval_array.left.values
     ends = interval_array.right.values
     x = pd.Series(x).values
-    if interval_array.closed == "right":
-        result = np.less_equal.outer(x, ends) & np.greater.outer(x, starts)
-    else:
-        result = np.less.outer(x, ends) & np.greater_equal.outer(x, starts)
-    result = result.transpose()
+    right_compare = (
+        np.less_equal if interval_array.closed in ("right", "both") else np.less
+    )
+    left_compare = (
+        np.greater_equal if interval_array.closed in ("left", "both") else np.greater
+    )
+    result = (right_compare.outer(x, ends) & left_compare.outer(x, starts)).transpose()
     if include_index:
         return pd.DataFrame(result, index=interval_array, columns=x)
     return result
