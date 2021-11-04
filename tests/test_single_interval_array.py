@@ -507,6 +507,7 @@ def test_isdisjoint_left_right_neither(
     [
         ([], True),
         ([(1, 2), (2, 3)], False),
+        ([(1, 2), (3, 3)], True),
         ([(1, 2), (3, 4)], True),
         ([(1, 3), (2, 4)], False),
         ([(1, 4), (2, 3)], False),

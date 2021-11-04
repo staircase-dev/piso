@@ -602,6 +602,7 @@ Parameters
 ----------
 interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
     Contains the (possibly overlapping) intervals which partially, or wholly cover the domain.
+    May be left-closed, right-closed, both, or neither.
 domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`, optional
     Specifies the domain over which to calculate the "coverage".  If *domain* is `None`,
     then the domain is considered to be the extremities of the intervals contained in *interval_array*
@@ -649,7 +650,7 @@ Equivalent to the set difference of the domain and the intervals in the array.
 Parameters
 ----------
 interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
-    Contains the (possibly overlapping) intervals.
+    Contains the (possibly overlapping) intervals.  Must be left-closed or right-closed.
 domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`, optional
     Specifies the domain over which to calculate the "complement".  If *domain* is `None`,
     then the domain is considered to be the extremities of the intervals contained in *interval_array*

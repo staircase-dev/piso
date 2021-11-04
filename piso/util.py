@@ -3,10 +3,10 @@ import staircase as sc
 from piso._exceptions import ClosedValueError, DegenerateIntervalError
 
 
-def _validate_intervals(interval_array, restrict_closed=True):
+def _validate_intervals(interval_array):
     if not all(interval_array.length):  # test for degenerate intervals
         raise DegenerateIntervalError(interval_array)
-    if restrict_closed and interval_array.closed not in ("left", "right"):
+    if interval_array.closed not in ("left", "right"):
         raise ClosedValueError(interval_array.closed)
 
 

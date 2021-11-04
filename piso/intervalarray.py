@@ -16,12 +16,12 @@ def _check_matched_closed(interval_arrays):
     assert closed_values.count(closed_values[0]) == len(closed_values)
 
 
-def _validate_array_of_intervals_arrays(*interval_arrays, restrict_closed=True):
-    # restrict_closed == True means only "left" or "right" closed permitted
+def _validate_array_of_intervals_arrays(*interval_arrays, validate_intervals=True):
     assert len(interval_arrays) > 0
     _check_matched_closed(interval_arrays)
-    for arr in interval_arrays:
-        _validate_intervals(arr, restrict_closed)
+    if validate_intervals:
+        for arr in interval_arrays:
+            _validate_intervals(arr)
 
 
 def _get_return_type(interval_array, return_type):
@@ -110,7 +110,7 @@ def symmetric_difference(
 @Appender(docstrings.isdisjoint_docstring, join="\n", indents=1)
 def isdisjoint(interval_array, *interval_arrays):
     _validate_array_of_intervals_arrays(
-        interval_array, *interval_arrays, restrict_closed=bool(interval_arrays)
+        interval_array, *interval_arrays, validate_intervals=bool(interval_arrays)
     )
     if interval_arrays:
         stairs = _make_stairs(interval_array, *interval_arrays)
@@ -191,6 +191,7 @@ def coverage(interval_array, domain=None):
 
 @Appender(docstrings.complement_docstring, join="\n", indents=1)
 def complement(interval_array, domain=None):
+    _validate_intervals(interval_array)
     stepfunction = _interval_x_to_stairs(interval_array).invert()
     if isinstance(domain, (pd.IntervalIndex, pd.arrays.IntervalArray)):
         domain = _interval_x_to_stairs(domain)
