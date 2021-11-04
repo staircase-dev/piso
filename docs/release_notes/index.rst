@@ -7,6 +7,8 @@ Release notes
 
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 
+**v0.6.0 2021-11-05**
+
 The following methods were extended to accommodate intervals with *closed = "both"* or *"neither"*
 
 - :func:`piso.contains` (and :meth:`ArrayAccessor.contains() <piso.accessor.ArrayAccessor.contains>`)
