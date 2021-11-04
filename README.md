@@ -15,7 +15,7 @@
 
 # piso - pandas interval set operations
 
-**piso** exists to bring set operations (union, intersection, difference + more) to [pandas'](https://pandas.pydata.org/) interval classes, specifically
+**piso** exists to bring set operations (union, intersection, difference + more), analytical methods, and lookup and join functionality to [pandas'](https://pandas.pydata.org/) interval classes, specifically
 
     - pandas.Interval
     - pandas.arrays.IntervalArray
@@ -36,11 +36,40 @@ Currently, there is a lack of such functionality in pandas, although it has been
 <IntervalArray>
 [(3, 4]]
 Length: 1, closed: right, dtype: interval[int64]
+
+>>> arr.piso.contains([2, 3, 5])
+            2      3      5
+(1, 5]   True   True   True
+(3, 6]  False  False   True
+(2, 4]  False   True  False
+
+>>> df = pd.DataFrame(
+...     {"A":[4,3], "B":["x","y"]},
+...     index=pd.IntervalIndex.from_tuples([(1,3), (5,7)]),
+... )
+
+>>> s = pd.Series(
+...     [True, False],
+...     index=pd.IntervalIndex.from_tuples([(2,4), (5,6)]),
+...     name="C",
+... )
+
+>>> piso.join(df, s)
+        A  B      C
+(1, 2]  4  x    NaN
+(2, 3]  4  x   True
+(5, 6]  3  y  False
+(6, 7]  3  y    NaN
+
+>>> piso.join(df, s, how="inner")
+        A  B      C
+(2, 3]  4  x   True
+(5, 6]  3  y  False
 ```
 
 The domain of the intervals can be either numerical, `pandas.Timestamp` or `pandas.Timedelta`.
 
-A small [case study](https://piso.readthedocs.io/en/latest/user_guide/calendar.html) using piso can be found in the [user guide](https://piso.readthedocs.io/en/latest/user_guide/index.html).  Further examples, and a detailed explanation of functionality, are provided in the [API reference](https://piso.readthedocs.io/en/latest/reference/index.html).
+Several [case studies](https://piso.readthedocs.io/en/latest/user_guide/case_studies/index.html) using piso can be found in the [user guide](https://piso.readthedocs.io/en/latest/user_guide/index.html).  Further examples, and a detailed explanation of functionality, are provided in the [API reference](https://piso.readthedocs.io/en/latest/reference/index.html).
 
 Visit [https://piso.readthedocs.io](https://piso.readthedocs.io/) for the documentation.
 
@@ -70,7 +99,7 @@ This project is licensed under the [MIT License](https://github.com/staircase-de
 
 ## Acknowledgments
 
-Currently, piso is a pure-python implentation which relies heavily on [staircase](https://www.staircase.dev) and [pandas](https://pandas.pydata.org/).  It is clearly designed to operate as part of the *pandas ecosystem*.  The colours for the piso logo have been assimilated from pandas as a homage, and is not to intended to imply and affiliation with, or endorsement by, pandas.
+Currently, piso is a pure-python implentation which relies heavily on [staircase](https://www.staircase.dev) and [pandas](https://pandas.pydata.org/).  It is designed to operate as part of the *pandas ecosystem*.  The colours for the piso logo have been assimilated from pandas as a homage, and is not to intended to imply and affiliation with, or endorsement by, pandas.
 
 Additionally, two classes have been borrowed, almost verbatim, from the pandas source code:
 

@@ -16,7 +16,7 @@
 
 .. rst-class:: center
 
-Pandas Interval Set Operations: methods for set operations for pandas' Interval, IntervalArray and IntervalIndex
+Pandas Interval Set Operations: methods for set operations, analytics, lookups and joins on pandas' Interval, IntervalArray and IntervalIndex
 
 .. image:: img/powered_by_staircase.svg
    :target: https://www.staircase.dev
