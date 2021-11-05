@@ -4,6 +4,7 @@
 Release notes
 ========================
 
+- removed :func:`piso.get_indexer` in favour of :meth:`pandas.IntervalIndex.get_indexer
 
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 

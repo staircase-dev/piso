@@ -3,7 +3,6 @@ from piso.intervalarray import (
     contains,
     coverage,
     difference,
-    get_indexer,
     intersection,
     isdisjoint,
     issubset,

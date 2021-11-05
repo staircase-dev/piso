@@ -217,16 +217,3 @@ def contains(interval_array, x, include_index=True):
     if include_index:
         return pd.DataFrame(result, index=interval_array, columns=x)
     return result
-
-
-@Appender(docstrings.get_indexer_docstring, join="\n", indents=1)
-def get_indexer(interval_array, x):
-    if isinstance(interval_array, pd.IntervalIndex):
-        if not hasattr(x, "__len__"):
-            x = np.array(x, ndmin=1)
-        return interval_array.get_indexer(x)
-    if not isdisjoint(interval_array):
-        raise ValueError("get_indexer method is only valid for disjoint intervals.")
-    ia_length = len(interval_array)
-    contain_matrix = contains(interval_array, x, include_index=False)
-    return (np.linspace(1, ia_length, ia_length).dot(contain_matrix) - 1).astype(int)
