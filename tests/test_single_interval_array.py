@@ -667,60 +667,6 @@ def test_complement(interval_index, domain, expected_tuples, closed, how):
 @pytest.mark.parametrize(
     "x, closed, expected",
     [
-        (3, "left", 0),
-        (4, "left", -1),
-        (3, "right", -1),
-        (4, "right", 0),
-        (3, "both", 0),
-        (4, "both", 0),
-        (3, "neither", -1),
-        (4, "neither", -1),
-        ([3, 9, 12], "left", np.array([0, 1, -1])),
-        ([3, 9, 12], "right", np.array([-1, 1, -1])),
-        ([3, 9, 12], "both", np.array([0, 1, -1])),
-        ([3, 9, 12], "neither", np.array([-1, 1, -1])),
-    ],
-)
-@pytest.mark.parametrize(
-    "how",
-    ["supplied", "accessor", "package"],
-)
-def test_get_indexer(interval_index, x, closed, expected, how):
-    ia = make_ia3(interval_index, closed)
-    result = perform_op(
-        ia,
-        x,
-        how=how,
-        function=piso_intervalarray.get_indexer,
-    )
-    if hasattr(expected, "__len__"):
-        assert all(result == expected)
-    else:
-        assert result == expected
-
-
-@pytest.mark.parametrize(
-    "how",
-    ["supplied", "accessor", "package"],
-)
-def test_get_indexer_exception(how):
-    ia = make_ia1(True, "left")
-    with pytest.raises(ValueError):
-        perform_op(
-            ia,
-            1,
-            how=how,
-            function=piso_intervalarray.get_indexer,
-        )
-
-
-@pytest.mark.parametrize(
-    "interval_index",
-    [True, False],
-)
-@pytest.mark.parametrize(
-    "x, closed, expected",
-    [
         (0, "left", [[True], [False], [False]]),
         (0, "right", [[False], [False], [False]]),
         (0, "both", [[True], [False], [False]]),
