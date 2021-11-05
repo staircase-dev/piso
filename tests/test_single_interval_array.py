@@ -705,7 +705,7 @@ def test_get_indexer(interval_index, x, closed, expected, how):
 )
 def test_get_indexer_exception(how):
     ia = make_ia1(True, "left")
-    with pytest.raises(ValueError):
+    with pytest.raises(Exception):
         perform_op(
             ia,
             1,

@@ -221,6 +221,10 @@ def contains(interval_array, x, include_index=True):
 
 @Appender(docstrings.get_indexer_docstring, join="\n", indents=1)
 def get_indexer(interval_array, x):
+    if isinstance(interval_array, pd.IntervalIndex):
+        if not hasattr(x, "__len__"):
+            x = np.array(x, ndmin=1)
+        return interval_array.get_indexer(x)
     if not isdisjoint(interval_array):
         raise ValueError("get_indexer method is only valid for disjoint intervals.")
     ia_length = len(interval_array)
