@@ -19,7 +19,6 @@ def get_accessor_method(self, function):
         piso_intervalarray.issubset: self.piso.issubset,
         piso_intervalarray.coverage: self.piso.coverage,
         piso_intervalarray.complement: self.piso.complement,
-        piso_intervalarray.get_indexer: self.piso.get_indexer,
         piso_intervalarray.contains: self.piso.contains,
     }[function]
 
@@ -34,7 +33,6 @@ def get_package_method(function):
         piso_intervalarray.issubset: piso.issubset,
         piso_intervalarray.coverage: piso.coverage,
         piso_intervalarray.complement: piso.complement,
-        piso_intervalarray.get_indexer: piso.get_indexer,
         piso_intervalarray.contains: piso.contains,
     }[function]
 

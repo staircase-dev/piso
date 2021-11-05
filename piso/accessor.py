@@ -155,13 +155,6 @@ class ArrayAccessor:
             domain,
         )
 
-    @Appender(docstrings.get_indexer_docstring, join="\n", indents=1)
-    def get_indexer(self, x):
-        return intervalarray.get_indexer(
-            self._interval_array,
-            x,
-        )
-
     @Appender(docstrings.contains_docstring, join="\n", indents=1)
     def contains(self, x, include_index=True):
         return intervalarray.contains(
