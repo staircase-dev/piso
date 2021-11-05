@@ -21,6 +21,5 @@ Top level functions
    coverage
    complement
    contains
-   get_indexer
    lookup
    join
