@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import staircase as sc
-from pandas.core.indexes import interval
 
 import piso.docstrings.intervalarray as docstrings
 from piso._decorators import Appender
