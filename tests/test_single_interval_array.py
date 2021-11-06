@@ -20,6 +20,7 @@ def get_accessor_method(self, function):
         piso_intervalarray.coverage: self.piso.coverage,
         piso_intervalarray.complement: self.piso.complement,
         piso_intervalarray.contains: self.piso.contains,
+        piso_intervalarray.split: self.piso.split,
     }[function]
 
 
@@ -34,6 +35,7 @@ def get_package_method(function):
         piso_intervalarray.coverage: piso.coverage,
         piso_intervalarray.complement: piso.complement,
         piso_intervalarray.contains: piso.contains,
+        piso_intervalarray.split: piso.split,
     }[function]
 
 
@@ -76,6 +78,16 @@ def make_ia3(interval_index, closed):
     if interval_index:
         ia3 = pd.IntervalIndex(ia3)
     return ia3
+
+
+def make_ia4(interval_index, closed):
+    ia4 = pd.arrays.IntervalArray.from_tuples(
+        [(1, 4), (2, 5), (3, 6)],
+        closed=closed,
+    )
+    if interval_index:
+        ia4 = pd.IntervalIndex(ia4)
+    return ia4
 
 
 def make_ia_from_tuples(interval_index, tuples, closed):
@@ -438,9 +450,9 @@ def test_symmetric_difference_min_overlaps_all_2(
     )
 
 
-def map_to_dates(interval_array, date_type):
+def map_to_dates(obj, date_type):
     def make_date(x):
-        ts = pd.Timestamp(f"2021-10-{x}")
+        ts = pd.to_datetime(x, unit="d", origin="2021-09-30")
         if date_type == "numpy":
             return ts.to_numpy()
         if date_type == "datetime":
@@ -449,11 +461,14 @@ def map_to_dates(interval_array, date_type):
             return ts - pd.Timestamp("2021-10-1")
         return ts
 
-    return interval_array.from_arrays(
-        interval_array.left.map(make_date),
-        interval_array.right.map(make_date),
-        interval_array.closed,
-    )
+    if isinstance(obj, (pd.IntervalIndex, pd.arrays.IntervalArray)):
+        return obj.from_arrays(
+            obj.left.map(make_date),
+            obj.right.map(make_date),
+            obj.closed,
+        )
+    elif isinstance(obj, list):
+        return [make_date(x) for x in obj]
 
 
 @pytest.mark.parametrize(
@@ -718,3 +733,52 @@ def test_contains(interval_index, x, closed, expected, how, include_index):
     else:
         expected_result = np.array(expected)
         assert (result == expected_result).all()
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "x, expected_tuples",
+    [
+        ([4], [(1, 4), (2, 4), (4, 5), (3, 4), (4, 6)]),
+        ([3.5], [(1, 3.5), (3.5, 4), (2, 3.5), (3.5, 5), (3, 3.5), (3.5, 6)]),
+        ([3, 4], [(1, 3), (3, 4), (2, 3), (3, 4), (4, 5), (3, 4), (4, 6)]),
+        ([0, 3, 4, 7], [(1, 3), (3, 4), (2, 3), (3, 4), (4, 5), (3, 4), (4, 6)]),
+        ([0], [(1, 4), (2, 5), (3, 6)]),
+        ([4, 4], [(1, 4), (2, 4), (4, 5), (3, 4), (4, 6)]),
+        ([4, 3], [(1, 3), (3, 4), (2, 3), (3, 4), (4, 5), (3, 4), (4, 6)]),
+    ],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right", "both", "neither"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+@pytest.mark.parametrize(
+    "date_type",
+    ["timestamp", "numpy", "datetime", "timedelta", None],
+)
+def test_split(interval_index, x, expected_tuples, closed, how, date_type):
+    ia = make_ia4(interval_index, closed)
+    ia = map_to_dates(ia, date_type)
+
+    expected = make_ia_from_tuples(False, expected_tuples, closed)
+    expected = map_to_dates(expected, date_type)
+    x = map_to_dates(x, date_type)
+
+    result = perform_op(
+        ia,
+        x,
+        how=how,
+        function=piso_intervalarray.split,
+    )
+    assert_interval_array_equal(
+        result,
+        expected,
+        interval_index,
+    )

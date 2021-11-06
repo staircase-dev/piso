@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import staircase as sc
+from pandas.core.indexes import interval
 
 import piso.docstrings.intervalarray as docstrings
 from piso._decorators import Appender
@@ -217,3 +218,23 @@ def contains(interval_array, x, include_index=True):
     if include_index:
         return pd.DataFrame(result, index=interval_array, columns=x)
     return result
+
+
+@Appender(docstrings.split_docstring, join="\n", indents=1)
+def split(interval_array, x):
+    # x = pd.Series(x).values
+    x = pd.Series(sorted(set(x))).values  # converting to numpy array will not work
+    contained = contains(interval_array.set_closed("neither"), x, include_index=False)
+    breakpoints = np.concatenate(
+        (
+            np.expand_dims(interval_array.left.values, 1),
+            pd.DataFrame(np.broadcast_to(x, contained.shape)).where(contained).values,
+            np.expand_dims(interval_array.right.values, 1),
+        ),
+        axis=1,
+    )
+    lefts = breakpoints[:, :-1]
+    rights = breakpoints[:, 1:]
+    return interval_array.from_arrays(
+        lefts[~np.isnan(lefts)], rights[~np.isnan(rights)], closed=interval_array.closed
+    )
