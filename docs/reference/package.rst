@@ -21,5 +21,7 @@ Top level functions
    coverage
    complement
    contains
+   split
    lookup
    join
+   

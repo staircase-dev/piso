@@ -544,7 +544,7 @@ isdisjoint_doc = (
     """
 Indicates whether one, or more, sets are disjoint or not.
 
-*interval_array* must be left-closed or right-closed if *interval_arrays is non-empty.
+*interval_array* must be left-closed or right-closed if \\*interval_arrays is non-empty.
 If no arguments are provided then this restriction does not apply.
 """
     + template_doc
@@ -781,4 +781,54 @@ array([[False,  True,  True,  True],
 
 >>> pd.IntervalIndex.from_tuples([(0,2)]).piso.contains(1, include_index=False)
 array([[ True]])
+"""
+
+
+split_docstring = """
+Given a set of intervals, and break points, splits the intervals into pieces wherever
+the overlap a break point.
+
+The intervals are contained in the object the accessor belongs to.  They may be left-closed,
+right-closed, both, or neither, and contain overlapping intervals.
+
+Parameters
+----------
+x : scalar, or array-like of scalars
+    Values in *x* should belong to the same domain as the intervals in *interval_array*.
+    May contain duplicates and be unsorted.
+
+Returns
+----------
+:class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    Return type will be the same type as the object the accessor belongs to.
+
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+>>> piso.register_accessors()
+
+>>> arr = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (2, 5)],
+... )
+
+>>> arr.piso.split(3)
+<IntervalArray>
+[(0, 3], (3, 4], (2, 3], (3, 5]]
+Length: 4, closed: right, dtype: interval[int64]
+
+>>> arr.piso.split([3,3,3,3])
+<IntervalArray>
+[(0, 3], (3, 4], (2, 3], (3, 5]]
+Length: 4, closed: right, dtype: interval[int64]
+
+>>> arr = pd.IntervalIndex.from_tuples(
+...     [(0, 4), (2, 5)], closed="neither",
+... )
+
+>>> arr.piso.split([1, 6, 4])
+IntervalIndex([(0.0, 1.0), (1.0, 4.0), (2.0, 4.0), (4.0, 5.0)],
+              closed='neither',
+              dtype='interval[float64]')
 """

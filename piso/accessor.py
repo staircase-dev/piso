@@ -163,6 +163,13 @@ class ArrayAccessor:
             include_index,
         )
 
+    @Appender(docstrings.split_docstring, join="\n", indents=1)
+    def split(self, x):
+        return intervalarray.split(
+            self._interval_array,
+            x,
+        )
+
 
 def _register_accessors():
     _register_accessor("piso", pd.IntervalIndex)(ArrayAccessor)

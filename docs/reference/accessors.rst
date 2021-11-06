@@ -19,3 +19,4 @@ Accessors
    ArrayAccessor.coverage
    ArrayAccessor.complement
    ArrayAccessor.contains
+   ArrayAccessor.split

@@ -7,6 +7,7 @@ from piso.intervalarray import (
     isdisjoint,
     issubset,
     issuperset,
+    split,
     symmetric_difference,
     union,
 )
