@@ -14,7 +14,7 @@ def lookup(frame_or_series, x):
         raise ValueError("DataFrame or Series must be indexed by an IntervalIndex")
     if not hasattr(x, "__len__"):
         x = np.array(x, ndmin=1)
-    indexer = intervalarray.get_indexer(frame_or_series.index, x)
+    indexer = frame_or_series.index.get_indexer(x)
     result = frame_or_series.copy().iloc[indexer].set_axis(x)
     set_nan = indexer == -1
     if set_nan.any():
@@ -52,7 +52,7 @@ def _get_indexers(*dfs):
     )
     tiling_index = pd.IntervalIndex.from_breaks(sorted(set(breaks)))
     lookups = tiling_index.left if closed == "left" else tiling_index.right
-    indexers = [intervalarray.get_indexer(df.index, lookups) for df in dfs]
+    indexers = [df.index.get_indexer(lookups) for df in dfs]
     return tiling_index, indexers
 
 

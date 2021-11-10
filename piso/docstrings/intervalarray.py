@@ -791,3 +791,50 @@ array([[False,  True,  True,  True],
 >>> piso.contains(pd.IntervalIndex.from_tuples([(0,2)]), 1, include_index=False)
 array([[ True]])
 """
+
+split_docstring = """
+Given a set of intervals, and break points, splits the intervals into pieces wherever
+the overlap a break point.
+
+Parameters
+----------
+interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    Contains the (possibly overlapping) intervals.  May be left-closed, right-closed, both, or neither.
+x : scalar, or array-like of scalars
+    Values in *x* should belong to the same domain as the intervals in *interval_array*.
+    May contain duplicates and be unsorted.
+
+Returns
+----------
+:class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    Return type will be the same type as *interval_array*
+
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+
+>>> arr = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (2, 5)],
+... )
+
+>>> piso.split(arr, 3)
+<IntervalArray>
+[(0, 3], (3, 4], (2, 3], (3, 5]]
+Length: 4, closed: right, dtype: interval[int64]
+
+>>> piso.split(arr, [3,3,3,3])
+<IntervalArray>
+[(0, 3], (3, 4], (2, 3], (3, 5]]
+Length: 4, closed: right, dtype: interval[int64]
+
+>>> arr = pd.IntervalIndex.from_tuples(
+...     [(0, 4), (2, 5)], closed="neither",
+... )
+
+>>> piso.split(arr, [1, 6, 4])
+IntervalIndex([(0.0, 1.0), (1.0, 4.0), (2.0, 4.0), (4.0, 5.0)],
+              closed='neither',
+              dtype='interval[float64]')
+"""

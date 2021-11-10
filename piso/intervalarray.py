@@ -219,10 +219,21 @@ def contains(interval_array, x, include_index=True):
     return result
 
 
-@Appender(docstrings.get_indexer_docstring, join="\n", indents=1)
-def get_indexer(interval_array, x):
-    if not isdisjoint(interval_array):
-        raise ValueError("get_indexer method is only valid for disjoint intervals.")
-    ia_length = len(interval_array)
-    contain_matrix = contains(interval_array, x, include_index=False)
-    return (np.linspace(1, ia_length, ia_length).dot(contain_matrix) - 1).astype(int)
+@Appender(docstrings.split_docstring, join="\n", indents=1)
+def split(interval_array, x):
+    # x = pd.Series(x).values
+    x = pd.Series(sorted(set(x))).values  # converting to numpy array will not work
+    contained = contains(interval_array.set_closed("neither"), x, include_index=False)
+    breakpoints = np.concatenate(
+        (
+            np.expand_dims(interval_array.left.values, 1),
+            pd.DataFrame(np.broadcast_to(x, contained.shape)).where(contained).values,
+            np.expand_dims(interval_array.right.values, 1),
+        ),
+        axis=1,
+    )
+    lefts = breakpoints[:, :-1]
+    rights = breakpoints[:, 1:]
+    return interval_array.from_arrays(
+        lefts[~np.isnan(lefts)], rights[~np.isnan(rights)], closed=interval_array.closed
+    )

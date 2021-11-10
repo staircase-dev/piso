@@ -3,11 +3,11 @@ from piso.intervalarray import (
     contains,
     coverage,
     difference,
-    get_indexer,
     intersection,
     isdisjoint,
     issubset,
     issuperset,
+    split,
     symmetric_difference,
     union,
 )
