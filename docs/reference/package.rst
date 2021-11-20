@@ -21,6 +21,7 @@ Top level functions
    coverage
    complement
    contains
-   get_indexer
+   split
    lookup
    join
+   adjacency_matrix

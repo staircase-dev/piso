@@ -20,7 +20,7 @@ Pandas Interval Set Operations: methods for set operations, analytics, lookups a
 
 .. image:: img/powered_by_staircase.svg
    :target: https://www.staircase.dev
-   :width: 200
+   :width: 300
    :alt: powered_by_staircase
    :align: center
 

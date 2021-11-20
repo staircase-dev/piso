@@ -5,6 +5,20 @@ Release notes
 ========================
 
 
+**v0.7.0 2021-11-20**
+
+Added the following methods
+
+- :func:`piso.split`
+- :func:`piso.adjacency_matrix`
+- :meth:`ArrayAccessor.split() <piso.accessor.ArrayAccessor.split>`
+- :meth:`ArrayAccessor.adjacency_matrix() <piso.accessor.ArrayAccessor.adjacency_matrix>`
+
+Removed the following methods
+
+- removed :func:`piso.get_indexer` in favour of :meth:`pandas.IntervalIndex.get_indexer`
+
+
 **v0.6.0 2021-11-05**
 
 The following methods were extended to accommodate intervals with *closed = "both"* or *"neither"*
@@ -12,7 +26,7 @@ The following methods were extended to accommodate intervals with *closed = "bot
 - :func:`piso.contains` (and :meth:`ArrayAccessor.contains() <piso.accessor.ArrayAccessor.contains>`)
 - :func:`piso.get_indexer` (and :meth:`ArrayAccessor.get_indexer() <piso.accessor.ArrayAccessor.get_indexer>`)
 - :func:`piso.lookup`
-- :func:`piso.isdisjoint` (and :meth:`ArrayAccessor.get_indexer() <piso.accessor.ArrayAccessor.get_indexer>`)
+- :func:`piso.isdisjoint` (and :meth:`ArrayAccessor.isdisjoint() <piso.accessor.ArrayAccessor.isdisjoint>`)
 
 **v0.5.0 2021-11-02**
 
@@ -34,7 +48,7 @@ Added the following methods
 
 - :func:`piso.lookup`
 - :func:`piso.get_indexer`
-- :meth:`ArrayAccessor.get_indexer() <piso.accessor.ArrayAccessor.get_indexer>`
+- :meth:`ArrayAccessor.get_indexer`
 
 
 **v0.3.0 2021-10-23**

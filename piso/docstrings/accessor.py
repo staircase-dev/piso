@@ -1,3 +1,5 @@
+from piso.graph import adjacency_matrix
+
 union_examples = """
 Examples
 -----------
@@ -544,7 +546,7 @@ isdisjoint_doc = (
     """
 Indicates whether one, or more, sets are disjoint or not.
 
-*interval_array* must be left-closed or right-closed if *interval_arrays is non-empty.
+*interval_array* must be left-closed or right-closed if \\*interval_arrays is non-empty.
 If no arguments are provided then this restriction does not apply.
 """
     + template_doc
@@ -781,4 +783,112 @@ array([[False,  True,  True,  True],
 
 >>> pd.IntervalIndex.from_tuples([(0,2)]).piso.contains(1, include_index=False)
 array([[ True]])
+"""
+
+
+split_docstring = """
+Given a set of intervals, and break points, splits the intervals into pieces wherever
+the overlap a break point.
+
+The intervals are contained in the object the accessor belongs to.  They may be left-closed,
+right-closed, both, or neither, and contain overlapping intervals.
+
+Parameters
+----------
+x : scalar, or array-like of scalars
+    Values in *x* should belong to the same domain as the intervals in *interval_array*.
+    May contain duplicates and be unsorted.
+
+Returns
+----------
+:class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    Return type will be the same type as the object the accessor belongs to.
+
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+>>> piso.register_accessors()
+
+>>> arr = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (2, 5)],
+... )
+
+>>> arr.piso.split(3)
+<IntervalArray>
+[(0, 3], (3, 4], (2, 3], (3, 5]]
+Length: 4, closed: right, dtype: interval[int64]
+
+>>> arr.piso.split([3,3,3,3])
+<IntervalArray>
+[(0, 3], (3, 4], (2, 3], (3, 5]]
+Length: 4, closed: right, dtype: interval[int64]
+
+>>> arr = pd.IntervalIndex.from_tuples(
+...     [(0, 4), (2, 5)], closed="neither",
+... )
+
+>>> arr.piso.split([1, 6, 4])
+IntervalIndex([(0.0, 1.0), (1.0, 4.0), (2.0, 4.0), (4.0, 5.0)],
+              closed='neither',
+              dtype='interval[float64]')
+"""
+
+
+adjacency_matrix_docstring = """
+Returns a 2D array (or dataframe) of boolean values indicating edges between nodes in a graph.
+
+The set of nodes correspond to intervals and the edges are defined by the relationship
+defined by the *edges* parameter.
+
+Note that the diagonal is defined with False values by default.
+
+Parameters
+----------
+edges : {"intersect", "disjoint"}, default "intersect"
+    Defines the relationship that edges between nodes represent.
+include_index : bool, default True
+    If True then a :class:`pandas.DataFrame`, indexed by the intervals, is returned.
+    If False then a :class:`numpy.ndarray` is returned.
+
+Returns
+-------
+:class:`pandas.DataFrame` or :class:`numpy.ndarray`
+    Boolean valued, symmetrical, with False along diagonal.
+
+Examples
+---------
+
+>>> import pandas as pd
+>>> import piso
+>>> piso.register_accessors()
+
+>>> arr = pd.arrays.IntervalArray.from_tuples(
+...    [(0,4), (3,6), (5, 7), (8,9), (9,10)],
+...    closed="both",
+... )
+
+>>> arr.piso.adjacency_matrix()
+         [0, 4]  [3, 6]  [5, 7]  [8, 9]  [9, 10]
+[0, 4]    False    True   False   False    False
+[3, 6]     True   False    True   False    False
+[5, 7]    False    True   False   False    False
+[8, 9]    False   False   False   False     True
+[9, 10]   False   False   False    True    False
+
+>>> arr.piso.adjacency_matrix(arr, include_index=False)
+array([[False,  True, False, False, False],
+       [ True, False,  True, False, False],
+       [False,  True, False, False, False],
+       [False, False, False, False,  True],
+       [False, False, False,  True, False]])
+
+>>> arr.piso.adjacency_matrix(arr, edges="disjoint")
+         [0, 4]  [3, 6]  [5, 7]  [8, 9]  [9, 10]
+[0, 4]    False   False    True    True     True
+[3, 6]    False   False   False    True     True
+[5, 7]     True   False   False    True     True
+[8, 9]     True    True    True   False    False
+[9, 10]    True    True    True   False    False
 """

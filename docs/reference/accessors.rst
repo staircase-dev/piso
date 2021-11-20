@@ -19,4 +19,5 @@ Accessors
    ArrayAccessor.coverage
    ArrayAccessor.complement
    ArrayAccessor.contains
-   ArrayAccessor.get_indexer
+   ArrayAccessor.split
+   ArrayAccessor.adjacency_matrix
