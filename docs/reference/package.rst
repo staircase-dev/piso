@@ -24,4 +24,4 @@ Top level functions
    split
    lookup
    join
-   
+   adjacency_matrix

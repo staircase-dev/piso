@@ -1,3 +1,4 @@
+from piso.graph import adjacency_matrix
 from piso.intervalarray import (
     complement,
     contains,

@@ -3,7 +3,7 @@ import warnings
 import pandas as pd
 
 import piso.docstrings.accessor as docstrings
-from piso import intervalarray
+from piso import graph, intervalarray
 from piso._decorators import Appender
 
 
@@ -168,6 +168,14 @@ class ArrayAccessor:
         return intervalarray.split(
             self._interval_array,
             x,
+        )
+
+    @Appender(docstrings.adjacency_matrix_docstring, join="\n", indents=1)
+    def adjacency_matrix(self, edges="intersect", include_index=True):
+        return graph.adjacency_matrix(
+            self._interval_array,
+            edges=edges,
+            include_index=include_index,
         )
 
 

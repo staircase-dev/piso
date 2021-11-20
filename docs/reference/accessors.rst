@@ -20,3 +20,4 @@ Accessors
    ArrayAccessor.complement
    ArrayAccessor.contains
    ArrayAccessor.split
+   ArrayAccessor.adjacency_matrix

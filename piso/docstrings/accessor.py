@@ -1,3 +1,5 @@
+from piso.graph import adjacency_matrix
+
 union_examples = """
 Examples
 -----------
@@ -831,4 +833,62 @@ Length: 4, closed: right, dtype: interval[int64]
 IntervalIndex([(0.0, 1.0), (1.0, 4.0), (2.0, 4.0), (4.0, 5.0)],
               closed='neither',
               dtype='interval[float64]')
+"""
+
+
+adjacency_matrix_docstring = """
+Returns a 2D array (or dataframe) of boolean values indicating edges between nodes in a graph.
+
+The set of nodes correspond to intervals and the edges are defined by the relationship
+defined by the *edges* parameter.
+
+Note that the diagonal is defined with False values by default.
+
+Parameters
+----------
+edges : {"intersect", "disjoint"}, default "intersect"
+    Defines the relationship that edges between nodes represent.
+include_index : bool, default True
+    If True then a :class:`pandas.DataFrame`, indexed by the intervals, is returned.
+    If False then a :class:`numpy.ndarray` is returned.
+
+Returns
+-------
+:class:`pandas.DataFrame` or :class:`numpy.ndarray`
+    Boolean valued, symmetrical, with False along diagonal.
+
+Examples
+---------
+
+>>> import pandas as pd
+>>> import piso
+>>> piso.register_accessors()
+
+>>> arr = pd.arrays.IntervalArray.from_tuples(
+...    [(0,4), (3,6), (5, 7), (8,9), (9,10)],
+...    closed="both",
+... )
+
+>>> arr.piso.adjacency_matrix()
+         [0, 4]  [3, 6]  [5, 7]  [8, 9]  [9, 10]
+[0, 4]    False    True   False   False    False
+[3, 6]     True   False    True   False    False
+[5, 7]    False    True   False   False    False
+[8, 9]    False   False   False   False     True
+[9, 10]   False   False   False    True    False
+
+>>> arr.piso.adjacency_matrix(arr, include_index=False)
+array([[False,  True, False, False, False],
+       [ True, False,  True, False, False],
+       [False,  True, False, False, False],
+       [False, False, False, False,  True],
+       [False, False, False,  True, False]])
+
+>>> arr.piso.adjacency_matrix(arr, edges="disjoint")
+         [0, 4]  [3, 6]  [5, 7]  [8, 9]  [9, 10]
+[0, 4]    False   False    True    True     True
+[3, 6]    False   False   False    True     True
+[5, 7]     True   False   False    True     True
+[8, 9]     True    True    True   False    False
+[9, 10]    True    True    True   False    False
 """
