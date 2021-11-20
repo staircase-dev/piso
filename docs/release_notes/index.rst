@@ -7,7 +7,9 @@ Release notes
 Added the following methods
 
 - :func:`piso.split`
+- :func:`piso.adjacency_matrix`
 - :meth:`ArrayAccessor.split() <piso.accessor.ArrayAccessor.split>`
+- :meth:`ArrayAccessor.adjacency_matrix() <piso.accessor.ArrayAccessor.adjacency_matrix>`
 
 - removed :func:`piso.get_indexer` in favour of :meth:`pandas.IntervalIndex.get_indexer`
 
