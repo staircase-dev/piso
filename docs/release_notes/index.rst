@@ -4,6 +4,10 @@
 Release notes
 ========================
 
+ADD UNRELEASED CHANGES ABOVE THIS LINE
+
+**v0.7.0 2021-11-20**
+
 Added the following methods
 
 - :func:`piso.split`
@@ -11,9 +15,11 @@ Added the following methods
 - :meth:`ArrayAccessor.split() <piso.accessor.ArrayAccessor.split>`
 - :meth:`ArrayAccessor.adjacency_matrix() <piso.accessor.ArrayAccessor.adjacency_matrix>`
 
+Removed the following methods
+
 - removed :func:`piso.get_indexer` in favour of :meth:`pandas.IntervalIndex.get_indexer`
 
-ADD UNRELEASED CHANGES ABOVE THIS LINE
+
 
 **v0.6.0 2021-11-05**
 
