@@ -4,6 +4,8 @@
 Release notes
 ========================
 
+- Added `bins` parameter to :func:`piso.coverage` and :meth:`ArrayAccessor.coverage() <piso.accessor.ArrayAccessor.coverage>`
+
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 
 **v0.7.0 2021-11-20**
