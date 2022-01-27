@@ -596,7 +596,9 @@ issubset_docstring = doc_is_sub_super_set_template.format(
 
 
 coverage_docstring = """
-Calculates the fraction of a domain covered by a collection of intervals.
+Calculates the fraction of a domain (or possibly multiple domains) covered by a collection of intervals.
+
+Calculation over multiple domains is only possible when *bins* = True.
 
 Parameters
 ----------
@@ -609,11 +611,17 @@ domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalInd
     If *domain* is a tuple then it should specify lower and upper bounds, and be equivalent to a
     :class:`pandas.Interval`.  If *domain* is a :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
     then the intervals it contains define a possibly disconnected domain.
+    If *bins* = True then *domain* must be :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray` with disjoint intervals.
+bins : boolean, default False
+    If False, then the *domain* is interpreted as a single domain and returns one value.
+    If True, then *domain* is interpreted as disjoint bins over which coverage is calculated for each.
+
+    .. versionadded:: 0.8.0
 
 Returns
 ----------
-float
-    a number between 0 and 1, representing the fraction of the domain covered.
+float or :class:`pandas.Series`
+    a number, or Series, with value(s) between 0 and 1, representing the fraction of the domain(s) covered.
 
 Examples
 -----------
@@ -635,10 +643,15 @@ Examples
 0.3
 
 >>> domain = pd.arrays.IntervalArray.from_tuples(
-...     [(4,6), (7, 9)],
+...     [(4,6), (7, 10)],
 ... )
 >>> piso.coverage(arr1, domain)
-0.5
+0.4
+
+>>> piso.coverage(arr1, domain, bins=True)
+(4, 6]     0.500000
+(7, 10]    0.333333
+dtype: float64
 """
 
 

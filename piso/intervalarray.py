@@ -178,9 +178,22 @@ def _get_domain_tuple(interval_array, domain):
 
 
 @Appender(docstrings.coverage_docstring, join="\n", indents=1)
-def coverage(interval_array, domain=None):
+def coverage(interval_array, domain=None, bins=False):
+    def _validate_domain():
+        if not isinstance(domain, (pd.IntervalIndex, pd.arrays.IntervalArray)):
+            raise ValueError(
+                "If bins argument is true then domain parameter must be a pandas IntervalIndex or IntervalArray."
+            )
+        if not isdisjoint(domain):
+            raise ValueError(
+                "If bins argument is true then domain parameter must represent disjoint intervals."
+            )
+
     stepfunction = _interval_x_to_stairs(interval_array).make_boolean()
-    if isinstance(domain, (pd.IntervalIndex, pd.arrays.IntervalArray)):
+    if bins:
+        _validate_domain()
+        result = stepfunction.slice(pd.IntervalIndex(domain)).mean()
+    elif isinstance(domain, (pd.IntervalIndex, pd.arrays.IntervalArray)):
         domain = _interval_x_to_stairs(domain)
         result = stepfunction.where(domain).mean()
     else:

@@ -588,6 +588,41 @@ def test_coverage(interval_index, domain, expected, closed, how):
     [True, False],
 )
 @pytest.mark.parametrize(
+    "domain_interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_coverage_bins(interval_index, domain_interval_index, closed, how):
+    domain = pd.arrays.IntervalArray.from_tuples(
+        [(0, 2), (3, 7), (8, 10)],
+        closed=closed,
+    )
+    if domain_interval_index:
+        domain = pd.IntervalIndex(domain)
+    ia = make_ia1(interval_index, closed)
+    result = perform_op(
+        ia,
+        how=how,
+        function=piso_intervalarray.coverage,
+        domain=domain,
+        bins=True,
+    )
+    expected = pd.Series([1, 0.75, 0.5], index=domain)
+    pd.testing.assert_series_equal(result, expected)
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
     "closed",
     ["left", "right"],
 )
@@ -627,6 +662,56 @@ def test_coverage_exception(interval_index, closed, how):
             how=how,
             function=piso_intervalarray.coverage,
             domain=domain,
+        )
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_coverage_exception2(interval_index, closed, how):
+    domain = (1, 2)
+    with pytest.raises(ValueError):
+        ia = make_ia1(interval_index, closed)
+        perform_op(
+            ia,
+            how=how,
+            function=piso_intervalarray.coverage,
+            domain=domain,
+            bins=True,
+        )
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_coverage_exception3(interval_index, closed, how):
+    domain = pd.IntervalIndex.from_tuples([(1, 3), (2, 4)])
+    with pytest.raises(ValueError):
+        ia = make_ia1(interval_index, closed)
+        perform_op(
+            ia,
+            how=how,
+            function=piso_intervalarray.coverage,
+            domain=domain,
+            bins=True,
         )
 
 
