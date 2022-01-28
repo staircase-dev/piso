@@ -142,11 +142,12 @@ class ArrayAccessor:
         )
 
     @Appender(docstrings.coverage_docstring, join="\n", indents=1)
-    def coverage(self, domain=None, bins=False):
+    def coverage(self, domain=None, bins=False, how="fraction"):
         return intervalarray.coverage(
             self._interval_array,
             domain,
             bins,
+            how,
         )
 
     @Appender(docstrings.complement_docstring, join="\n", indents=1)
