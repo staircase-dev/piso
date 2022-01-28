@@ -615,13 +615,15 @@ domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalInd
 bins : boolean, default False
     If False, then the *domain* is interpreted as a single domain and returns one value.
     If True, then *domain* is interpreted as disjoint bins over which coverage is calculated for each.
+how : {"fraction", "sum"}, default "fraction"
+    If *how* = "fraction" then the result is a fraction of the size of the domain.
+    If *how* = "sum" then the result is the length of the domain covered.
 
     .. versionadded:: 0.8.0
 
 Returns
 ----------
 float or :class:`pandas.Series`
-    a number, or Series, with value(s) between 0 and 1, representing the fraction of the domain(s) covered.
 
 Examples
 -----------
@@ -642,6 +644,9 @@ Examples
 >>> piso.coverage(arr1, pd.Interval(-10, 10))
 0.3
 
+>>> piso.coverage(arr1, pd.Interval(-10, 10), how="sum")
+6
+
 >>> domain = pd.arrays.IntervalArray.from_tuples(
 ...     [(4,6), (7, 10)],
 ... )
@@ -651,6 +656,11 @@ Examples
 >>> piso.coverage(arr1, domain, bins=True)
 (4, 6]     0.500000
 (7, 10]    0.333333
+dtype: float64
+
+>>> piso.coverage(arr1, domain, bins=True, how="sum")
+(4, 6]     1.0
+(7, 10]    1.0
 dtype: float64
 """
 
