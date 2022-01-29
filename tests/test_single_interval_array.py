@@ -844,6 +844,77 @@ def test_contains(interval_index, x, closed, expected, method, include_index):
     [True, False],
 )
 @pytest.mark.parametrize(
+    "x, closed, expected",
+    [
+        (0, "left", [[True], [False], [False]]),
+        (0, "right", [[False], [False], [False]]),
+        (0, "both", [[True], [False], [False]]),
+        (0, "neither", [[False], [False], [False]]),
+        (6, "left", [[False], [False], [False]]),
+        (6, "right", [[False], [False], [True]]),
+        (6, "neither", [[False], [False], [False]]),
+        (6, "both", [[False], [False], [True]]),
+        (
+            [2, 4, 5],
+            "left",
+            [[True, False, False], [True, True, False], [False, True, True]],
+        ),
+        (
+            [2, 4, 5],
+            "right",
+            [[True, True, False], [False, True, True], [False, True, True]],
+        ),
+        (
+            [2, 4, 5],
+            "both",
+            [[True, True, False], [True, True, True], [False, True, True]],
+        ),
+        (
+            [2, 4, 5],
+            "neither",
+            [[True, False, False], [False, True, False], [False, True, True]],
+        ),
+    ],
+)
+@pytest.mark.parametrize(
+    "method",
+    ["supplied", "accessor", "package"],
+)
+@pytest.mark.parametrize(
+    "include_index",
+    [True, False],
+)
+@pytest.mark.parametrize("result_type", ["points", "intervals"])
+@pytest.mark.parametrize("how", ["any", "all"])
+def test_contains_non_cartesian(
+    interval_index, x, closed, expected, method, include_index, result_type, how
+):
+    ia = make_ia2(interval_index, closed)
+    result = perform_op(
+        ia,
+        x,
+        include_index,
+        method=method,
+        function=piso_intervalarray.contains,
+        result=result_type,
+        how=how,
+    )
+    axis = 0 if result_type == "points" else 1
+    logical_func = np.all if how == "all" else np.any
+    expected_result = logical_func(np.array(expected), axis=axis)
+    if include_index:
+        index = np.array(x, ndmin=1) if result_type == "points" else ia
+        expected_result = pd.Series(expected_result, index=index)
+        pd.testing.assert_series_equal(result, expected_result, check_dtype=False)
+    else:
+        assert (result == expected_result).all()
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
     "x, expected_tuples",
     [
         ([4], [(1, 4), (2, 4), (4, 5), (3, 4), (4, 6)]),

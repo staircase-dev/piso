@@ -218,7 +218,9 @@ def complement(interval_array, domain=None):
 
 
 @Appender(docstrings.contains_docstring, join="\n", indents=1)
-def contains(interval_array, x, include_index=True):
+def contains(interval_array, x, include_index=True, result="cartesian", how="any"):
+    assert result in ("cartesian", "intervals", "points")
+    assert how in ("any", "all")
     starts = interval_array.left.values
     ends = interval_array.right.values
     x = pd.Series(x).values
@@ -228,10 +230,18 @@ def contains(interval_array, x, include_index=True):
     left_compare = (
         np.greater_equal if interval_array.closed in ("left", "both") else np.greater
     )
-    result = (right_compare.outer(x, ends) & left_compare.outer(x, starts)).transpose()
+    calc = (right_compare.outer(x, ends) & left_compare.outer(x, starts)).transpose()
+    if result != "cartesian":
+        logical_method = np.logical_or if how == "any" else np.logical_and
+        axis = 0 if result == "points" else 1
+        calc = logical_method.reduce(calc, axis=axis)
     if include_index:
-        return pd.DataFrame(result, index=interval_array, columns=x)
-    return result
+        if result == "cartesian":
+            calc = pd.DataFrame(calc, index=interval_array, columns=x)
+        else:
+            index = x if result == "points" else interval_array
+            calc = pd.Series(calc, index=index)
+    return calc
 
 
 @Appender(docstrings.split_docstring, join="\n", indents=1)

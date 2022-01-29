@@ -766,11 +766,15 @@ array([ 0,  0,  1, -1], dtype=int64)
 
 
 contains_docstring = """
-Check pair-wise if a set of intervals contains a set of values
+Evaluates the intersection of a set of intervals with a set of points.
 
-Returns a 2-dimensional boolean mask *M* of shape *(m,n)* where *m* is the number of intervals, and
-*n* is the number of points.  The element in the i-th row and j-th column is True if
+The format of the result is dependent on the *result* parameter.  If *result = "cartesian"* then the
+the function returns a 2-dimensional boolean mask *M* of shape *(m,n)* where *m* is the number of
+intervals, and *n* is the number of points.  The element in the i-th row and j-th column is True if
 the i-th interval contains the j-th point.
+
+If *result = "points"* then the result is a 1-dimensional boolean mask of length *n*.
+If *result = "intervals"* then the result is a 1-dimensional boolean mask of length *m*.
 
 Parameters
 ----------
@@ -781,11 +785,20 @@ x : scalar, or array-like of scalars
 include_index : boolean, default True
     Indicates whether to return a :class:`numpy.ndarray` or :class:`pandas.DataFrame` indexed
     by *interval_array* and column names equal to *x*
+result : {"cartesian", "points", "intervals"}, default "cartesian"
+    If *result* = "cartesian" then the result will be two dimensional, otherwise it will be
+    one dimensional.
+how : {"any", "all"}, default "any"
+    Only relevant if *result* is not "cartesian".  This parameter indicates either:
+    - a True value means any or all points are contained within an interval, or
+    - a True value means any or all intervals contained a point.
+    Which of these interpretations is dependent on the *result* parameter.
+
 
 Returns
 ----------
-:class:`numpy.ndarray` or :class:`pandas.DataFrame`
-    Two dimensional and boolean valued.  Return type dependent on *include_index*.
+:class:`numpy.ndarray`, :class:`pandas.DataFrame` or :class:`pandas.Series`
+    One, or two, dimensional and boolean valued.  Return type dependent on *include_index* and *result*.
 
 Examples
 -----------
@@ -810,6 +823,25 @@ Examples
 >>> piso.contains(arr, [0, 1, 3, 4], include_index=False)
 array([[False,  True,  True,  True],
        [False, False,  True,  True]])
+
+>>> piso.contains(arr, [0, 1, 3, 4], result="points")
+0    False
+1     True
+3     True
+4     True
+dtype: bool
+
+>>> piso.contains(arr, [0, 1, 3, 4], result="points", how="all")
+0    False
+1    False
+3     True
+4     True
+dtype: bool
+
+>>> piso.contains(arr, [0, 1, 3, 4], result="intervals")
+(0, 4]    True
+(2, 5]    True
+dtype: bool
 
 >>> piso.contains(pd.IntervalIndex.from_tuples([(0,2)]), 1, include_index=False)
 array([[ True]])

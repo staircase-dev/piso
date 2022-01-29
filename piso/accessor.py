@@ -158,11 +158,13 @@ class ArrayAccessor:
         )
 
     @Appender(docstrings.contains_docstring, join="\n", indents=1)
-    def contains(self, x, include_index=True):
+    def contains(self, x, include_index=True, result="cartesian", how="any"):
         return intervalarray.contains(
             self._interval_array,
             x,
             include_index,
+            result,
+            how,
         )
 
     @Appender(docstrings.split_docstring, join="\n", indents=1)
