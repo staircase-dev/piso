@@ -4,12 +4,15 @@
 Release notes
 ========================
 
+ADD UNRELEASED CHANGES ABOVE THIS LINE
+
+**v0.8.0 2022-01-29**
+
 - Added `bins` parameter to :func:`piso.coverage` and :meth:`ArrayAccessor.coverage() <piso.accessor.ArrayAccessor.coverage>`
 - Added `how` parameter to :func:`piso.coverage` and :meth:`ArrayAccessor.coverage() <piso.accessor.ArrayAccessor.coverage>`
 - Added `result` parameter to :func:`piso.contains` and :meth:`ArrayAccessor.contains() <piso.accessor.ArrayAccessor.contains>`
 - Added `how` parameter to :func:`piso.contains` and :meth:`ArrayAccessor.contains() <piso.accessor.ArrayAccessor.contains>`
 
-ADD UNRELEASED CHANGES ABOVE THIS LINE
 
 **v0.7.0 2021-11-20**
 
@@ -25,7 +28,6 @@ Removed the following methods
 - removed :func:`piso.get_indexer` in favour of :meth:`pandas.IntervalIndex.get_indexer`
 
 
-
 **v0.6.0 2021-11-05**
 
 The following methods were extended to accommodate intervals with *closed = "both"* or *"neither"*
@@ -34,6 +36,7 @@ The following methods were extended to accommodate intervals with *closed = "bot
 - :func:`piso.get_indexer` (and :meth:`ArrayAccessor.get_indexer() <piso.accessor.ArrayAccessor.get_indexer>`)
 - :func:`piso.lookup`
 - :func:`piso.isdisjoint` (and :meth:`ArrayAccessor.isdisjoint() <piso.accessor.ArrayAccessor.isdisjoint>`)
+
 
 **v0.5.0 2021-11-02**
 
