@@ -142,10 +142,12 @@ class ArrayAccessor:
         )
 
     @Appender(docstrings.coverage_docstring, join="\n", indents=1)
-    def coverage(self, domain=None):
+    def coverage(self, domain=None, bins=False, how="fraction"):
         return intervalarray.coverage(
             self._interval_array,
             domain,
+            bins,
+            how,
         )
 
     @Appender(docstrings.complement_docstring, join="\n", indents=1)
@@ -156,11 +158,13 @@ class ArrayAccessor:
         )
 
     @Appender(docstrings.contains_docstring, join="\n", indents=1)
-    def contains(self, x, include_index=True):
+    def contains(self, x, include_index=True, result="cartesian", how="any"):
         return intervalarray.contains(
             self._interval_array,
             x,
             include_index,
+            result,
+            how,
         )
 
     @Appender(docstrings.split_docstring, join="\n", indents=1)

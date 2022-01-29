@@ -591,10 +591,12 @@ issubset_docstring = is_super_sub_set_template.format(
 
 
 coverage_docstring = """
-Calculates the fraction of a domain covered by a collection of intervals.
+Calculates the size of a domain (or possibly multiple domains) covered by a collection of intervals.
 
 The intervals are contained in the array object the accessor belongs to.
 The (possibly overlapping) intervals may not, or partially, or wholly cover the domain.
+
+Calculation over multiple domains is only possible when *bins* = True.
 
 Parameters
 ----------
@@ -604,11 +606,19 @@ domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalInd
     If *domain* is a tuple then it should specify lower and upper bounds, and be equivalent to a
     :class:`pandas.Interval`.  If *domain* is a :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
     then the intervals it contains define a possibly disconnected domain.
+    If *bins* = True then *domain* must be :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray` with disjoint intervals.
+bins : boolean, default False
+    If False, then the *domain* is interpreted as a single domain and returns one value.
+    If True, then *domain* is interpreted as disjoint bins over which coverage is calculated for each.
+how : {"fraction", "sum"}, default "fraction"
+    If *how* = "fraction" then the result is a fraction of the size of the domain.
+    If *how* = "sum" then the result is the length of the domain covered.
+
+    .. versionadded:: 0.8.0
 
 Returns
 ----------
-float
-    a number between 0 and 1, representing the fraction of the domain covered.
+float or :class:`pandas.Series`
 
 Examples
 -----------
@@ -630,11 +640,24 @@ Examples
 >>> arr1.piso.coverage(pd.Interval(-10, 10))
 0.3
 
+>>> arr1.piso.coverage(pd.Interval(-10, 10), how="sum")
+6
+
 >>> domain = pd.arrays.IntervalArray.from_tuples(
-...     [(4,6), (7, 9)],
+...     [(4,6), (7, 10)],
 ... )
 >>> arr1.piso.coverage(domain)
-0.5
+0.4
+
+>>> arr1.piso.coverage(domain, bins=True)
+(4, 6]     0.500000
+(7, 10]    0.333333
+dtype: float64
+
+>>> arr1.piso.coverage(domain, bins=True, how="sum")
+(4, 6]     1.0
+(7, 10]    1.0
+dtype: float64
 """
 
 complement_docstring = """
@@ -736,25 +759,39 @@ array([ 0,  0,  1, -1], dtype=int64)
 
 
 contains_docstring = """
-Check pair-wise if a set of intervals, belonging to the object the accessor belongs to, contains a set of values.
+Evaluates the intersection of a set of intervals with a set of points.
 
-Returns a 2-dimensional boolean mask *M* of shape *(m,n)* where *m* is the number of intervals, and
-*n* is the number of points.  The element in the i-th row and j-th column is True if
+The format of the result is dependent on the *result* parameter.  If *result = "cartesian"* then the
+the function returns a 2-dimensional boolean mask *M* of shape *(m,n)* where *m* is the number of
+intervals, and *n* is the number of points.  The element in the i-th row and j-th column is True if
 the i-th interval contains the j-th point.
+
+If *result = "points"* then the result is a 1-dimensional boolean mask of length *n*.
+If *result = "intervals"* then the result is a 1-dimensional boolean mask of length *m*.
 
 Parameters
 ----------
+interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    Contains the intervals.  May be left-closed, right-closed, both, or neither.
 x : scalar, or array-like of scalars
-    Values in *x* should belong to the same domain as the intervals in *interval_array*.
-    May be left-closed, right-closed, both, or neither.
+    Values in *x* should belong to the same domain as the intervals contained by the object the
+    accessor belongs to.
 include_index : boolean, default True
     Indicates whether to return a :class:`numpy.ndarray` or :class:`pandas.DataFrame` indexed
     by *interval_array* and column names equal to *x*
+result : {"cartesian", "points", "intervals"}, default "cartesian"
+    If *result* = "cartesian" then the result will be two dimensional, otherwise it will be
+    one dimensional.
+how : {"any", "all"}, default "any"
+    Only relevant if *result* is not "cartesian".  This parameter indicates either:
+    - a True value means any or all points are contained within an interval, or
+    - a True value means any or all intervals contained a point.
+    Which of these interpretations is dependent on the *result* parameter.
 
 Returns
 ----------
-:class:`numpy.ndarray` or :class:`pandas.DataFrame`
-    Two dimensional and boolean valued.  Return type dependent on *include_index*.
+:class:`numpy.ndarray`, :class:`pandas.DataFrame` or :class:`pandas.Series`
+    One, or two, dimensional and boolean valued.  Return type dependent on *include_index* and *result*.
 
 Examples
 -----------
@@ -780,6 +817,25 @@ Examples
 >>> arr.piso.contains([0, 1, 3, 4], include_index=False)
 array([[False,  True,  True,  True],
        [False, False,  True,  True]])
+
+>>> arr.piso.contains([0, 1, 3, 4], result="points")
+0    False
+1     True
+3     True
+4     True
+dtype: bool
+
+>>> arr.piso.contains([0, 1, 3, 4], result="points", how="all")
+0    False
+1    False
+3     True
+4     True
+dtype: bool
+
+>>> arr.piso.contains([0, 1, 3, 4], result="intervals")
+(0, 4]    True
+(2, 5]    True
+dtype: bool
 
 >>> pd.IntervalIndex.from_tuples([(0,2)]).piso.contains(1, include_index=False)
 array([[ True]])
