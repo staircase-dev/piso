@@ -497,3 +497,22 @@ def test_adjacency_matrix_set_of_sets_disjoint_2(
         pd.testing.assert_frame_equal(result, expected)
     else:
         assert np.array_equal(result, expected)
+
+
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right", "both", "neither"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_adjacency_matrix_set_of_sets_edges_exception(closed, how):
+    interval_list = make_interval_list(interval_index=True, closed=closed)
+    with pytest.raises(ValueError):
+        perform_op(
+            *interval_list,
+            how=how,
+            function=piso_graph.adjacency_matrix,
+            edges="not_an_option",
+        )
