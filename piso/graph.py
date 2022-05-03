@@ -43,8 +43,6 @@ def _adjacency_matrix_set_of_sets(*interval_arrays, edges, include_index):
     rights = list(itertools.chain.from_iterable([ia.right for ia in interval_arrays]))
     closed = interval_arrays[0].closed
 
-    # TODO: check all closeds are the same
-
     if edges == "intersect":
         component_result = _adj_mat_intersection(lefts, rights, closed)
         numpy_logical = np.logical_or
