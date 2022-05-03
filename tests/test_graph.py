@@ -289,3 +289,230 @@ def test_adjacency_matrix_edges_exception(closed, how):
             function=piso_graph.adjacency_matrix,
             edges="not_an_option",
         )
+
+
+# ---------------- SET OF SETS --------------------
+
+
+def make_interval_list(interval_index, closed):
+    klass = pd.IntervalIndex if interval_index else pd.arrays.IntervalArray
+    ii1 = klass.from_tuples([(0, 3), (2, 8), (11, 15)], closed=closed)
+    ii2 = klass.from_tuples([(3, 5), (7, 12), (16, 20)], closed=closed)
+    ii3 = klass.from_tuples([(9, 11), (25, 26)], closed=closed)
+    ii4 = klass.from_tuples([(23, 24)], closed=closed)
+    return [ii1, ii2, ii3, ii4]
+
+
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right", "neither"],
+)
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "include_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "date_type",
+    ["timestamp", "numpy", "datetime", "timedelta", None],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_adjacency_matrix_set_of_sets_intersects_1(
+    closed, interval_index, include_index, date_type, how
+):
+    interval_list = make_interval_list(interval_index, closed)
+
+    if date_type:
+        interval_list = [map_to_dates(i, date_type) for i in interval_list]
+
+    expected = np.array(
+        [
+            [False, True, False, False],
+            [True, False, True, False],
+            [False, True, False, False],
+            [False, False, False, False],
+        ]
+    )
+
+    result = perform_op(
+        *interval_list,
+        how=how,
+        function=piso_graph.adjacency_matrix,
+        edges="intersect",
+        include_index=include_index,
+    )
+    if include_index:
+        expected = pd.DataFrame(expected, columns=range(4), index=range(4))
+        pd.testing.assert_frame_equal(result, expected)
+    else:
+        assert np.array_equal(result, expected)
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "include_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "date_type",
+    ["timestamp", "numpy", "datetime", "timedelta", None],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_adjacency_matrix_set_of_sets_intersects_2(
+    interval_index, include_index, date_type, how
+):
+    interval_list = make_interval_list(interval_index, closed="both")
+
+    if date_type:
+        interval_list = [map_to_dates(i, date_type) for i in interval_list]
+
+    expected = np.array(
+        [
+            [False, True, True, False],
+            [True, False, True, False],
+            [True, True, False, False],
+            [False, False, False, False],
+        ]
+    )
+
+    result = perform_op(
+        *interval_list,
+        how=how,
+        function=piso_graph.adjacency_matrix,
+        edges="intersect",
+        include_index=include_index,
+    )
+    if include_index:
+        expected = pd.DataFrame(expected, columns=range(4), index=range(4))
+        pd.testing.assert_frame_equal(result, expected)
+    else:
+        assert np.array_equal(result, expected)
+
+
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right", "neither"],
+)
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "include_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "date_type",
+    ["timestamp", "numpy", "datetime", "timedelta", None],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_adjacency_matrix_set_of_sets_disjoint_1(
+    closed, interval_index, include_index, date_type, how
+):
+    interval_list = make_interval_list(interval_index, closed=closed)
+
+    if date_type:
+        interval_list = [map_to_dates(i, date_type) for i in interval_list]
+
+    expected = np.array(
+        [
+            [False, False, True, True],
+            [False, False, False, True],
+            [True, False, False, True],
+            [True, True, True, False],
+        ]
+    )
+
+    result = perform_op(
+        *interval_list,
+        how=how,
+        function=piso_graph.adjacency_matrix,
+        edges="disjoint",
+        include_index=include_index,
+    )
+    if include_index:
+        expected = pd.DataFrame(expected, columns=range(4), index=range(4))
+        pd.testing.assert_frame_equal(result, expected)
+    else:
+        assert np.array_equal(result, expected)
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "include_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "date_type",
+    ["timestamp", "numpy", "datetime", "timedelta", None],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_adjacency_matrix_set_of_sets_disjoint_2(
+    interval_index, include_index, date_type, how
+):
+    interval_list = make_interval_list(interval_index, closed="both")
+
+    if date_type:
+        interval_list = [map_to_dates(i, date_type) for i in interval_list]
+
+    expected = np.array(
+        [
+            [False, False, False, True],
+            [False, False, False, True],
+            [False, False, False, True],
+            [True, True, True, False],
+        ]
+    )
+
+    result = perform_op(
+        *interval_list,
+        how=how,
+        function=piso_graph.adjacency_matrix,
+        edges="disjoint",
+        include_index=include_index,
+    )
+    if include_index:
+        expected = pd.DataFrame(expected, columns=range(4), index=range(4))
+        pd.testing.assert_frame_equal(result, expected)
+    else:
+        assert np.array_equal(result, expected)
+
+
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right", "both", "neither"],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_adjacency_matrix_set_of_sets_edges_exception(closed, how):
+    interval_list = make_interval_list(interval_index=True, closed=closed)
+    with pytest.raises(ValueError):
+        perform_op(
+            *interval_list,
+            how=how,
+            function=piso_graph.adjacency_matrix,
+            edges="not_an_option",
+        )
