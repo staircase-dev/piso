@@ -175,9 +175,10 @@ class ArrayAccessor:
         )
 
     @Appender(docstrings.adjacency_matrix_docstring, join="\n", indents=1)
-    def adjacency_matrix(self, edges="intersect", include_index=True):
+    def adjacency_matrix(self, *interval_arrays, edges="intersect", include_index=True):
         return graph.adjacency_matrix(
             self._interval_array,
+            *interval_arrays,
             edges=edges,
             include_index=include_index,
         )

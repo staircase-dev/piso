@@ -4,6 +4,8 @@
 Release notes
 ========================
 
+- Extended :func:`piso.adjacency_matrix` and :meth:`ArrayAccessor.adjacency_matrix() <piso.accessor.ArrayAccessor.adjacency_matrix>` to take multiple interval array parameters
+
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 
 **v0.8.0 2022-01-29**
