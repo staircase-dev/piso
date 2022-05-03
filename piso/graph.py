@@ -1,5 +1,4 @@
 import itertools
-from operator import iadd
 
 import numpy as np
 import pandas as pd
