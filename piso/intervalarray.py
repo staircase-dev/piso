@@ -262,3 +262,13 @@ def split(interval_array, x):
     return interval_array.from_arrays(
         lefts[~np.isnan(lefts)], rights[~np.isnan(rights)], closed=interval_array.closed
     )
+
+
+@Appender(docstrings.bridge_docstring, join="\n", indents=1)
+def bridge(interval_array, threshold):
+    # interval_array validation will occur in union and complement methods
+    complement_ = complement(union(interval_array))
+    return complement(
+        complement_[complement_.length > threshold],
+        (interval_array.left.min(), interval_array.right.max()),
+    )

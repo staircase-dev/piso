@@ -22,6 +22,7 @@ Top level functions
    complement
    contains
    split
+   bridge
    lookup
    join
    adjacency_matrix

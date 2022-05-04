@@ -183,6 +183,13 @@ class ArrayAccessor:
             include_index=include_index,
         )
 
+    @Appender(docstrings.bridge_docstring, join="\n", indents=1)
+    def bridge(self, threshold):
+        return intervalarray.bridge(
+            self._interval_array,
+            threshold,
+        )
+
 
 def _register_accessors():
     _register_accessor("piso", pd.IntervalIndex)(ArrayAccessor)

@@ -20,4 +20,5 @@ Accessors
    ArrayAccessor.complement
    ArrayAccessor.contains
    ArrayAccessor.split
+   ArrayAccessor.bridge
    ArrayAccessor.adjacency_matrix

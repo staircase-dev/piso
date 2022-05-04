@@ -893,3 +893,51 @@ IntervalIndex([(0.0, 1.0), (1.0, 4.0), (2.0, 4.0), (4.0, 5.0)],
               closed='neither',
               dtype='interval[float64]')
 """
+
+
+bridge_docstring = """
+Given a set of intervals, and a threshold, merges intervals which are separated by a gap less than
+or equal to the threshold.  Overlapping intervals will be merged, regardless of threshold value.
+
+The intervals are contained in the object the accessor belongs to.  They may be left-closed,
+right-closed, both, or neither, and contain overlapping intervals.
+
+Parameters
+----------
+interval_array : :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    Contains the (possibly overlapping) intervals.  May be left-closed or right-closed.
+threshold : scalar
+    The value should belong to the domain that arises from a subtraction over the domain of the intervals.
+    For instance, if intervals are timestamp data, then *threshold* should be timedelta.
+
+Returns
+----------
+:class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
+    Return type will be the same type as the object the accessor belongs to.
+
+
+Examples
+-----------
+
+>>> import pandas as pd
+>>> import piso
+
+>>> arr = pd.arrays.IntervalArray.from_tuples(
+...     [(0, 4), (3, 5), (7, 8), (11, 12)],
+... )
+
+>>> piso.bridge(arr, threshold=1)
+<IntervalArray>
+[(0.0, 5.0], (7.0, 8.0], (11.0, 12.0]]
+Length: 3, closed: right, dtype: interval[float64]
+
+>>> piso.bridge(arr, threshold=2)
+<IntervalArray>
+[(0.0, 8.0], (11.0, 12.0]]
+Length: 2, closed: right, dtype: interval[float64]
+
+>>> piso.bridge(arr, threshold=3)
+<IntervalArray>
+[(0.0, 12.0]]
+Length: 1, closed: right, dtype: interval[float64]
+"""
