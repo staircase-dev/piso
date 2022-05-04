@@ -21,6 +21,7 @@ def get_accessor_method(self, function):
         piso_intervalarray.complement: self.piso.complement,
         piso_intervalarray.contains: self.piso.contains,
         piso_intervalarray.split: self.piso.split,
+        piso_intervalarray.bridge: self.piso.bridge,
     }[function]
 
 
@@ -36,6 +37,7 @@ def get_package_method(function):
         piso_intervalarray.complement: piso.complement,
         piso_intervalarray.contains: piso.contains,
         piso_intervalarray.split: piso.split,
+        piso_intervalarray.bridge: piso.bridge,
     }[function]
 
 
@@ -453,6 +455,9 @@ def test_symmetric_difference_min_overlaps_all_2(
 
 
 def map_to_dates(obj, date_type):
+    if date_type is None:
+        return obj
+
     def make_date(x):
         ts = pd.to_datetime(x, unit="d", origin="2021-09-30")
         if date_type == "numpy":
@@ -951,6 +956,52 @@ def test_split(interval_index, x, expected_tuples, closed, method, date_type):
         x,
         method=method,
         function=piso_intervalarray.split,
+    )
+    assert_interval_array_equal(
+        result,
+        expected,
+        interval_index,
+    )
+
+
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "threshold, expected_tuples",
+    [
+        (1, [(0, 4), (7, 8), (10, 12)]),
+        (2, [(0, 4), (7, 12)]),
+        (3, [(0, 12)]),
+    ],
+)
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "method",
+    ["supplied", "accessor", "package"],
+)
+@pytest.mark.parametrize(
+    "date_type",
+    ["timestamp", "numpy", "datetime", "timedelta", None],
+)
+def test_bridge(interval_index, threshold, expected_tuples, closed, method, date_type):
+    ia = make_ia_from_tuples(interval_index, [(0, 4), (7, 8), (10, 12)], closed)
+    ia = map_to_dates(ia, date_type)
+
+    expected = make_ia_from_tuples(False, expected_tuples, closed)
+    expected = map_to_dates(expected, date_type)
+    if date_type is not None:
+        threshold = map_to_dates([threshold + 1], "timedelta")[0]
+
+    result = perform_op(
+        ia,
+        threshold,
+        method=method,
+        function=piso_intervalarray.bridge,
     )
     assert_interval_array_equal(
         result,
