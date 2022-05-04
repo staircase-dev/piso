@@ -5,6 +5,16 @@ Release notes
 ========================
 
 
+**v0.9.0 2022-05-04**
+
+- Extended :func:`piso.adjacency_matrix` and :meth:`ArrayAccessor.adjacency_matrix() <piso.accessor.ArrayAccessor.adjacency_matrix>` to take multiple interval array parameters
+
+Added the following methods
+
+- :func:`piso.bridge`
+- :meth:`ArrayAccessor.bridge() <piso.accessor.ArrayAccessor.bridge>`
+
+
 **v0.8.0 2022-01-29**
 
 - Added `bins` parameter to :func:`piso.coverage` and :meth:`ArrayAccessor.coverage() <piso.accessor.ArrayAccessor.coverage>`
