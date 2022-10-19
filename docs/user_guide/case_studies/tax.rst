@@ -8,7 +8,7 @@ Estimating tax payable
     :suppress:
 
     import matplotlib.pyplot as plt
-    plt.style.use('seaborn')
+    plt.style.use('seaborn-v0_8')
 
 In this example we are given the following scenario:
 

@@ -10,12 +10,12 @@ x : scalar, or array-like of scalars
     Values in *x* should belong to the same domain as the intervals in the interval index.
 
 Returns
-----------
+-------
 :class:`pandas.DataFrame` or :class:`pandas.Series`
     Will be the same type as *frame_or_series*
 
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -77,12 +77,12 @@ sort : bool, default False
     Order result DataFrame lexicographically by the join key. If False, the order of the join key depends on the join type.
 
 Returns
-----------
+-------
 :class:`pandas.DataFrame`
     A dataframe containing columns from elements of *frames_or_series*
 
 Examples
-----------
+--------
 
 >>> import pandas as pd
 >>> import piso

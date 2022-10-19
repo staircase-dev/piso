@@ -1,6 +1,6 @@
 union_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso.interval
@@ -37,7 +37,7 @@ Length: 2, closed: right, dtype: interval[float64]
 
 intersection_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso.interval
@@ -74,7 +74,7 @@ Length: 0, closed: right, dtype: interval[int64]
 
 difference_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso.interval
@@ -114,7 +114,7 @@ Length: 0, closed: right, dtype: interval[int64]
 
 symmetric_difference_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso.interval
@@ -152,7 +152,7 @@ Length: 2, closed: right, dtype: interval[float64]
 
 issuperset_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso.interval
@@ -187,7 +187,7 @@ array([ True])
 
 issubset_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso.interval
@@ -232,7 +232,7 @@ squeeze : boolean, default True
     If True, will try to coerce the return value to a :class:`pandas.Interval`
 
 Returns
-----------
+-------
 :class:`pandas.Interval` or :class:`pandas.arrays.IntervalArray`
 
 {examples}
@@ -264,7 +264,7 @@ squeeze : boolean, default True
     If True, will try to coerce the return value to a single boolean
 
 Returns
-----------
+-------
 boolean, or :class:`numpy.ndarray` of booleans
 
 {examples}

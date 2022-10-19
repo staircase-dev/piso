@@ -1,0 +1,11 @@
+ipykernel
+sphinx
+nbsphinx
+sphinx-panels
+staircase >= 2.1
+pandas
+numpy
+Pygments
+pydata-sphinx-theme
+toml
+numpydoc
