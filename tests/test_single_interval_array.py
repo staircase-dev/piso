@@ -97,9 +97,25 @@ def make_ia_from_tuples(interval_index, tuples, closed):
     return klass.from_tuples(tuples, closed=closed)
 
 
+def standardise_interval_array(interval_index_or_array):
+    def maybe_convert_to_float(arr):
+        if pd.api.types.is_numeric_dtype(arr):
+            return arr.astype(float)
+        return arr
+
+    return pd.arrays.IntervalArray.from_arrays(
+        maybe_convert_to_float(interval_index_or_array.left),
+        maybe_convert_to_float(interval_index_or_array.right),
+        closed=interval_index_or_array.closed,
+    )
+
+
 def assert_interval_array_equal(interval_array, expected, interval_index):
     if interval_index:
-        interval_array = interval_array.values
+        assert isinstance(interval_array, pd.IntervalIndex)
+
+    interval_array = standardise_interval_array(interval_array)
+    expected = standardise_interval_array(expected)
 
     pd._testing.assert_interval_array_equal(
         interval_array,
