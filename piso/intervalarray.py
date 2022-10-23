@@ -246,13 +246,19 @@ def contains(interval_array, x, include_index=True, result="cartesian", how="any
 
 @Appender(docstrings.split_docstring, join="\n", indents=1)
 def split(interval_array, x):
-    # x = pd.Series(x).values
     x = pd.Series(sorted(set(x))).values  # converting to numpy array will not work
     contained = contains(interval_array.set_closed("neither"), x, include_index=False)
+
+    none = np.nan
+    if pd.api.types.is_datetime64_any_dtype(x) or pd.api.types.is_timedelta64_dtype(x):
+        none = pd.NaT
+
     breakpoints = np.concatenate(
         (
             np.expand_dims(interval_array.left.values, 1),
-            pd.DataFrame(np.broadcast_to(x, contained.shape)).where(contained).values,
+            pd.DataFrame(np.broadcast_to(x, contained.shape))
+            .where(contained, none)
+            .values,
             np.expand_dims(interval_array.right.values, 1),
         ),
         axis=1,
