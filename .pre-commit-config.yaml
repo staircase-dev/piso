@@ -11,6 +11,6 @@ repos:
       - id: black
         exclude: ^piso/test_data*
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 5.0.3
+    rev: 5.0.4
     hooks:
     -   id: flake8

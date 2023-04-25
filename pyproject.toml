@@ -63,7 +63,7 @@ version = "^1.21.2"
 
 
 [tool.poetry.dev-dependencies]
-ipykernel = "^5"
+ipykernel = "^6"
 pytest = "^6"
 pytest-cov = "*"
 sphinx = "*"
@@ -71,10 +71,10 @@ nbsphinx = ">=0.8.5"
 sphinx-autobuild = "*"
 numpydoc = "*"
 notebook = ">= 6.0"
-isort = ">=5.8"
-black = {version = "*", python = "^3.6.2"}
-flake8 = ">=3.9"
-pre-commit = {version = ">=2.13", python = "^3.6.1"}
+isort = ">=5.8,<5.12"
+black = ">=22.10"
+flake8 = ">=5"
+pre-commit = ">=2.20"
 tox=">=3.15"
 
 
