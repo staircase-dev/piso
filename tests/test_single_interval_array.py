@@ -475,7 +475,7 @@ def map_to_dates(obj, date_type):
         return obj
 
     def make_date(x):
-        ts = pd.to_datetime(x, unit="d", origin="2021-09-30")
+        ts = pd.to_datetime(x, unit="D", origin="2021-09-30")
         if date_type == "numpy":
             return ts.to_numpy()
         if date_type == "datetime":

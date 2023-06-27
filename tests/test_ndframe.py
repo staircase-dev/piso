@@ -36,7 +36,7 @@ def make_ndframe2(is_frame, closed, date_type):
 def make_date(x, date_type):
     ts = pd.Timestamp(f"2021-10-{x}")
     if date_type == "numpy":
-        return ts.to_numpy()
+        return ts.to_numpy().astype('datetime64[ns]')
     if date_type == "datetime":
         return ts.to_pydatetime()
     if date_type == "timedelta":
