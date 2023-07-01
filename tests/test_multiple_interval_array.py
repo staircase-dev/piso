@@ -444,7 +444,7 @@ def map_to_dates(interval_array, date_type):
     def make_date(x):
         ts = pd.Timestamp(f"2021-10-{x}")
         if date_type == "numpy":
-            return ts.to_numpy()
+            return ts.to_numpy().astype("datetime64[ns]")
         if date_type == "datetime":
             return ts.to_pydatetime()
         if date_type == "timedelta":
