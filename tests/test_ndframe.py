@@ -6,7 +6,6 @@ import piso
 
 
 def make_ndframe(is_frame, closed, date_type):
-
     ia = pd.IntervalIndex.from_tuples([(1, 3), (5, 7)], closed=closed)
     if date_type:
         ia = map_to_dates(ia, date_type)
@@ -20,7 +19,6 @@ def make_ndframe(is_frame, closed, date_type):
 
 
 def make_ndframe2(is_frame, closed, date_type):
-
     ia = pd.IntervalIndex.from_tuples([(2, 4), (5, 6), (8, 9)], closed=closed)
     if date_type:
         ia = map_to_dates(ia, date_type)
@@ -70,7 +68,6 @@ def map_to_dates(obj, date_type):
     ],
 )
 def test_lookup_frame(x, closed, date_type, a_col, b_col):
-
     ndframe = make_ndframe(True, closed, date_type)
     points = map_to_dates(x, date_type) if date_type else x
     result = piso.lookup(ndframe, points)
@@ -102,7 +99,9 @@ def test_lookup_series(x, closed, date_type, a_col):
     if not hasattr(points, "__len__"):
         points = [points]
     expected = pd.Series(a_col, index=points)
-    pd.testing.assert_series_equal(result, expected, check_names=False)
+    pd.testing.assert_series_equal(
+        result, expected, check_names=False, check_index_type=False
+    )
 
 
 def test_lookup_exception():
@@ -120,7 +119,6 @@ def test_lookup_exception():
     ["left", "right"],
 )
 def test_left_join_frame(closed, date_type):
-
     ndframe = make_ndframe(True, closed, date_type)
     ndframe2 = make_ndframe2(True, closed, date_type)
 
@@ -150,7 +148,6 @@ def test_left_join_frame(closed, date_type):
     ["left", "right"],
 )
 def test_right_join_frame(closed, date_type):
-
     ndframe = make_ndframe(True, closed, date_type)
     ndframe2 = make_ndframe2(True, closed, date_type)
 
@@ -180,7 +177,6 @@ def test_right_join_frame(closed, date_type):
     ["left", "right"],
 )
 def test_inner_join_frame(closed, date_type):
-
     ndframe = make_ndframe(True, closed, date_type)
     ndframe2 = make_ndframe2(True, closed, date_type)
 
@@ -210,7 +206,6 @@ def test_inner_join_frame(closed, date_type):
     ["left", "right"],
 )
 def test_outer_join_frame(closed, date_type):
-
     ndframe = make_ndframe(True, closed, date_type)
     ndframe2 = make_ndframe2(True, closed, date_type)
 
@@ -246,7 +241,6 @@ def test_outer_join_frame(closed, date_type):
     ["left", "right", "inner", "outer"],
 )
 def test_join_frame_lsuffix(closed, date_type, how):
-
     ndframe = make_ndframe(True, closed, date_type)
 
     index = pd.IntervalIndex.from_tuples([(1, 3), (5, 7)])
@@ -279,7 +273,6 @@ def test_join_frame_lsuffix(closed, date_type, how):
     ["left", "right", "inner", "outer"],
 )
 def test_join_frame_rsuffix(closed, date_type, how):
-
     ndframe = make_ndframe(True, closed, date_type)
 
     index = pd.IntervalIndex.from_tuples([(1, 3), (5, 7)])
@@ -311,7 +304,6 @@ def test_join_frame_rsuffix(closed, date_type, how):
     ["left", "right"],
 )
 def test_left_join_series(closed, date_type):
-
     ndframe = make_ndframe(False, closed, date_type)
     ndframe2 = make_ndframe2(False, closed, date_type)
 
@@ -339,7 +331,6 @@ def test_left_join_series(closed, date_type):
     ["left", "right"],
 )
 def test_right_join_series(closed, date_type):
-
     ndframe = make_ndframe(False, closed, date_type)
     ndframe2 = make_ndframe2(False, closed, date_type)
 
@@ -367,7 +358,6 @@ def test_right_join_series(closed, date_type):
     ["left", "right"],
 )
 def test_inner_join_series(closed, date_type):
-
     ndframe = make_ndframe(False, closed, date_type)
     ndframe2 = make_ndframe2(False, closed, date_type)
 
@@ -395,7 +385,6 @@ def test_inner_join_series(closed, date_type):
     ["left", "right"],
 )
 def test_outer_join_series(closed, date_type):
-
     ndframe = make_ndframe(False, closed, date_type)
     ndframe2 = make_ndframe2(False, closed, date_type)
 
@@ -429,7 +418,6 @@ def test_outer_join_series(closed, date_type):
     ["left", "right", "inner", "outer"],
 )
 def test_join_series_lsuffix(closed, date_type, how):
-
     ndframe = make_ndframe(False, closed, date_type)
 
     index = pd.IntervalIndex.from_tuples([(1, 3), (5, 7)])
@@ -460,7 +448,6 @@ def test_join_series_lsuffix(closed, date_type, how):
     ["left", "right", "inner", "outer"],
 )
 def test_join_series_rsuffix(closed, date_type, how):
-
     ndframe = make_ndframe(False, closed, date_type)
 
     index = pd.IntervalIndex.from_tuples([(1, 3), (5, 7)])
