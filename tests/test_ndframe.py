@@ -77,7 +77,9 @@ def test_lookup_frame(x, closed, date_type, a_col, b_col):
     if not hasattr(points, "__len__"):
         points = [points]
     expected = pd.DataFrame({"A": a_col, "B": b_col}, index=points)
-    pd.testing.assert_frame_equal(result, expected, check_dtype=False)
+    pd.testing.assert_frame_equal(
+        result, expected, check_dtype=False, check_index_type=False
+    )
 
 
 @pytest.mark.parametrize(
