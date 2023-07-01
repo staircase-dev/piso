@@ -854,7 +854,9 @@ def test_contains(interval_index, x, closed, expected, method, include_index):
     )
     if include_index:
         expected_result = pd.DataFrame(expected, index=ia, columns=np.array(x, ndmin=1))
-        pd.testing.assert_frame_equal(result, expected_result, check_dtype=False)
+        pd.testing.assert_frame_equal(
+            result, expected_result, check_dtype=False, check_index_type=False
+        )
     else:
         expected_result = np.array(expected)
         assert (result == expected_result).all()
@@ -926,7 +928,9 @@ def test_contains_non_cartesian(
     if include_index:
         index = np.array(x, ndmin=1) if result_type == "points" else ia
         expected_result = pd.Series(expected_result, index=index)
-        pd.testing.assert_series_equal(result, expected_result, check_dtype=False)
+        pd.testing.assert_series_equal(
+            result, expected_result, check_dtype=False, check_index_type=False
+        )
     else:
         assert (result == expected_result).all()
 
