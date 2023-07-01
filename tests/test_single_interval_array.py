@@ -855,7 +855,7 @@ def test_contains(interval_index, x, closed, expected, method, include_index):
     if include_index:
         expected_result = pd.DataFrame(expected, index=ia, columns=np.array(x, ndmin=1))
         pd.testing.assert_frame_equal(
-            result, expected_result, check_dtype=False, check_index_type=False
+            result, expected_result, check_dtype=False, check_column_type=False
         )
     else:
         expected_result = np.array(expected)
