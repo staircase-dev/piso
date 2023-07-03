@@ -1,3 +1,4 @@
+import matplotlib
 import numpy as np
 import pandas as pd
 import pytest
@@ -6,6 +7,7 @@ import piso
 import piso.intervalarray as piso_intervalarray
 from piso import register_accessors
 
+matplotlib.use("TkAgg")
 register_accessors()
 
 
@@ -527,7 +529,6 @@ def map_to_dates(obj, date_type):
 def test_isdisjoint_left_right_neither(
     interval_index, tuples, expected, closed, date_type, method
 ):
-
     interval_array = make_ia_from_tuples(interval_index, tuples, closed)
     interval_array = map_to_dates(interval_array, date_type)
     result = perform_op(
@@ -564,7 +565,6 @@ def test_isdisjoint_left_right_neither(
     ["supplied", "accessor", "package"],
 )
 def test_isdisjoint_both(interval_index, tuples, expected, date_type, method):
-
     interval_array = make_ia_from_tuples(interval_index, tuples, "both")
     interval_array = map_to_dates(interval_array, date_type)
     result = perform_op(

@@ -1,7 +1,10 @@
+import matplotlib
 import pandas as pd
 import pytest
 
 import piso.util
+
+matplotlib.use("TkAgg")
 
 
 def map_to_dates(interval_array, date_type):
