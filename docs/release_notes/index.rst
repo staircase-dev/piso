@@ -4,7 +4,7 @@
 Release notes
 ========================
 
-- Compatibility with pandas 2.0
+- Compatibility with pandas 2
 
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 
