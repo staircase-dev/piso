@@ -1,14 +1,11 @@
 import operator
 
-import matplotlib
 import numpy as np
 import pandas as pd
 import pytest
 
 import piso.interval as piso_interval
 from piso._exceptions import ClosedMismatchError, ClosedValueError
-
-matplotlib.use("TkAgg")
 
 
 def make_overlapping_intervals(closed):

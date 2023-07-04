@@ -1,11 +1,8 @@
-import matplotlib
 import numpy as np
 import pandas as pd
 import pytest
 
 import piso
-
-matplotlib.use("TkAgg")
 
 
 def make_ndframe(is_frame, closed, date_type):

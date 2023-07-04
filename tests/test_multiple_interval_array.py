@@ -1,6 +1,5 @@
 import operator
 
-import matplotlib
 import numpy as np
 import pandas as pd
 import pytest
@@ -9,7 +8,6 @@ import piso
 import piso.intervalarray as piso_intervalarray
 from piso import register_accessors
 
-matplotlib.use("TkAgg")
 register_accessors()
 
 

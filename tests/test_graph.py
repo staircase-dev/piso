@@ -1,4 +1,3 @@
-import matplotlib
 import numpy as np
 import pandas as pd
 import pytest
@@ -6,8 +5,6 @@ import pytest
 import piso
 import piso.graph as piso_graph
 from piso import register_accessors
-
-matplotlib.use("TkAgg")
 
 register_accessors()
 
