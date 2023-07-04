@@ -167,22 +167,6 @@ files = [
 ]
 
 [[package]]
-name = "backports-functools-lru-cache"
-version = "1.6.5"
-description = "Backport of functools.lru_cache"
-category = "main"
-optional = false
-python-versions = ">=2.6"
-files = [
-    {file = "backports.functools_lru_cache-1.6.5-py2.py3-none-any.whl", hash = "sha256:3b8f1c6537651f130706488e61f3275b010002676432e9e7638a9e0fc1b40668"},
-    {file = "backports.functools_lru_cache-1.6.5.tar.gz", hash = "sha256:e7efcdd8cf92279bcb09fdb9b31e984ffdc96fc9f21e22ff20538884cb99b97d"},
-]
-
-[package.extras]
-docs = ["furo", "jaraco.packaging (>=9)", "jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-lint"]
-testing = ["pytest (>=6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.3)", "pytest-mypy (>=0.9.1)", "pytest-ruff"]
-
-[[package]]
 name = "beautifulsoup4"
 version = "4.12.2"
 description = "Screen-scraping library"
@@ -722,14 +706,14 @@ files = [
 
 [[package]]
 name = "exceptiongroup"
-version = "1.1.1"
+version = "1.1.2"
 description = "Backport of PEP 654 (exception groups)"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "exceptiongroup-1.1.1-py3-none-any.whl", hash = "sha256:232c37c63e4f682982c8b6459f33a8981039e5fb8756b2074364e5055c498c9e"},
-    {file = "exceptiongroup-1.1.1.tar.gz", hash = "sha256:d484c3090ba2889ae2928419117447a14daf3c1231d5e30d0aae34f354f01785"},
+    {file = "exceptiongroup-1.1.2-py3-none-any.whl", hash = "sha256:e346e69d186172ca7cf029c8c1d16235aa0e04035e5750b4b95039e65204328f"},
+    {file = "exceptiongroup-1.1.2.tar.gz", hash = "sha256:12c3e887d6485d16943a309616de20ae5582633e0a2eda17f4e10fd61c1e8af5"},
 ]
 
 [package.extras]
@@ -1364,52 +1348,6 @@ files = [
 
 [[package]]
 name = "matplotlib"
-version = "2.2.5"
-description = "Python plotting package"
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "matplotlib-2.2.5-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:d541616636cff89a7d6427ce583a5b48a93e4fbb9c7ce3e0f5f47b2436d376bb"},
-    {file = "matplotlib-2.2.5-cp27-cp27m-manylinux1_x86_64.whl", hash = "sha256:7aac72d80be3d0d0378dd8136fe6e5379533f840ea1b68de63ba8eaf2adb1dee"},
-    {file = "matplotlib-2.2.5-cp27-cp27m-win32.whl", hash = "sha256:9b60582cbfd2cc314e2cd84fb86c9c879f8887458cf27940720ef8aa5a73b3b4"},
-    {file = "matplotlib-2.2.5-cp27-cp27m-win_amd64.whl", hash = "sha256:845a4c2db94419f0642946a2577fc3f50e339824eff759c68c4bb988c9769955"},
-    {file = "matplotlib-2.2.5-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:57077b4023f1af0151b6b580bccfcff2e3ec1e0f689ef58e4d1e751cdfbf13f0"},
-    {file = "matplotlib-2.2.5-cp34-cp34m-manylinux1_x86_64.whl", hash = "sha256:f436a4a425b6b7150cffde9581dc4563ae3f4f10494191db57547c202d1c15b7"},
-    {file = "matplotlib-2.2.5-cp34-cp34m-win32.whl", hash = "sha256:aa545123f55da7c6566c0e0e66c52d938129865cec2f3058a1842ca62741e248"},
-    {file = "matplotlib-2.2.5-cp34-cp34m-win_amd64.whl", hash = "sha256:62c671fa6a426d59578354c9ba6ba109f91ed65901180c999191a217f8d6a35f"},
-    {file = "matplotlib-2.2.5-cp35-cp35m-macosx_10_6_intel.whl", hash = "sha256:8f0af3228314b46ee72009c604f40c7e07b5d52048e252abb205a5ff77cc8d6b"},
-    {file = "matplotlib-2.2.5-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:88ad35aae58d1800844e3d1c06bea2831092ff930dd7902f0d3976ba762894f8"},
-    {file = "matplotlib-2.2.5-cp35-cp35m-win32.whl", hash = "sha256:8e791377f2f76fdf23bb12f71bf8182f07d5d994ad9ab7b0f7038b0f79f85ccb"},
-    {file = "matplotlib-2.2.5-cp35-cp35m-win_amd64.whl", hash = "sha256:6bcd44556cdce178100180d0d04df68ab50eb267c60453f34f248c5559579a9e"},
-    {file = "matplotlib-2.2.5-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:2391e179bd91f7e9727f4d1a09803ce4dc973ed5c517b42430e9edf60bfdcc6a"},
-    {file = "matplotlib-2.2.5-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:5d46546f152a24ce06e20b0aff0b74648cae0ab0e8de1470a4d4b5a2a8aaf414"},
-    {file = "matplotlib-2.2.5-cp36-cp36m-win32.whl", hash = "sha256:4c65889d35736ce0f2f94e0dbac72c93f85cea613fd477c7970e7af5d1e71f11"},
-    {file = "matplotlib-2.2.5-cp36-cp36m-win_amd64.whl", hash = "sha256:9e43d73ac507545d49aea0cfa7b1f6a37eec74621bd9bdff8dbb6d16f560ced8"},
-    {file = "matplotlib-2.2.5-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:a3c1c62db6469cf8eb778c5c4c020d6a35424b9a4cb385db7486b77ae35be358"},
-    {file = "matplotlib-2.2.5-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:59b219991e5ebf858cd0d35cdd97c3db30b7fd003fe9321aac0355aa8ae665b1"},
-    {file = "matplotlib-2.2.5-cp37-cp37m-win32.whl", hash = "sha256:7f78529a92242b4adc1db9daf5b71362a35cd9a5cd8cb4db2b83349df2b0dbb8"},
-    {file = "matplotlib-2.2.5-cp37-cp37m-win_amd64.whl", hash = "sha256:240565f560ff35f1c8bb5449a51c420c926478e087db89237a47ec92a29b32d1"},
-    {file = "matplotlib-2.2.5-cp38-cp38-win32.whl", hash = "sha256:73f29adce52f98564e738537449e35ea64edd37c043773694a5ee1ac9424d85a"},
-    {file = "matplotlib-2.2.5-cp38-cp38-win_amd64.whl", hash = "sha256:2f8cb0f84419808b9915cf8bf31b6e1b7542c1e4805399035799a2419e085b91"},
-    {file = "matplotlib-2.2.5-pp273-pypy_73-win32.whl", hash = "sha256:b11160764f2d1757788ad209723cada52f72f7b80903a49e5b6f8c055f5e38bd"},
-    {file = "matplotlib-2.2.5-pp373-pypy36_pp73-win32.whl", hash = "sha256:900b4f00dbd37e8b7dfe5f7209f506384c69617ab109f417ea09a55baab1af7a"},
-    {file = "matplotlib-2.2.5.tar.gz", hash = "sha256:a3037a840cd9dfdc2df9fee8af8f76ca82bfab173c0f9468193ca7a89a2b60ea"},
-]
-
-[package.dependencies]
-"backports.functools-lru-cache" = "*"
-cycler = ">=0.10"
-kiwisolver = ">=1.0.1"
-numpy = ">=1.7.1"
-pyparsing = ">=2.0.1,<2.0.4 || >2.0.4,<2.1.2 || >2.1.2,<2.1.6 || >2.1.6"
-python-dateutil = ">=2.1"
-pytz = "*"
-six = ">=1.10"
-subprocess32 = "*"
-
-[[package]]
-name = "matplotlib"
 version = "3.5.3"
 description = "Python plotting package"
 category = "main"
@@ -1896,7 +1834,7 @@ testing = ["matplotlib", "pytest", "pytest-cov"]
 name = "packaging"
 version = "23.1"
 description = "Core utilities for Python packages"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -2315,14 +2253,14 @@ twisted = ["twisted"]
 
 [[package]]
 name = "prompt-toolkit"
-version = "3.0.38"
+version = "3.0.39"
 description = "Library for building powerful interactive command lines in Python"
 category = "dev"
 optional = false
 python-versions = ">=3.7.0"
 files = [
-    {file = "prompt_toolkit-3.0.38-py3-none-any.whl", hash = "sha256:45ea77a2f7c60418850331366c81cf6b5b9cf4c7fd34616f733c5427e6abbb1f"},
-    {file = "prompt_toolkit-3.0.38.tar.gz", hash = "sha256:23ac5d50538a9a38c8bde05fecb47d0b403ecd0662857a86f886f798563d5b9b"},
+    {file = "prompt_toolkit-3.0.39-py3-none-any.whl", hash = "sha256:9dffbe1d8acf91e3de75f3b544e4842382fc06c6babe903ac9acb74dc6e08d88"},
+    {file = "prompt_toolkit-3.0.39.tar.gz", hash = "sha256:04505ade687dc26dc4284b1ad19a83be2f2afe83e7a828ace0c72f3a1df72aac"},
 ]
 
 [package.dependencies]
@@ -2991,18 +2929,21 @@ test = ["pytest"]
 
 [[package]]
 name = "staircase"
-version = "2.5.1"
+version = "2.5.2"
 description = "A data analysis package based on modelling and manipulation of mathematical step functions. Strongly aligned with pandas."
 category = "main"
 optional = false
 python-versions = ">=3.7,<4.0"
 files = [
-    {file = "staircase-2.5.1-py3-none-any.whl", hash = "sha256:6eda6284b09cfab5a8045a06598d4cc2b4bae3667134fefc5142ce889c67960b"},
-    {file = "staircase-2.5.1.tar.gz", hash = "sha256:83fc66af763389aedb6675f1b60f1e29ab05c6cf0976d0628414df41edc78d62"},
+    {file = "staircase-2.5.2-py3-none-any.whl", hash = "sha256:bfc17bae7c2f3f730986aa2912bdcbdc828b9d07e03f55d6aa336c3d835c0e1f"},
+    {file = "staircase-2.5.2.tar.gz", hash = "sha256:606de1836987dbed7ad2d40e02e66baac990005fbaa724d37e02ee09a9530a3a"},
 ]
 
 [package.dependencies]
-matplotlib = ">=2"
+matplotlib = [
+    {version = ">=2", markers = "python_version >= \"3.7\" and python_version < \"3.11\""},
+    {version = ">=3.6,<4.0", markers = "python_version >= \"3.11\" and python_version < \"4.0\""},
+]
 numpy = [
     {version = ">=1.15,<2.0", markers = "python_version >= \"3.7\" and python_version < \"3.10\""},
     {version = ">=1.21.2,<2.0.0", markers = "python_version >= \"3.10\" and python_version < \"4.0\""},
@@ -3013,19 +2954,6 @@ pandas = [
 ]
 pytz = "*"
 typing-extensions = ">=4.4.0,<5.0.0"
-
-[[package]]
-name = "subprocess32"
-version = "3.5.4"
-description = "A backport of the subprocess module from Python 3 for use on 2.x."
-category = "main"
-optional = false
-python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*, <4"
-files = [
-    {file = "subprocess32-3.5.4-cp27-cp27m-macosx_10_6_intel.whl", hash = "sha256:88e37c1aac5388df41cc8a8456bb49ebffd321a3ad4d70358e3518176de3a56b"},
-    {file = "subprocess32-3.5.4-cp27-cp27mu-manylinux2014_x86_64.whl", hash = "sha256:e45d985aef903c5b7444d34350b05da91a9e0ea015415ab45a21212786c649d0"},
-    {file = "subprocess32-3.5.4.tar.gz", hash = "sha256:eb2937c80497978d181efa1b839ec2d9622cf9600a039a79d0e108d1f9aec79d"},
-]
 
 [[package]]
 name = "terminado"
@@ -3316,4 +3244,4 @@ codecov = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.7"
-content-hash = "3dde2a3b0c0cf1972ac56a8c20ea6a5314f93444827fea27430934ffe29d3616"
+content-hash = "ed9bab834734bfe63084af151ad5b08d8d7518cb327629ec32dcbb24b906884f"
