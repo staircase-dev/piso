@@ -12,8 +12,9 @@ from piso.util import (
 
 
 def _check_matched_closed(interval_arrays):
-    closed_values = [arr.closed for arr in interval_arrays]
-    assert closed_values.count(closed_values[0]) == len(closed_values)
+    closed_values = [arr.closed for arr in interval_arrays if len(arr) > 0]
+    if len(closed_values):
+        assert closed_values.count(closed_values[0]) == len(closed_values)
 
 
 def _validate_array_of_intervals_arrays(*interval_arrays, validate_intervals=True):

@@ -5,6 +5,7 @@ Release notes
 ========================
 
 - Compatibility with pandas 2
+- Better handling of empty intervals in set operations (#GH56)
 
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 
