@@ -4,10 +4,13 @@
 Release notes
 ========================
 
+ADD UNRELEASED CHANGES ABOVE THIS LINE
+
+**v1.0.0 2023-07-05**
+
 - Compatibility with pandas 2
 - Better handling of empty intervals in set operations (#GH56)
 
-ADD UNRELEASED CHANGES ABOVE THIS LINE
 
 **v0.9.0 2022-05-04**
 
