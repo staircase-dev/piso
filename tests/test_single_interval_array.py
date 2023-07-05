@@ -97,9 +97,25 @@ def make_ia_from_tuples(interval_index, tuples, closed):
     return klass.from_tuples(tuples, closed=closed)
 
 
+def standardise_interval_array(interval_index_or_array):
+    def maybe_convert_to_float(arr):
+        if pd.api.types.is_numeric_dtype(arr):
+            return arr.astype(float)
+        return arr
+
+    return pd.arrays.IntervalArray.from_arrays(
+        maybe_convert_to_float(interval_index_or_array.left),
+        maybe_convert_to_float(interval_index_or_array.right),
+        closed=interval_index_or_array.closed,
+    )
+
+
 def assert_interval_array_equal(interval_array, expected, interval_index):
     if interval_index:
-        interval_array = interval_array.values
+        assert isinstance(interval_array, pd.IntervalIndex)
+
+    interval_array = standardise_interval_array(interval_array)
+    expected = standardise_interval_array(expected)
 
     pd._testing.assert_interval_array_equal(
         interval_array,
@@ -459,9 +475,9 @@ def map_to_dates(obj, date_type):
         return obj
 
     def make_date(x):
-        ts = pd.to_datetime(x, unit="d", origin="2021-09-30")
+        ts = pd.to_datetime(x, unit="D", origin="2021-09-30")
         if date_type == "numpy":
-            return ts.to_numpy()
+            return ts.to_numpy().astype("datetime64[ns]")
         if date_type == "datetime":
             return ts.to_pydatetime()
         if date_type == "timedelta":
@@ -511,7 +527,6 @@ def map_to_dates(obj, date_type):
 def test_isdisjoint_left_right_neither(
     interval_index, tuples, expected, closed, date_type, method
 ):
-
     interval_array = make_ia_from_tuples(interval_index, tuples, closed)
     interval_array = map_to_dates(interval_array, date_type)
     result = perform_op(
@@ -548,7 +563,6 @@ def test_isdisjoint_left_right_neither(
     ["supplied", "accessor", "package"],
 )
 def test_isdisjoint_both(interval_index, tuples, expected, date_type, method):
-
     interval_array = make_ia_from_tuples(interval_index, tuples, "both")
     interval_array = map_to_dates(interval_array, date_type)
     result = perform_op(
@@ -838,7 +852,9 @@ def test_contains(interval_index, x, closed, expected, method, include_index):
     )
     if include_index:
         expected_result = pd.DataFrame(expected, index=ia, columns=np.array(x, ndmin=1))
-        pd.testing.assert_frame_equal(result, expected_result, check_dtype=False)
+        pd.testing.assert_frame_equal(
+            result, expected_result, check_dtype=False, check_column_type=False
+        )
     else:
         expected_result = np.array(expected)
         assert (result == expected_result).all()
@@ -910,7 +926,9 @@ def test_contains_non_cartesian(
     if include_index:
         index = np.array(x, ndmin=1) if result_type == "points" else ia
         expected_result = pd.Series(expected_result, index=index)
-        pd.testing.assert_series_equal(result, expected_result, check_dtype=False)
+        pd.testing.assert_series_equal(
+            result, expected_result, check_dtype=False, check_index_type=False
+        )
     else:
         assert (result == expected_result).all()
 

@@ -440,11 +440,55 @@ def test_difference_4(closed, interval_index, return_type, how):
     )
 
 
+@pytest.mark.parametrize(
+    "closed",
+    ["left", "right"],
+)
+@pytest.mark.parametrize(
+    "interval_index",
+    [True, False],
+)
+@pytest.mark.parametrize(
+    "return_type",
+    ["infer", pd.arrays.IntervalArray, pd.IntervalIndex],
+)
+@pytest.mark.parametrize(
+    "how",
+    ["supplied", "accessor", "package"],
+)
+def test_difference_empty_array(closed, interval_index, return_type, how):
+    interval_array = pd.arrays.IntervalArray.from_tuples(
+        [(pd.Timestamp("2017-01-01T12"), pd.Timestamp("2018-01-01T12"))], closed=closed
+    )
+    expected = interval_array
+    empty_array = pd.arrays.IntervalArray([])
+    if interval_index:
+        interval_array = pd.IntervalIndex(interval_array)
+        empty_array = pd.IntervalIndex(empty_array)
+    result = perform_op(
+        interval_array,
+        empty_array,
+        return_type=return_type,
+        how=how,
+        function=piso_intervalarray.difference,
+    )
+    interval_index = (
+        interval_index if return_type == "infer" else (return_type == pd.IntervalIndex)
+    )
+    print(result)
+    print(expected)
+    assert_interval_array_equal(
+        result,
+        expected,
+        interval_index,
+    )
+
+
 def map_to_dates(interval_array, date_type):
     def make_date(x):
         ts = pd.Timestamp(f"2021-10-{x}")
         if date_type == "numpy":
-            return ts.to_numpy()
+            return ts.to_numpy().astype("datetime64[ns]")
         if date_type == "datetime":
             return ts.to_pydatetime()
         if date_type == "timedelta":

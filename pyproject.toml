@@ -32,22 +32,38 @@ keywords=[
 classifiers=[
 	'Operating System :: OS Independent',
 	'Intended Audience :: Science/Research',
-	'Programming Language :: Python :: 3.6',
 	'Programming Language :: Python :: 3.7',
 	'Programming Language :: Python :: 3.8',
 	'Programming Language :: Python :: 3.9',
+	'Programming Language :: Python :: 3.10',
+	'Programming Language :: Python :: 3.11',
 	'Topic :: Scientific/Engineering',
 ]
 
-[tool.poetry.dependencies]
-python = "^3.6.1"
-staircase = "^2.1.0"
-pandas = "^1"
 
+[tool.poetry.dependencies]
+python = "^3.7"
+staircase = "^2.1.0"
+
+[[tool.poetry.dependencies.pandas]]
+python = ">=3.7,<3.10"
+version = "^1"
+
+[[tool.poetry.dependencies.pandas]]
+python = "^3.10"
+version = ">=1.3.4,<3"
+
+[[tool.poetry.dependencies.numpy]]
+python = ">=3.7,<3.10"
+version = "^1.15"
+
+[[tool.poetry.dependencies.numpy]]
+python = "^3.10"
+version = "^1.21.2"
 
 
 [tool.poetry.dev-dependencies]
-ipykernel = "^5"
+ipykernel = "^6"
 pytest = "^6"
 pytest-cov = "*"
 sphinx = "*"
@@ -55,12 +71,11 @@ nbsphinx = ">=0.8.5"
 sphinx-autobuild = "*"
 numpydoc = "*"
 notebook = ">= 6.0"
-isort = ">=5.8"
-black = {version = "*", python = "^3.6.2"}
-flake8 = ">=3.9"
-pre-commit = {version = ">=2.13", python = "^3.6.1"}
+isort = ">=5.8,<5.12"
+black = ">=22.10"
+flake8 = ">=5"
+pre-commit = ">=2.20"
 tox=">=3.15"
-
 
 [tool.poetry.extras]
 codecov = ["codecov"]

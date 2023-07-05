@@ -2,7 +2,7 @@ from piso.graph import adjacency_matrix
 
 union_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -69,7 +69,7 @@ Interval(0.0, 12.0, closed='right')
 
 intersection_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -149,7 +149,7 @@ Length: 2, closed: right, dtype: interval[float64]
 
 difference_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -192,7 +192,7 @@ Interval(0.0, 2.0, closed='right')
 
 symmetric_difference_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -261,7 +261,7 @@ Length: 1, closed: right, dtype: interval[float64]
 
 isdisjoint_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -292,7 +292,7 @@ False
 
 issuperset_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -324,7 +324,7 @@ False
 
 issubset_examples = """
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -406,7 +406,7 @@ Parameters
 {params}
 
 Returns
-----------
+-------
 {return_type}
 
 {examples}
@@ -439,7 +439,7 @@ Parameters
 {params}
 
 Returns
-----------
+-------
 :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
 
 {examples}
@@ -463,7 +463,7 @@ Parameters
 {params}
 
 Returns
-----------
+-------
 :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
 
 {examples}
@@ -617,11 +617,11 @@ how : {"fraction", "sum"}, default "fraction"
     .. versionadded:: 0.8.0
 
 Returns
-----------
+-------
 float or :class:`pandas.Series`
 
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -676,12 +676,12 @@ domain : :py:class:`tuple`, :class:`pandas.Interval`, :class:`pandas.IntervalInd
     then the intervals it contains define a possibly disconnected domain.
 
 Returns
-----------
+-------
 :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
     The return type will be the same as the interval array object the accessor belongs to.
 
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -728,13 +728,13 @@ x : scalar, or array-like of scalars
     that the accessor belongs to.
 
 Returns
-----------
+-------
 :class:`numpy.ndarray`
     Values will be integer.  If a point is not contained in any interval then the corresponding
     value is -1.
 
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -789,12 +789,12 @@ how : {"any", "all"}, default "any"
     Which of these interpretations is dependent on the *result* parameter.
 
 Returns
-----------
+-------
 :class:`numpy.ndarray`, :class:`pandas.DataFrame` or :class:`pandas.Series`
     One, or two, dimensional and boolean valued.  Return type dependent on *include_index* and *result*.
 
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -856,12 +856,12 @@ x : scalar, or array-like of scalars
     May contain duplicates and be unsorted.
 
 Returns
-----------
+-------
 :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
     Return type will be the same type as the object the accessor belongs to.
 
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -914,7 +914,7 @@ Returns
     Boolean valued, symmetrical, with False along diagonal.
 
 Examples
----------
+--------
 
 >>> import pandas as pd
 >>> import piso
@@ -964,13 +964,13 @@ threshold : scalar
     For instance, if intervals are timestamp data, then *threshold* should be timedelta.
 
 Returns
-----------
+-------
 :class:`pandas.IntervalIndex` or :class:`pandas.arrays.IntervalArray`
     Return type will be the same type as the object the accessor belongs to.
 
 
 Examples
------------
+--------
 
 >>> import pandas as pd
 >>> import piso

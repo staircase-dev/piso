@@ -5,6 +5,12 @@ Release notes
 ========================
 
 
+**v1.0.0 2023-07-05**
+
+- Compatibility with pandas 2
+- Better handling of empty intervals in set operations (#GH56)
+
+
 **v0.9.0 2022-05-04**
 
 - Extended :func:`piso.adjacency_matrix` and :meth:`ArrayAccessor.adjacency_matrix() <piso.accessor.ArrayAccessor.adjacency_matrix>` to take multiple interval array parameters

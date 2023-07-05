@@ -107,7 +107,7 @@ def adjacency_matrix(
         Boolean valued, symmetrical, with False along diagonal.
 
     Examples
-    ---------
+    --------
 
     >>> import pandas as pd
     >>> import piso

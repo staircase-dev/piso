@@ -9,7 +9,7 @@ Analysis of scores in a football match (using staircase)
 
     import matplotlib.pyplot as plt
     import matplotlib.ticker as ticker
-    plt.style.use('seaborn')
+    plt.style.use('seaborn-v0_8')
 
 This example demonstrates how :mod:`staircase` can be used to mirror the functionality
 and analysis presented in the :ref:`corresponding example with piso <user_guide.football_example>`.
