@@ -1,6 +1,7 @@
 name: Upload to PYPI
 
 on:
+  workflow_dispatch:
   release:
     types: [created]
 
