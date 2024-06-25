@@ -54,6 +54,7 @@ where the values are instances of :class:`pandas.arrays.IntervalArray`.
                 df["end"],
                 closed="left",
             ),
+            include_groups=False,
         )
     )
     maintenance
