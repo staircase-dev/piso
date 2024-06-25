@@ -57,6 +57,7 @@ and where the values are instances of :class:`pandas.arrays.IntervalArray` and h
                 df["end"],
                 closed="left",
             ),
+            include_groups=False,
         )
     )
     meetings
