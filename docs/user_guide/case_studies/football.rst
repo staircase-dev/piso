@@ -99,7 +99,8 @@ Using this dataframe we will now provide answers for miscellaneous questions.  I
 .. ipython:: python
 
     CvsL.groupby("half").apply(
-        lambda df: df.query("score_liverpool - score_chelsea == 1").index.length.sum()
+        lambda df: df.query("score_liverpool - score_chelsea == 1").index.length.sum(),
+        include_groups=False,
     )
 
 **What was the score at the 80 minute mark?**
