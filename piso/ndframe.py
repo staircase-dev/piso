@@ -57,7 +57,7 @@ def _get_indexers(*dfs):
 
 
 def _handle_overlapping_columns(frames, suffixes):
-    col_counts = pd.Series.value_counts(list(itertools.chain.from_iterable(frames)))
+    col_counts = pd.Series(list(itertools.chain.from_iterable(frames))).value_counts()
     common_columns = col_counts[col_counts > 1].index
     if len(common_columns) > 0:
         if len(suffixes) != len(frames):
