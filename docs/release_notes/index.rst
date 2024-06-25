@@ -4,6 +4,9 @@
 Release notes
 ========================
 
+- support for Python 3.12 added
+- support for Python 3.7 removed
+
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 
 **v1.0.0 2023-07-05**
