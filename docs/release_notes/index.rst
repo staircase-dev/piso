@@ -4,10 +4,13 @@
 Release notes
 ========================
 
+ADD UNRELEASED CHANGES ABOVE THIS LINE
+
+**v1.1.0 2024-06-25**
+
 - support for Python 3.12 added
 - support for Python 3.7 removed
 
-ADD UNRELEASED CHANGES ABOVE THIS LINE
 
 **v1.0.0 2023-07-05**
 
