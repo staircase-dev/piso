@@ -955,7 +955,7 @@ Given a set of intervals, and a threshold, merges intervals which are separated 
 or equal to the threshold.  Overlapping intervals will be merged, regardless of threshold value.
 
 The intervals are contained in the object the accessor belongs to.  They may be left-closed,
-right-closed, both, or neither, and contain overlapping intervals.
+or right-closed, and contain overlapping intervals.
 
 Parameters
 ----------
