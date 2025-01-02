@@ -32,21 +32,21 @@ keywords=[
 classifiers=[
 	'Operating System :: OS Independent',
 	'Intended Audience :: Science/Research',
-	'Programming Language :: Python :: 3.8',
 	'Programming Language :: Python :: 3.9',
 	'Programming Language :: Python :: 3.10',
 	'Programming Language :: Python :: 3.11',
     'Programming Language :: Python :: 3.12',
+	'Programming Language :: Python :: 3.13',
 	'Topic :: Scientific/Engineering',
 ]
 
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 staircase = "^2.1.0"
 
 [[tool.poetry.dependencies.pandas]]
-python = ">=3.8,<3.10"
+python = ">=3.9,<3.10"
 version = "^1"
 
 [[tool.poetry.dependencies.pandas]]
@@ -54,12 +54,12 @@ python = "^3.10"
 version = ">=1.3.4,<3"
 
 [[tool.poetry.dependencies.numpy]]
-python = ">=3.8,<3.10"
+python = ">=3.9,<3.10"
 version = "^1.17"
 
 [[tool.poetry.dependencies.numpy]]
 python = "^3.10"
-version = "^1.21.2"
+version = ">=1.21.2,<3"
 
 
 [tool.poetry.dev-dependencies]
