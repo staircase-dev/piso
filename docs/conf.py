@@ -123,7 +123,7 @@ html_theme = "pydata_sphinx_theme"
 
 html_theme_options = {
     "github_url": "https://github.com/staircase-dev/piso",
-    # "navbar_end": ["navbar-icon-links"],
+    "navbar_end": ["navbar-icon-links"],
 }
 
 html_theme_options["analytics"] = {
