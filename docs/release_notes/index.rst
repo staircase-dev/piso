@@ -5,6 +5,13 @@ Release notes
 ========================
 
 
+**v1.2.0 2025-01-02**
+
+- support for Numpy 2 added
+- support for Python 3.13 added
+- support for Python 3.8 removed
+
+
 **v1.1.0 2024-06-25**
 
 - support for Python 3.12 added

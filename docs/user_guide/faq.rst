@@ -5,7 +5,6 @@ Frequently asked questions
 ==========================
 
 .. dropdown:: Can any interval be used with piso?
-    :container: + shadow
 
     Unfortunately no.  The intervals must
     
@@ -16,12 +15,10 @@ Frequently asked questions
     Operations between Intervals, IntervalIndex and IntervalArray objects must have the same value for their *closed* attribute.
 
 .. dropdown:: Are there plans to add support for intervals which are either degenerate (contain a single point), infinite length, or not half-closed?
-    :container: + shadow
 
     At this stage no, but this may change depending on the popularity of the package and the demand for this functionality.
 
 .. dropdown:: Are there existing set operations for intervals in pandas?
-    :container: + shadow
 
     Yes, but currently there are very few:
 
@@ -49,7 +46,6 @@ Frequently asked questions
     Additional set operations for intervals, like those implemented in `piso`, are earmarked for development in :mod:`pandas` at some time in the future.
 
 .. dropdown:: Can I work with datetime/timestamp data?
-    :container: + shadow
 
     Yes :mod:`piso` will work with :class:`pandas.Timestamp` and :class:`pandas.Timedelta` data.  Users who wish to use :class:`numpy.datetime64` and :class:`datetime.datetime` (and timedelta counterparts) should be aware that: 
     
@@ -57,12 +53,10 @@ Frequently asked questions
         - when using construction class methods, such as :meth:`pandas.IntervalIndex.from_arrays`, any datetime objects from :mod:`numpy` or :mod:`datetime` modules will be converted by :mod:`pandas` to the :mod:`pandas` equivalent.
 
 .. dropdown:: Why is there no `piso` accessor for `pandas.Interval`?
-    :container: + shadow
 
     Objects of type :class:`pandas.Interval` are immutable, meaning they cannot be changed (incuding the addition of an accessor).
 
 .. dropdown:: Why use accessors?
-    :container: + shadow
 
     Accessors provide a nice way of carving out a seperate namespace for `piso`, as opposed to monkey patching.  This is particularly important for :class:`pandas.IntervalIndex`, which inherits methods from :class:`pandas.Index`, which are set based operations:
 

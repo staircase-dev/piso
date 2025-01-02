@@ -1,7 +1,7 @@
 ipykernel
-sphinx >= 5
+sphinx
 nbsphinx
-sphinx-panels
+sphinx-design
 staircase >= 2.1
 pandas
 numpy
@@ -9,4 +9,5 @@ Pygments
 pydata-sphinx-theme
 toml
 numpydoc
-matplotlib >= 3.7
+matplotlib
+pickleshare
