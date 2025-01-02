@@ -4,6 +4,10 @@
 Release notes
 ========================
 
+- support for Numpy 2 added
+- support for Python 3.13 added
+- support for Python 3.8 removed
+
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 
 **v1.1.0 2024-06-25**
