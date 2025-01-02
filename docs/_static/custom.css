@@ -1,15 +1,40 @@
-:root {
+html {
   --pst-color-primary: 92, 92, 92;
-  --pst-color-active-navigation: 231, 4, 136;
-  --pst-color-navbar-link: 231, 4, 136;
-  --pst-color-navbar-link-hover: 240, 40, 180;
-  --pst-color-navbar-link-active: 231, 4, 136;
+  --pst-color-active-navigation: #e70488;
+  --pst-color-navbar-link: #e70488;
+  --pst-color-navbar-link-active:#e70488;
+  --pst-color-inline-code-links: #e70488;
 }
 
-.navbar-light .navbar-nav>.active>.nav-link {
-    font-weight: 800;
-    color: rgba(var(--pst-color-navbar-link-active),1);
+h1 {
+    --pst-color-heading: #150458;
 }
+
+h2 {
+  --pst-color-heading: #150458;
+}
+
+h3 {
+  --pst-color-heading: #150458;
+}
+
+.bd-header ul.navbar-nav > li.nav-item > .nav-link {
+    color: #e70488;
+    --pst-color-primary: #e70488;
+}
+
+.bd-header ul.navbar-nav > li.nav-item.current > .nav-link {
+    color: #e70488;
+    --pst-color-primary: #e70488;
+    font-weight: 800;
+}
+
+.bd-header ul.navbar-nav > li.nav-item > .nav-link:hover {
+    color: #e70488;
+    --pst-color-primary: #e70488;
+    --pst-color-secondary: #ffffff;
+    text-decoration: none;
+  }
 
 dt:target, span.highlighted {
     background-color: rgba(255,255,255,1);

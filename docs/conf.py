@@ -18,6 +18,7 @@ import inspect
 # for sphinx
 import os
 import sys
+from datetime import datetime
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
@@ -31,7 +32,7 @@ os.environ["PYTHONPATH"] = os.path.abspath(parentdir)
 # -- Project information -----------------------------------------------------
 
 project = "piso"
-copyright = "2021, Riley Clement"
+copyright = f"2021-{datetime.now().year}, Riley Clement"
 author = "Riley Clement"
 version = piso.__version__
 if "untagged" in version:
@@ -64,10 +65,10 @@ extensions = [
     # "sphinx.ext.linkcode",
     "numpydoc",  # handle NumPy documentation formatted docstrings]
     "nbsphinx",
-    "sphinx_panels",
+    "sphinx_design",
 ]
 
-source_suffix = [".rst", ".ipynb"]
+source_suffix = [".rst"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -90,7 +91,7 @@ autosummary_generate = True
 
 # sphinx-panels shouldn't add bootstrap css since the pydata-sphinx-theme
 # already loads it
-panels_add_bootstrap_css = False
+# panels_add_bootstrap_css = False
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "sphinx"
@@ -121,9 +122,15 @@ latex_elements = {
 html_theme = "pydata_sphinx_theme"
 
 html_theme_options = {
-    "google_analytics_id": "UA-65430466-3",
     "github_url": "https://github.com/staircase-dev/piso",
+    "navbar_end": ["navbar-icon-links"],
 }
+
+html_theme_options["analytics"] = {
+    "google_analytics_id": "UA-65430466-3",
+}
+
+html_show_sourcelink = False
 
 
 html_logo = "img/piso_white.svg"
@@ -133,6 +140,11 @@ html_favicon = "img/favicon.ico"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+html_context = {
+    # ...
+    "default_mode": "light"
+}
 
 
 def setup(app):
