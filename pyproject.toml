@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "piso"
-version = "1.1.0"
+version = "1.2.0"
 description = "Pandas Interval Set Operations: methods for set operations, analytics, lookups and joins on pandas' Interval, IntervalArray and IntervalIndex"
 readme = "README.md"
 authors = ["Riley Clement <venaturum@gmail.com>"]
