@@ -4,6 +4,9 @@
 Release notes
 ========================
 
+- support for Pandas 3 added
+- support for Python 3.14 added
+- support for Python 3.9 removed
 
 ADD UNRELEASED CHANGES ABOVE THIS LINE
 
