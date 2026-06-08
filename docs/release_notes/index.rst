@@ -4,6 +4,11 @@
 Release notes
 ========================
 
+**v1.3.0 2026-06-08**
+
+- support for Pandas 3 added
+- support for Python 3.14 added
+- support for Python 3.9 removed
 
 **v1.2.0 2025-01-02**
 
